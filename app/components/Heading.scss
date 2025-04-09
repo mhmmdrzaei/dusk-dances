@@ -1,0 +1,30 @@
+@use '../globals.scss';
+
+.heading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6.25rem 0;
+}
+
+.heading-text {
+  max-width: 60%;
+}
+
+.heading-text-container {
+  padding-left: 5.875rem;
+}
+
+.heading-image-text-box {
+  @extend .flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 80%;
+}
+
+.heading-image-name {
+  padding-left: 4px;
+}
+.heading-image-location {
+  font-size: 10px;
+}
