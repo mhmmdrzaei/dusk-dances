@@ -264,3 +264,13 @@ export async function getPassword() {
     `
   )
 }
+
+export async function getAllSlugs() {
+  return createClient(clientConfig).fetch(
+      groq`
+    *[_type == "page"] {
+      "url": slug.current,
+      "lastModified": _updatedAt,
+    }
+  `)
+};
