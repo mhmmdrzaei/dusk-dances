@@ -1,7 +1,7 @@
 
 // Import document schemas
 import member from './member'
-import mentorStaff from './mentorStaff'
+import events from './events'
 import page from './page'
 import siteSettings from './settings'
 import memberAreaPosts from './memberAreaPosts'
@@ -16,15 +16,19 @@ import membersCarousel from './modules/membersCarousel'
 import gradientLine from './modules/gradientLine'
 import textImageBox from './modules/textImageBox'
 import seo from './seo'
-
-
-
+import lineDivider from './modules/lineDivider'
+import accordionText from './modules/accordionText'
+import video from './modules/video'
+import imageCarousel from './modules/imageCarousel'
+import hero from './modules/hero'
+import gallery from './modules/gallery'
+import imageCustom from './modules/imageCustom'
 
 export const schemaTypes = [
 
       // Document types
       member,
-      mentorStaff,
+      events,
       page,
       siteSettings,
       
@@ -38,5 +42,13 @@ export const schemaTypes = [
       gradientLine,
       textImageBox,
       seo,
-      memberAreaPosts
+      memberAreaPosts,
+      
+      lineDivider,
+      accordionText,
+      video,
+      imageCarousel,
+      hero,
+      gallery,
+      imageCustom,
 ]

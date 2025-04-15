@@ -10,7 +10,7 @@ export const myStructure = (S) => {
         .filter((listItem) => {
           const id = listItem.getId();
           if (!id) return true;
-          return !['page', 'siteSettings', 'mentorStaff', 'member', "membersAreaPosts"].includes(id);
+          return !['page', 'siteSettings', 'events', 'member', "membersAreaPosts"].includes(id);
         }),
 
       // Pages
@@ -25,11 +25,11 @@ export const myStructure = (S) => {
         .icon(CogIcon)
         .child(S.documentTypeList('member')),
 
-      // Mentors & Staff
+      // Events
       S.listItem()
-        .title('Mentors & Staff')
+        .title('Events')
         .icon(CaseIcon)
-        .child(S.documentTypeList('mentorStaff')),
+        .child(S.documentTypeList('events')),
     // Members area Posts
       S.listItem()
         .title('Members Area Posts')

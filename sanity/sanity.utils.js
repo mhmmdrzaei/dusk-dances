@@ -124,6 +124,55 @@ export async function pageBySlugQuery(slug) {
     }
   `, { slug });
 }
+export async function eventPageBySlugQuery(slug) {
+  return createClient(clientConfig).fetch(
+    groq`
+    *[_type == "events" && slug.current == $slug][0] {
+      title,
+      slug,
+      pageBlocks[] {
+        _key,
+        _type,
+        ...select(
+          _type == "heading" => {
+            headingText,
+            memberReference-> {
+              name,
+              location,
+              images[0] {
+                asset-> {
+                  url,
+                  metadata { dimensions }
+                },
+                alt,
+                caption
+              }
+            }
+          },
+          _type == "bodyText" => {
+            width,
+            content,
+            background
+          },
+          _type == "accordionText" => {
+            heading,
+            text
+          },
+        
+        )
+      },
+      seo {
+        seoTitle,
+        seoDescription,
+        seoImage {
+          asset-> {
+            url
+          }
+        }
+      }
+    }
+  `, { slug });
+}
 
 
 export async function getMembers(){
@@ -194,46 +243,46 @@ export async function getRandomMember() {
 // Mentor and Staff Query
 export async function getMentors() {
   return createClient(clientConfig).fetch(
-    groq`
-      *[_type == "mentorStaff" && "mentor" in role] {
-      name,
-      slug {
-        current
-      },
-      image {
-        asset -> {
-          url
-        },
-        alt
-      },
-      position,
-      email,
-      website,
-      bio
-    }
-  `
+  //   groq`
+  //     *[_type == "mentorStaff" && "mentor" in role] {
+  //     name,
+  //     slug {
+  //       current
+  //     },
+  //     image {
+  //       asset -> {
+  //         url
+  //       },
+  //       alt
+  //     },
+  //     position,
+  //     email,
+  //     website,
+  //     bio
+  //   }
+  // `
   )
 }
 export async function getStaff() {
   return createClient(clientConfig).fetch(
-    groq`
-     *[_type == "mentorStaff" && "staff" in role] {
-      name,
-      slug {
-        current
-      },
-      image {
-        asset -> {
-          url
-        },
-        alt
-      },
-      position,
-      email,
-      website,
-      bio
-    }
-  `
+  //   groq`
+  //    *[_type == "mentorStaff" && "staff" in role] {
+  //     name,
+  //     slug {
+  //       current
+  //     },
+  //     image {
+  //       asset -> {
+  //         url
+  //       },
+  //       alt
+  //     },
+  //     position,
+  //     email,
+  //     website,
+  //     bio
+  //   }
+  // `
   )
 }
 
