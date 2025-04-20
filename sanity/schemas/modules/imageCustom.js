@@ -39,19 +39,9 @@ export default {
     },
   ],
   preview: {
-    select: {
-      imageUrl: 'image.asset.url',
-      altText: 'alt',
-      caption: 'caption',
-      width: 'width',
-    },
-    prepare({ imageUrl, altText, caption, width }) {
+    prepare() {
       return {
-        title: altText || 'Image',
-        subtitle: `${caption ? caption + ' - ' : ''}Width: ${
-          width === 'full' ? 'Full' : width === 'half' ? 'Half' : '1/3'
-        }`,
-        media: imageUrl,
+        title:  'Image',
       };
     },
   },

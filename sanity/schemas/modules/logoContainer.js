@@ -1,3 +1,4 @@
+// TODO check what fields we need
 export default {
     name: 'logoContainer',
     title: 'Logo Container',
@@ -33,14 +34,9 @@ export default {
               }
             ],
             preview: {
-              select: {
-                media: 'image',
-                alt: 'image.alt'
-              },
-              prepare({ media, alt }) {
+              prepare() {
                 return {
-                  title: alt || 'Logo',
-                  media: media
+                  title: 'Logo',
                 }
               }
             }

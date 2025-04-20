@@ -45,12 +45,14 @@ const { slug } =  await params;
    }
  
    const { title, pageBlocks } = pageData;
+   console.log("🚀 ~ EventsPage ~ pageBlocks:", pageBlocks)
  
    return (
      <Layout>
      <div className="page-container">
  
        {pageBlocks?.map((block) => {
+           console.log("🚀 ~ {pageBlocks?.map ~ block:", block)
            const BlockComponent = componentMap[block._type];
            if (!BlockComponent) {
              console.warn(`No component for block type: ${block._type}`);

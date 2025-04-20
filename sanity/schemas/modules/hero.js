@@ -32,25 +32,15 @@ export default {
     },
     {
       name: 'title',
-      title: 'Hero Tile',
+      title: 'Hero Title',
       type: 'string',
       description: 'Title for the hero section.'
     },
   ],
   preview: {
-    select: {
-      imageUrl: 'image.asset.url',
-      altText: 'image.alt',
-      caption: 'imageCaption',
-      text: 'text',
-      title: 'title'
-    },
-    prepare({ imageUrl, altText, caption, text, title }) {
+    prepare() {
       return {
-        subtitle: caption || altText || 'No caption or alt text',
-        media: imageUrl,
-        text,
-        title,
+        title: `Hero`,
       };
     }
   }

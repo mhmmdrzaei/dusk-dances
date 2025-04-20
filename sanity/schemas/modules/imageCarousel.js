@@ -45,20 +45,6 @@ export default {
             //   description: 'Optional URL to navigate to when the image is clicked.'
             // }
           ],
-          preview: {
-            select: {
-              imageUrl: 'image.asset.url',
-              altText: 'image.alt',
-              caption: 'caption'
-            },
-            prepare({ imageUrl, altText, caption }) {
-              return {
-                title: altText || 'Image Slide',
-                subtitle: caption,
-                media: imageUrl
-              };
-            }
-          }
         }
       ],
       validation: Rule => Rule.min(1).required(),
@@ -75,12 +61,10 @@ export default {
   preview: {
     select: {
       title: 'title',
-      slideCount: 'slides.length'
     },
     prepare({ title, slideCount }) {
       return {
         title: title || 'Image Carousel',
-        subtitle: slideCount > 0 ? `${slideCount} slides` : 'No slides added'
       };
     }
   }

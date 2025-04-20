@@ -27,4 +27,5 @@ export const componentMap = {
   hero: MockComponent,
   gallery: MockComponent,
   imageCustom: MockComponent,
+  lineDivider: MockComponent,
 };

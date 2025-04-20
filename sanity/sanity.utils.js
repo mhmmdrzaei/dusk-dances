@@ -1,6 +1,79 @@
 import { createClient, groq } from "next-sanity";
 import clientConfig from './config/client-config'
 
+const contentBlocks = `
+  _type == "textImageBox" => {
+    image,
+    textContent,
+    alignment
+  },
+  _type == "hero" => {
+    image,
+    imageCaption,
+    text,
+    title
+  },
+  _type == "accordionText" => {
+    heading,
+    text
+  },
+  _type == "lineDivider" => {
+    thickness,
+    spacingX,
+    spacingY,
+  },
+  _type == "ctaButton" => {
+    buttonLabel,
+    buttonUrl,
+    openInNewWindow,
+    buttonColor,
+    buttonAlignment
+  },
+  _type == "video" => {
+    title,
+    url,
+    autoplay,
+    loop,
+    controls,
+    muted,
+  },
+   _type == "imageCarousel" => {
+    title,
+    autoplay,
+    "slides": slides[]{
+      image,
+      alt,
+      caption
+    },
+  },
+  _type == "logoContainer" => {
+    "logos": logos[]{
+      image,
+      alt,
+      caption
+    },
+  },
+  _type == "gallery" => {
+    title,
+    "images": images[]{
+      image,
+      alt,
+      caption
+    },
+  },
+  _type == "imageCustom" => {
+    image,
+    alt,
+    caption,
+    width
+  },
+  _type == "bodyText" => {
+    width,
+    content,
+    background
+  },
+`
+
 // Site Settings Query
 export async function getsettings() {
   return createClient(clientConfig).fetch( groq`
@@ -134,31 +207,7 @@ export async function eventPageBySlugQuery(slug) {
         _key,
         _type,
         ...select(
-          _type == "heading" => {
-            headingText,
-            memberReference-> {
-              name,
-              location,
-              images[0] {
-                asset-> {
-                  url,
-                  metadata { dimensions }
-                },
-                alt,
-                caption
-              }
-            }
-          },
-          _type == "bodyText" => {
-            width,
-            content,
-            background
-          },
-          _type == "accordionText" => {
-            heading,
-            text
-          },
-        
+          ${contentBlocks}
         )
       },
       seo {

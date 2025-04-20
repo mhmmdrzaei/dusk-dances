@@ -30,20 +30,16 @@ export default {
         title: 'Page Blocks',
         type: 'array',
         of: [
-          // done
-          { type: 'headingText' },
           { type: 'accordionText'},
-          { type: 'video' },
-          { type: 'lineDivider'},
-          { type: 'imageCarousel' },
-          { type: 'hero' },
-
-          // TODO check fields
-          { type: 'textImageBox'},
           { type: 'bodyText'},
-          
+          { type: 'ctaButton'},
           { type: 'gallery' },
+          { type: 'hero' },
+          { type: 'imageCarousel' },
           { type: 'imageCustom' },
+          { type: 'lineDivider'},
+          { type: 'textImageBox'},
+          { type: 'video' },
         ]
       },
     ],
