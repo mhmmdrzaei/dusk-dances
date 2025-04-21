@@ -58,10 +58,7 @@ const contentBlocks = `
   _type == "gallery" => {
     title,
     "images": images[]{
-      "image": image{
-        asset->,
-        alt
-      },
+      image,
       alt,
       caption
     }

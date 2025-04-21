@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
+import { urlFor } from '@/sanity/config/client-config';
 
 export default function ImageCustom({ width = 'full', image, alt, caption }) {
   const widthClasses = {
@@ -16,7 +17,7 @@ export default function ImageCustom({ width = 'full', image, alt, caption }) {
     >
       <div className="relative aspect-[4/3]">
         <Image
-          src={'/' + image?.asset._ref}
+          src={urlFor(image.asset).url()}
           alt={alt || 'Image'}
           fill
           className="object-cover rounded-lg"

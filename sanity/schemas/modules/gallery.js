@@ -15,21 +15,29 @@ export default {
       type: 'array',
       of: [
         {
-          type: 'image',
+          type: 'object',
           fields: [
             {
-              name: 'alt',
-              type: 'string',
-              title: 'Alt Text',
-              description: 'Important for SEO and accessibility.',
-              validation: Rule => Rule.required()
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              description: 'Upload or select an image for this slide.',
+              fields: [
+                {
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alt Text',
+                  description: 'Important for SEO and accessibility.',
+                  validation: Rule => Rule.required()
+                }
+              ]
             },
             {
               name: 'caption',
               title: 'Caption (Optional)',
               type: 'string',
               description: 'Optional text to display below or alongside the image.'
-            }
+            },
           ],
         }
       ],

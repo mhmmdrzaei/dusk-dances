@@ -38,12 +38,6 @@ export default {
               type: 'string',
               description: 'Optional text to display below or alongside the image.'
             },
-            // {
-            //   name: 'url',
-            //   title: 'Link URL (Optional)',
-            //   type: 'url',
-            //   description: 'Optional URL to navigate to when the image is clicked.'
-            // }
           ],
         }
       ],
