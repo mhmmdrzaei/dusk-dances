@@ -139,6 +139,7 @@ export async function pageBySlugQuery(slug) {
     }
   `, { slug });
 }
+
 export async function eventPageBySlugQuery(slug) {
   return createClient(clientConfig).fetch(
     groq`

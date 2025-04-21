@@ -24,14 +24,16 @@ export default {
         title: 'Page Blocks',
         type: 'array',
         of: [
-          { type: 'heading' },
-          { type: 'headingText' },
-          { type: 'bodyText' },
-          { type: 'logoContainer' },
-          { type: 'ctaButton' },
-          { type: 'membersCarousel' },
-          { type: 'gradientLine' },
-          { type: 'textImageBox' }
+          { type: 'accordionText'},
+          { type: 'bodyText'},
+          { type: 'ctaButton'},
+          { type: 'gallery' },
+          { type: 'hero' },
+          { type: 'imageCarousel' },
+          { type: 'imageCustom' },
+          { type: 'lineDivider'},
+          { type: 'textImageBox'},
+          { type: 'video' },
         ]
       },
       {

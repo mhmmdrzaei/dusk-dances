@@ -1,28 +1,8 @@
 import Image from 'next/image';
-import { PortableText } from 'next-sanity';
 import { getsettings } from '@/sanity/sanity.utils';
 import { pageBySlugQuery } from '@/sanity/sanity.utils';
-import BodyText from '../components/BodyText';
-import CTAButton from '../components/CtaButton';
-import GradientLine from '../components/GradientLine';
-import Heading from '../components/Heading';
-import LogoContainer from '../components/LogoContainer';
-import MembersCarousel from '../components/MembersCarousel';
-import TextImageBox from '../components/TextImageBox';
-import HeadingText from '../components/HeadingText';
 import Layout from '../components/Layout';
-
-const componentMap = {
-  heading: Heading,
-  headingText: HeadingText,
-  bodyText: BodyText,
-  logoContainer: LogoContainer,
-  ctaButton: CTAButton,
-  membersCarousel: MembersCarousel,
-  gradientLine: GradientLine,
-  textImageBox: TextImageBox,
-};
-
+import { componentMap } from '../components/ComponentMap';
 
 export async function generateMetadata({ params }) {
   const { slug } =  await params;
