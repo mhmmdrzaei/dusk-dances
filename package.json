@@ -17,11 +17,15 @@
     "lucide-react": "^0.486.0",
     "next": "15.2.4",
     "next-sanity": "^9.9.6",
+    "photoswipe": "^5.4.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-photoswipe-gallery": "^3.1.1",
     "react-player": "^2.16.0",
+    "react-slick": "^0.30.3",
     "sass": "^1.86.3",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -6,11 +6,13 @@ import LogoContainer from '../components/LogoContainer';
 import MembersCarousel from '../components/MembersCarousel';
 import TextImageBox from '../components/TextImageBox';
 import HeadingText from '../components/HeadingText';
-
-const MockComponent = (props) => { 
-  console.log("🚀 ~ MockComponent ~ props:", props)
-  return <div>Mock Component</div>
-};
+import Hero from '../components/Hero';
+import LineDivider from '../components/LineDivider';
+import Accordion from '../components/Accordion';
+import VideoPlayer from '../components/VideoPlayer';
+import ImageCarousel from '../components/ImageCarousel';
+import Gallery from '../components/Gallery';
+import Image from '../components/Image';
 
 export const componentMap = {
   heading: Heading,
@@ -21,11 +23,11 @@ export const componentMap = {
   membersCarousel: MembersCarousel,
   gradientLine: GradientLine,
   textImageBox: TextImageBox,
-  accordionText: MockComponent,
-  video: MockComponent,
-  imageCarousel: MockComponent,
-  hero: MockComponent,
-  gallery: MockComponent,
-  imageCustom: MockComponent,
-  lineDivider: MockComponent,
+  accordionText: Accordion,
+  video: VideoPlayer,
+  imageCarousel: ImageCarousel,
+  hero: Hero,
+  gallery: Gallery,
+  imageCustom: Image,
+  lineDivider: LineDivider,
 };

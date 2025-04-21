@@ -1,15 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-
-export default function Header({settings}) {
-
-
+export default function Header({ settings }) {
   return (
-    <header className='flex flex-wrap w-full'>
-
+    <header className="flex flex-wrap w-full">
       <nav>
-        <ul className='flex flex-wrap'>
+        <ul className="flex flex-wrap">
           {settings?.headingMenu?.map((item, index) => (
             <li key={index}>
               <a href={item.menuItemUrl}>{item.menuItemName}</a>
@@ -18,15 +14,14 @@ export default function Header({settings}) {
         </ul>
       </nav>
       {settings?.headingLogo && (
-        <Link href={"/"}>        
-        <Image 
-        src={settings.headingLogo.asset.url} 
-        alt="Logo" 
-        width={400} 
-        height={300} 
-      />
-      </Link>
-
+        <Link href={'/'}>
+          <Image
+            src={settings.headingLogo.asset.url}
+            alt="Logo"
+            width={400}
+            height={300}
+          />
+        </Link>
       )}
     </header>
   );

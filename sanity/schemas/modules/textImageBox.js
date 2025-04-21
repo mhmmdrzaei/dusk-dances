@@ -26,8 +26,11 @@ export default {
       {
         name: 'textContent',
         title: 'Text Content',
-        type: 'string',
-       
+        type: 'array',
+        of: [
+          { type: 'block' },
+          { type: 'ctaButton' }
+        ]
       },
       {
         name: 'alignment',

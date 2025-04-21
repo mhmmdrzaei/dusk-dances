@@ -45,10 +45,14 @@ export default {
     ],
     preview: {
       select: {
-        title: 'name',
-        media: 'image',
-        roles: 'role'
+        title: 'title',
+        slug: 'slug.current'
       },
-      
+      prepare({ title, slug }) {
+        return {
+          title,
+          subtitle: `/${slug}`
+        }
+      }
     }
   }

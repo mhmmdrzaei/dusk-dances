@@ -14,8 +14,10 @@ const contentBlocks = `
     title
   },
   _type == "accordionText" => {
-    heading,
-    text
+   "items": items[] {
+      heading,
+      text
+    }
   },
   _type == "lineDivider" => {
     thickness,
@@ -37,7 +39,7 @@ const contentBlocks = `
     controls,
     muted,
   },
-   _type == "imageCarousel" => {
+  _type == "imageCarousel" => {
     title,
     autoplay,
     "slides": slides[]{
@@ -56,10 +58,13 @@ const contentBlocks = `
   _type == "gallery" => {
     title,
     "images": images[]{
-      image,
+      "image": image{
+        asset->,
+        alt
+      },
       alt,
       caption
-    },
+    }
   },
   _type == "imageCustom" => {
     image,
@@ -122,67 +127,7 @@ export async function pageBySlugQuery(slug) {
         _key,
         _type,
         ...select(
-          _type == "heading" => {
-            headingText,
-            memberReference-> {
-              name,
-              location,
-              images[0] {
-                asset-> {
-                  url,
-                  metadata { dimensions }
-                },
-                alt,
-                caption
-              }
-            }
-          },
-          _type == "headingText" => {
-            headingLevel,
-            width,
-            textAlign,
-            text
-          },
-          _type == "bodyText" => {
-            width,
-            content,
-            background
-          },
-          _type == "logoContainer" => {
-            logos[] {
-              image {
-                asset-> {
-                  url,
-                  metadata { dimensions }
-                },
-                alt
-              },
-              url
-            }
-          },
-          _type == "ctaButton" => {
-            buttonLabel,
-            buttonUrl,
-            openInNewWindow,
-            buttonColor
-          },
-          _type == "membersCarousel" => {},
-          _type == "gradientLine" => {
-            lineColor,
-            align
-          },
-          _type == "textImageBox" => {
-            image {
-              asset-> {
-                url,
-                metadata { dimensions }
-              },
-              alt,
-              caption
-            },
-            textContent,
-            alignment
-          }
+          ${contentBlocks}
         )
       },
       seo {
