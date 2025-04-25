@@ -23,8 +23,9 @@ export default {
         of: [
           { type: 'block' },
           { type: 'ctaButton' },
-          { type: 'video' }
-          
+          { type: 'video' },
+          { type: 'imageCustom'},
+   
         ]
       },
       {

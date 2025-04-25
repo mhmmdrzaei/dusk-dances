@@ -21,27 +21,93 @@ export default {
         validation: Rule => Rule.required()
       },
       {
-        name: 'featured',
-        title: 'Featured',
-        type: 'boolean'
+        name: 'pageDesc',
+        title: 'Page Short Description',
+        description: 'Shows up in the Seasons archives listings so could be the first paragraph of the block copied again or a brief overview',
+        type: 'array',
+        of: [{type: 'block'}]
       },
       {
-        name: 'pageBlocks',
-        title: 'Page Blocks',
+        name: 'seasonsLocations',
+        title: 'Seasons Locations',
         type: 'array',
+      
         of: [
-          { type: 'accordionText'},
-          { type: 'bodyText'},
-          { type: 'ctaButton'},
-          { type: 'gallery' },
-          { type: 'hero' },
-          { type: 'imageCarousel' },
-          { type: 'imageCustom' },
-          { type: 'lineDivider'},
-          { type: 'textImageBox'},
-          { type: 'video' },
+          {
+            type: 'reference',
+            to: [{ type: 'seasonLocations' }],
+          },
+        ],
+      },
+      {
+        name: 'seasonInformation',
+        title: 'Season Information',
+        type: 'object',
+        fields: [
+          {
+            name: 'pageSideText',
+            title: 'Information Side Text',
+            type: 'array',
+            
+            of: [{ type: 'block' }, {type: 'ctaButton'}],
+          },
+          {
+            name: 'googleMapsLink',
+            title: 'Google Maps Embed',
+            type: 'text',
+            rows: 4, 
+            
+            description: 'Enter the URL for embedding a Google Maps location.',
+          },
+          {
+            name: 'poster',
+            title: 'Poster Image',
+            type: 'image',
+          
+            fields: [
+              {
+                name: 'alt',
+                title: 'Alt Text',
+                type: 'string',
+              },
+            ],
+          }
         ]
       },
+
+      {
+        name: 'pageBlocksTop',
+        title: 'Page Blocks Top',
+        type: 'array',
+        of: [
+          { type: 'hero' },
+          { type: 'headingText' },
+          { type: 'imageCustom' },
+          { type: 'lineDivider' },
+          { type: 'video' },
+        ],
+      },
+      {
+        name: 'pageDetailsBlocks',
+        title: 'Page Details Blocks',
+        description: 'appears beside the information text and then after the info box',
+        type: 'array',
+      
+        of: [
+          { type: 'accordionText' },
+          { type: 'bodyText' },
+          { type: 'ctaButton' },
+          { type: 'gallery' },
+          { type: 'hero' },
+          { type: 'headingText' },
+          { type: 'logoContainer' },
+          { type: 'imageCarousel' },
+          { type: 'imageCustom' },
+          { type: 'lineDivider' },
+          { type: 'textImageBox' },
+          { type: 'video' },
+        ]
+        }
     ],
     preview: {
       select: {

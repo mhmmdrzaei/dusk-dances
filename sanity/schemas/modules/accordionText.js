@@ -20,7 +20,8 @@ export default {
         type: 'array',
         of: [
           { type: 'block' },
-          { type: 'ctaButton' }
+          { type: 'ctaButton' },
+          {type: 'video'},
         ],
         validation: (Rule) => Rule.required(),
       },

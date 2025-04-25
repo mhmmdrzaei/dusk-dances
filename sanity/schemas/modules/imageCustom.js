@@ -28,8 +28,7 @@ export default {
       options: {
         list: [
           { title: 'Full Width', value: 'full' },
-          { title: 'Half Width', value: 'half' },
-          { title: 'One Third Width', value: 'oneThird' },
+          { title: 'Half Width', value: 'half' }
         ],
         layout: 'radio', // Use radio buttons for better visual selection
       },

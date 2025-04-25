@@ -1,4 +1,4 @@
-// TODO check what fields we need
+// 
 export default {
     name: 'logoContainer',
     title: 'Logo Container',
