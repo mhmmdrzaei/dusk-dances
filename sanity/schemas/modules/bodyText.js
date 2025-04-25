@@ -9,9 +9,7 @@ export default {
         type: 'string',
         options: {
           list: [
-            { title: '25%', value: '25' },
             { title: '50%', value: '50' },
-            { title: '75%', value: '75' },
             { title: '100%', value: '100' }
           ],
           layout: 'dropdown'
@@ -22,7 +20,12 @@ export default {
         name: 'content',
         title: 'Body Text',
         type: 'array',
-        of: [{ type: 'block' }]
+        of: [
+          { type: 'block' },
+          { type: 'ctaButton' },
+          { type: 'video' }
+          
+        ]
       },
       {
         name: 'background',
@@ -30,12 +33,14 @@ export default {
         type: 'string',
         options: {
           list: [
-            { title: 'White with black text', value: 'white' },
-            { title: 'Black with white text', value: 'black' }
+            { title: 'Green', value: 'Green' },
+            { title: 'Blue', value: 'blue' },
+            { title: 'Gray', value: 'gray' },
+
           ],
           layout: 'dropdown'
         },
-        initialValue: 'white'
+        initialValue: 'gray'
       }
     ],
     preview: {

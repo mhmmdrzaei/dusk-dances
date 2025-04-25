@@ -14,16 +14,16 @@ export default {
           type: 'string',
           title: 'Image Alt Text',
           description: 'Important for SEO and accessibility.',
-          validation: Rule => Rule.required()
-        }
+        },
+        {
+          name: 'imageCaption',
+          title: 'Image Caption (Optional)',
+          type: 'string',
+          description: 'Optional text to display below the hero image.'
+        },
       ]
     },
-    {
-      name: 'imageCaption',
-      title: 'Image Caption (Optional)',
-      type: 'string',
-      description: 'Optional text to display below the hero image.'
-    },
+
     {
       name: 'text',
       title: 'Hero Text',
@@ -31,10 +31,10 @@ export default {
       description: 'Main text content for the hero section.'
     },
     {
-      name: 'title',
-      title: 'Hero Title',
+      name: 'heroLinksTo',
+      title: 'Hero Box Link',
       type: 'string',
-      description: 'Title for the hero section.'
+      description: 'fill out if on click the hero box navigates user to another page'
     },
   ],
   preview: {

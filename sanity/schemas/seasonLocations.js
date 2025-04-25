@@ -1,7 +1,7 @@
 // schemas/events.js
 export default {
-    name: 'events',
-    title: 'Events',
+    name: 'seasonLocations',
+    title: 'Season Locations',
     type: 'document',
     fields: [
       {
@@ -19,28 +19,6 @@ export default {
           maxLength: 96
         },
         validation: Rule => Rule.required()
-      },
-      {
-        name: 'featured',
-        title: 'Featured',
-        type: 'boolean'
-      },
-      {
-        name: 'pageBlocks',
-        title: 'Page Blocks',
-        type: 'array',
-        of: [
-          { type: 'accordionText'},
-          { type: 'bodyText'},
-          { type: 'ctaButton'},
-          { type: 'gallery' },
-          { type: 'hero' },
-          { type: 'imageCarousel' },
-          { type: 'imageCustom' },
-          { type: 'lineDivider'},
-          { type: 'textImageBox'},
-          { type: 'video' },
-        ]
       },
     ],
     preview: {

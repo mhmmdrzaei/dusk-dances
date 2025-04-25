@@ -1,6 +1,7 @@
+// schemas/events.js
 export default {
-    name: 'page',
-    title: 'Pages',
+    name: 'seasons',
+    title: 'Seasons',
     type: 'document',
     fields: [
       {
@@ -14,10 +15,15 @@ export default {
         title: 'Slug',
         type: 'slug',
         options: {
-          source: 'title',
+          source: 'name',
           maxLength: 96
         },
         validation: Rule => Rule.required()
+      },
+      {
+        name: 'featured',
+        title: 'Featured',
+        type: 'boolean'
       },
       {
         name: 'pageBlocks',
@@ -29,8 +35,6 @@ export default {
           { type: 'ctaButton'},
           { type: 'gallery' },
           { type: 'hero' },
-          {type: 'headingText'},
-          {type: 'logoContainer'},
           { type: 'imageCarousel' },
           { type: 'imageCustom' },
           { type: 'lineDivider'},
@@ -38,11 +42,6 @@ export default {
           { type: 'video' },
         ]
       },
-      {
-        name: 'seo',
-        title: 'SEO',
-        type: 'seo'
-      }
     ],
     preview: {
       select: {
@@ -57,4 +56,3 @@ export default {
       }
     }
   }
-  

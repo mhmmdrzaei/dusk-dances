@@ -25,12 +25,12 @@ export default {
         type: 'string',
         options: {
           list: [
-            { title: 'Black', value: 'black' },
-            { title: 'Red', value: 'red' }
+            { title: 'Orange', value: 'orange' },
+            { title: 'Yellow', value: 'yellow' }
           ],
           layout: 'dropdown'
         },
-        initialValue: 'black'
+        initialValue: 'orange'
       },
       {
         name: 'buttonAlignment',

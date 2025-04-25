@@ -44,6 +44,21 @@ export default {
           layout: 'dropdown'
         },
         initialValue: 'textImage'
+      },
+      {
+        name: 'background',
+        title: 'Background',
+        type: 'string',
+        options: {
+          list: [
+            { title: 'Green', value: 'Green' },
+            { title: 'Blue', value: 'blue' },
+            { title: 'Gray', value: 'gray' },
+
+          ],
+          layout: 'dropdown'
+        },
+        initialValue: 'blue'
       }
     ],
     preview: {

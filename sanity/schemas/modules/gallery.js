@@ -28,21 +28,19 @@ export default {
                   type: 'string',
                   title: 'Alt Text',
                   description: 'Important for SEO and accessibility.',
-                  validation: Rule => Rule.required()
-                }
+                },
+                {
+                  name: 'caption',
+                  title: 'Caption (Optional)',
+                  type: 'string',
+                  description: 'Optional text to display below or alongside the image.'
+                },
               ]
             },
-            {
-              name: 'caption',
-              title: 'Caption (Optional)',
-              type: 'string',
-              description: 'Optional text to display below or alongside the image.'
-            },
+           
           ],
         }
       ],
-      validation: Rule => Rule.min(1).required(),
-      description: 'Add the images for your gallery. Each image can have an alt text and an optional caption.'
     }
   ],
   preview: {

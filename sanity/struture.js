@@ -10,7 +10,7 @@ export const myStructure = (S) => {
         .filter((listItem) => {
           const id = listItem.getId();
           if (!id) return true;
-          return !['page', 'siteSettings', 'events', 'member', "membersAreaPosts"].includes(id);
+          return !['page', 'siteSettings', 'seasons', 'staff', "seasonLocations"].includes(id);
         }),
 
       // Pages
@@ -19,22 +19,21 @@ export const myStructure = (S) => {
         .icon(LemonIcon)
         .child(S.documentTypeList('page')),
 
-      // Members
+      // Seasons
       S.listItem()
-        .title('Members')
-        .icon(CogIcon)
-        .child(S.documentTypeList('member')),
-
-      // Events
-      S.listItem()
-        .title('Events')
+        .title('Seasons')
         .icon(CaseIcon)
-        .child(S.documentTypeList('events')),
-    // Members area Posts
+        .child(S.documentTypeList('seasons')),
+    // Locations
       S.listItem()
-        .title('Members Area Posts')
+        .title('Season Locations')
         .icon(ChartUpwardIcon)
-        .child(S.documentTypeList('membersAreaPosts')),
+        .child(S.documentTypeList('seasonLocations')),
+     // Staff
+      S.listItem()
+        .title('Staff & Board')
+        .icon(CogIcon)
+        .child(S.documentTypeList('staff')),
 
       // Site Settings
       S.listItem()

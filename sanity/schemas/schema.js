@@ -1,54 +1,48 @@
 
 // Import document schemas
-import member from './member'
-import events from './events'
+import staff from './staff'
+import seasons from './seasons'
 import page from './page'
 import siteSettings from './settings'
-import memberAreaPosts from './memberAreaPosts'
+import seasonLocations from './seasonLocations'
 
 // Import object schemas
-import heading from './modules/heading'
-import headingText from './modules/headingText'
-import bodyText from './modules/bodyText'
-import logoContainer from './modules/logoContainer'
-import ctaButton from './modules/ctaButton'
-import membersCarousel from './modules/membersCarousel'
-import gradientLine from './modules/gradientLine'
-import textImageBox from './modules/textImageBox'
-import seo from './seo'
-import lineDivider from './modules/lineDivider'
 import accordionText from './modules/accordionText'
-import video from './modules/video'
-import imageCarousel from './modules/imageCarousel'
-import hero from './modules/hero'
+import bodyText from './modules/bodyText'
+import ctaButton from './modules/ctaButton'
 import gallery from './modules/gallery'
+import headingText from './modules/headingText'
+import hero from './modules/hero'
+import imageCarousel from './modules/imageCarousel'
 import imageCustom from './modules/imageCustom'
-
+import lineDivider from './modules/lineDivider'
+import logoContainer from './modules/logoContainer'
+import textImageBox from './modules/textImageBox'
+import video from './modules/video'
+import seo from './seo'
 export const schemaTypes = [
 
       // Document types
-      member,
-      events,
+      staff,
+      seasons,
       page,
       siteSettings,
+      seasonLocations,
       
       // Object types
-      heading,
-      headingText,
-      bodyText,
-      logoContainer,
-      ctaButton,
-      membersCarousel,
-      gradientLine,
-      textImageBox,
-      seo,
-      memberAreaPosts,
-      
-      lineDivider,
       accordionText,
-      video,
-      imageCarousel,
-      hero,
+      bodyText,
+      ctaButton,
       gallery,
+      headingText,
+      hero,
+      imageCarousel,
       imageCustom,
+      lineDivider,
+      logoContainer,
+      textImageBox,
+      video,
+
+      seo
+
 ]

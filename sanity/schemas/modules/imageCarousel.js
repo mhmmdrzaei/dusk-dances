@@ -28,7 +28,6 @@ export default {
                   type: 'string',
                   title: 'Alt Text',
                   description: 'Important for SEO and accessibility.',
-                  validation: Rule => Rule.required()
                 }
               ]
             },
@@ -41,15 +40,6 @@ export default {
           ],
         }
       ],
-      validation: Rule => Rule.min(1).required(),
-      description: 'Add the images for your carousel. Each image can have a caption, alt text, and a link.'
-    },
-    {
-      name: 'autoplay',
-      title: 'Autoplay',
-      type: 'boolean',
-      description: 'Should the carousel automatically advance through the slides?',
-      initialValue: false
     },
   ],
   preview: {

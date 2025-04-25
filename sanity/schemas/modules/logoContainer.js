@@ -30,6 +30,7 @@ export default {
               {
                 name: 'url',
                 title: 'Link URL',
+                description: "fill out if you would like the user to go to the funder's website",
                 type: 'url'
               }
             ],
