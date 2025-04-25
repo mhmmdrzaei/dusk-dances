@@ -5,6 +5,8 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import { schemaTypes } from '@/sanity/schemas/schema'
 import { myStructure } from './sanity/struture'
+import { iconPicker } from 'sanity-plugin-icon-picker';
+
 
 export default defineConfig({
   name: 'default',
@@ -13,7 +15,7 @@ export default defineConfig({
   projectId: 'tord48j8', 
   dataset: 'production',
   
-  plugins: [  structureTool({structure:myStructure}) , visionTool()],
+  plugins: [  structureTool({structure:myStructure}) , visionTool(),iconPicker()],
   
   schema: {
     types: schemaTypes,

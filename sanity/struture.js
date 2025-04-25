@@ -1,4 +1,4 @@
-import { CogIcon, LemonIcon, HomeIcon, CaseIcon, ChartUpwardIcon} from '@sanity/icons';
+import { CogIcon, LemonIcon, CaseIcon, BillIcon, CubeIcon,BugIcon} from '@sanity/icons';
 import { structureTool } from 'sanity/structure';
 
 export const myStructure = (S) => {
@@ -10,7 +10,7 @@ export const myStructure = (S) => {
         .filter((listItem) => {
           const id = listItem.getId();
           if (!id) return true;
-          return !['page', 'siteSettings', 'seasons', 'staff', "seasonLocations"].includes(id);
+          return !['page', 'siteSettings', 'seasons', 'staff', "seasonLocations","news"].includes(id);
         }),
 
       // Pages
@@ -22,23 +22,28 @@ export const myStructure = (S) => {
       // Seasons
       S.listItem()
         .title('Seasons')
-        .icon(CaseIcon)
+        .icon(BugIcon)
         .child(S.documentTypeList('seasons')),
     // Locations
       S.listItem()
         .title('Season Locations')
-        .icon(ChartUpwardIcon)
+        .icon(CubeIcon)
         .child(S.documentTypeList('seasonLocations')),
+    // news
+    S.listItem()
+    .title('Calls & News')
+    .icon(BillIcon)
+    .child(S.documentTypeList('news')),
      // Staff
       S.listItem()
         .title('Staff & Board')
-        .icon(CogIcon)
+        .icon(CaseIcon)
         .child(S.documentTypeList('staff')),
 
       // Site Settings
       S.listItem()
         .title('Site Settings')
-        .icon(HomeIcon)
+        .icon(CogIcon)
         .child(
           S.document()
             .schemaType('siteSettings')

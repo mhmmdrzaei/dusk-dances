@@ -2,78 +2,187 @@ import { createClient, groq } from "next-sanity";
 import clientConfig from './config/client-config'
 
 const contentBlocks = `
-  _type == "textImageBox" => {
-    image,
-    textContent,
-    alignment
-  },
-  _type == "hero" => {
-    image,
-    imageCaption,
-    text,
-    title
-  },
-  _type == "accordionText" => {
-   "items": items[] {
+ {
+    _type: 'accordionText' => {
       heading,
+      subHeading,
+      text[]{
+        ...,
+        _type == 'block' => { ... },
+        _type == 'ctaButton' => { 
+          buttonLabel,
+          buttonUrl,
+          openInNewWindow,
+          buttonColor,
+          buttonAlignment
+        },
+        _type == 'video' => {
+          title,
+          url
+        }
+      },
+      background
+    }
+  },
+  // Body Text Block
+  {
+    _type: 'bodyText' => {
+      width,
+      content[]{
+        ...,
+        _type == 'block' => { ... },
+        _type == 'ctaButton' => { 
+          buttonLabel,
+          buttonUrl,
+          openInNewWindow,
+          buttonColor,
+          buttonAlignment
+        },
+        _type == 'video' => {
+          title,
+          url
+        },
+        _type == 'imageCustom' => {
+          image {
+            asset->{
+              url
+            },
+            alt,
+            caption
+          },
+          width
+        }
+      },
+      background
+    }
+  },
+  // CTA Button Block
+  {
+    _type: 'ctaButton' => {
+      buttonLabel,
+      buttonUrl,
+      openInNewWindow,
+      buttonColor,
+      buttonAlignment
+    }
+  },
+  // Gallery Block
+  {
+    _type: 'gallery' => {
+      title,
+      images[]{
+        image {
+          asset->{
+            url
+          },
+          alt,
+          caption
+        }
+      }
+    }
+  },
+  // Hero Block
+  {
+    _type: 'hero' => {
+      image {
+        asset->{
+          url
+        },
+        alt,
+        imageCaption
+      },
+      text,
+      heroLinksTo
+    }
+  },
+  // Heading Text Block
+  {
+    _type: 'headingText' => {
+      headingLevel,
+      width,
+      textAlign,
       text
     }
   },
-  _type == "lineDivider" => {
-    thickness,
-    spacingX,
-    spacingY,
-  },
-  _type == "ctaButton" => {
-    buttonLabel,
-    buttonUrl,
-    openInNewWindow,
-    buttonColor,
-    buttonAlignment
-  },
-  _type == "video" => {
-    title,
-    url,
-    autoplay,
-    loop,
-    controls,
-    muted,
-  },
-  _type == "imageCarousel" => {
-    title,
-    autoplay,
-    "slides": slides[]{
-      image,
-      alt,
-      caption
-    },
-  },
-  _type == "logoContainer" => {
-    "logos": logos[]{
-      image,
-      alt,
-      caption
-    },
-  },
-  _type == "gallery" => {
-    title,
-    "images": images[]{
-      image,
-      alt,
-      caption
+  // Logo Container Block
+  {
+    _type: 'logoContainer' => {
+      logos[]{
+        image {
+          asset->{
+            url
+          },
+          alt
+        },
+        url
+      }
     }
   },
-  _type == "imageCustom" => {
-    image,
-    alt,
-    caption,
-    width
+  // Image Carousel Block
+  {
+    _type: 'imageCarousel' => {
+      title,
+      slides[]{
+        image {
+          asset->{
+            url
+          },
+          alt
+        },
+        caption
+      }
+    }
   },
-  _type == "bodyText" => {
-    width,
-    content,
-    background
+  // Image Custom Block
+  {
+    _type: 'imageCustom' => {
+      image {
+        asset->{
+          url
+        },
+        alt,
+        caption
+      },
+      width
+    }
   },
+  // Line Divider Block
+  {
+    _type: 'lineDivider' => {
+      background
+    }
+  },
+  // Text Image Box Block
+  {
+    _type: 'textImageBox' => {
+      image {
+        asset->{
+          url
+        },
+        alt,
+        caption
+      },
+      textContent[]{
+        ...,
+        _type == 'ctaButton' => {
+          buttonLabel,
+          buttonUrl,
+          openInNewWindow,
+          buttonColor,
+          buttonAlignment
+        }
+      },
+      alignment,
+      background
+    }
+  },
+  // Video Block
+  {
+    _type: 'video' => {
+      title,
+      url
+    }
+  }
 `
 
 // Site Settings Query
@@ -113,6 +222,7 @@ export async function getsettings() {
   )
 }
 
+
 // Page Query by Slug
 export async function pageBySlugQuery(slug) {
   return createClient(clientConfig).fetch(
@@ -121,11 +231,9 @@ export async function pageBySlugQuery(slug) {
       title,
       slug,
       pageBlocks[] {
-        _key,
-        _type,
-        ...select(
+      ...,
           ${contentBlocks}
-        )
+      
       },
       seo {
         seoTitle,
@@ -140,18 +248,17 @@ export async function pageBySlugQuery(slug) {
   `, { slug });
 }
 
-export async function eventPageBySlugQuery(slug) {
+// news Query by Slug
+export async function newsBySlugQuery(slug) {
   return createClient(clientConfig).fetch(
     groq`
-    *[_type == "events" && slug.current == $slug][0] {
+    *[_type == "news" && slug.current == $slug][0] {
       title,
       slug,
       pageBlocks[] {
-        _key,
-        _type,
-        ...select(
+      ...,
           ${contentBlocks}
-        )
+      
       },
       seo {
         seoTitle,
@@ -167,151 +274,72 @@ export async function eventPageBySlugQuery(slug) {
 }
 
 
-export async function getMembers(){
+
+// Mentor and Staff Query
+export async function getStaff() {
   return createClient(clientConfig).fetch(
     groq`
-    *[_type == "member"] {
+      *[_type == "staff" && "staff" in role] {
       name,
-      slug,
-       images[] {
-        asset->{
-          url,
-          metadata {
-            dimensions
-          }
-        },
-        alt,
-        caption
+      slug {
+        current
       },
-      email,
-      location,
-      website,
-       bio[] {
-        ...
-      }
-    }`
-  )
-}
-
-
-// Random Members Query for Members Carousel (3 random members)
-export async function getRandomMembers(){
-  return createClient(clientConfig).fetch(
-    groq`
-    *[_type == "member"] | order((_createdAt)) [0...10] {
-      name,
-      slug,
-      location,
-      website,
-      images[0] {
-        asset->{
-          url,
-          metadata {
-            dimensions
-          }
+      image {
+        asset -> {
+          url
         },
         alt
-      }
+      },
+      position,
+      email,
+      website,
+      bio
+    }
+  `
+  )
+}
+export async function getBoard() {
+  return createClient(clientConfig).fetch(
+    groq`
+     *[_type == "staff" && "board" in role] {
+      name,
+      slug {
+        current
+      },
+      image {
+        asset -> {
+          url
+        },
+        alt
+      },
+      position,
+      email,
+      website,
+      bio
     }
   `
   )
 }
 
-export async function getRandomMember() {
+export async function getFounder() {
   return createClient(clientConfig).fetch(
     groq`
-*[_type == "member"] | order((_createdAt)) [0...1] {
+     *[_type == "staff" && "founder" in role] {
       name,
-      slug,
-      location,
+      slug {
+        current
+      },
+      image {
+        asset -> {
+          url
+        },
+        alt
+      },
+      position,
+      email,
       website,
- "image": images[0]{asset->{url}, alt, caption}
+      bio
     }
-    `
+  `
   )
 }
-
-
-// Mentor and Staff Query
-export async function getMentors() {
-  return createClient(clientConfig).fetch(
-  //   groq`
-  //     *[_type == "mentorStaff" && "mentor" in role] {
-  //     name,
-  //     slug {
-  //       current
-  //     },
-  //     image {
-  //       asset -> {
-  //         url
-  //       },
-  //       alt
-  //     },
-  //     position,
-  //     email,
-  //     website,
-  //     bio
-  //   }
-  // `
-  )
-}
-export async function getStaff() {
-  return createClient(clientConfig).fetch(
-  //   groq`
-  //    *[_type == "mentorStaff" && "staff" in role] {
-  //     name,
-  //     slug {
-  //       current
-  //     },
-  //     image {
-  //       asset -> {
-  //         url
-  //       },
-  //       alt
-  //     },
-  //     position,
-  //     email,
-  //     website,
-  //     bio
-  //   }
-  // `
-  )
-}
-
-export async function getMemberArea() {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "membersAreaPosts"]{
-  _id,
-  title,
-  content[]{
-    ...,
-    asset->{url}, // for images
-    _type == "video" => {
-      _type,
-      url
-    }
-  }
-}
-`
-  )
-
-  
-}
-
-export async function getPassword() {
-  return createClient(clientConfig).fetch(
-    groq`
-    *[_type == "siteSettings"][0]{ membersAreaPassword }
-    `
-  )
-}
-
-export async function getAllSlugs() {
-  return createClient(clientConfig).fetch(
-      groq`
-    *[_type == "page"] {
-      "url": slug.current,
-      "lastModified": _updatedAt,
-    }
-  `)
-};

@@ -5,6 +5,7 @@ import seasons from './seasons'
 import page from './page'
 import siteSettings from './settings'
 import seasonLocations from './seasonLocations'
+import news from './news'
 
 // Import object schemas
 import accordionText from './modules/accordionText'
@@ -28,6 +29,7 @@ export const schemaTypes = [
       page,
       siteSettings,
       seasonLocations,
+      news,
       
       // Object types
       accordionText,
