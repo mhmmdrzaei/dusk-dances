@@ -207,7 +207,7 @@ export async function getsettings() {
     },
     socialLinks[] {
       socialLink,
-      socialIcon
+      icon
     },
     footerMenu[] {
       menuItemName,
@@ -273,6 +273,312 @@ export async function newsBySlugQuery(slug) {
   `, { slug });
 }
 
+export async function getNews() {
+  return createClient(clientConfig).fetch(
+    groq`
+      *[_type == "news"] {
+       title,
+      slug,
+      pageDesc,
+    }
+  `
+  )
+}
+export async function getSeason(slug) {
+  return createClient(clientConfig).fetch(`
+    
+    *[_type == "seasons" && slug.current == $slug][0] {
+  _id,
+  title,
+  slug,
+  seasonsLocations[]->{
+    _id,
+    title,
+    slug,
+    seasonInformation {
+      pageSideText[]{
+        ...,
+        _type == 'block' => { ... },
+        _type == 'ctaButton' => {
+          buttonLabel,
+          buttonUrl,
+          openInNewWindow,
+          buttonColor,
+          buttonAlignment
+        }
+      },
+      googleMapsLink,
+      poster {
+        asset->{
+          url
+        },
+        alt
+      }
+    },
+    additionalSiteLocation {
+      ...,
+      _type == 'bodyText' => {
+        width,
+        content[]{
+          ...,
+          _type == 'block' => { ... },
+          _type == 'ctaButton' => {
+            buttonLabel,
+            buttonUrl,
+            openInNewWindow,
+            buttonColor,
+            buttonAlignment
+          },
+          _type == 'video' => {
+            title,
+            url
+          },
+          _type == 'imageCustom' => {
+            image {
+              asset->{
+                url
+              },
+              alt,
+              caption
+            },
+            width
+          }
+        },
+        background
+      }
+    },
+  },
+  seasonInformation {
+    pageSideText[]{
+      ...,
+      _type == 'block' => { ... },
+      _type == 'ctaButton' => {
+        buttonLabel,
+        buttonUrl,
+        openInNewWindow,
+        buttonColor,
+        buttonAlignment
+      }
+    },
+    googleMapsLink,
+    poster {
+      asset->{
+        url
+      },
+      alt
+    }
+  },
+  pageBlocksTop[]{
+    _type == 'hero' => {
+      image {
+        asset->{
+          url
+        },
+        alt,
+        imageCaption
+      },
+      text,
+      heroLinksTo
+    },
+    _type == 'headingText' => {
+      headingLevel,
+      width,
+      textAlign,
+      text
+    },
+    _type == 'imageCustom' => {
+      image {
+        asset->{
+          url
+        },
+        alt,
+        caption
+      },
+      width
+    },
+    _type == 'lineDivider' => {
+      background
+    },
+    _type == 'video' => {
+      title,
+      url
+    }
+  },
+  pageDetailsBlocks[]{
+    _type == 'accordionText' => {
+      heading,
+      subHeading,
+      text[]{
+        ...,
+        _type == 'block' => { ... },
+        _type == 'ctaButton' => { 
+          buttonLabel,
+          buttonUrl,
+          openInNewWindow,
+          buttonColor,
+          buttonAlignment
+        },
+        _type == 'video' => {
+          title,
+          url
+        }
+      },
+      background
+    },
+    _type == 'bodyText' => {
+      width,
+      content[]{
+        ...,
+        _type == 'block' => { ... },
+        _type == 'ctaButton' => { 
+          buttonLabel,
+          buttonUrl,
+          openInNewWindow,
+          buttonColor,
+          buttonAlignment
+        },
+        _type == 'video' => {
+          title,
+          url
+        },
+        _type == 'imageCustom' => {
+          image {
+            asset->{
+              url
+            },
+            alt,
+            caption
+          },
+          width
+        }
+      },
+      background
+    },
+    _type == 'ctaButton' => {
+      buttonLabel,
+      buttonUrl,
+      openInNewWindow,
+      buttonColor,
+      buttonAlignment
+    },
+    _type == 'gallery' => {
+      title,
+      images[]{
+        image {
+          asset->{
+            url
+          },
+          alt,
+          caption
+        }
+      }
+    },
+    _type == 'hero' => {
+      image {
+        asset->{
+          url
+        },
+        alt,
+        imageCaption
+      },
+      text,
+      heroLinksTo
+    },
+    _type == 'headingText' => {
+      headingLevel,
+      width,
+      textAlign,
+      text
+    },
+    _type == 'logoContainer' => {
+      logos[]{
+        image {
+          asset->{
+            url
+          },
+          alt
+        },
+        url
+      }
+    },
+    _type == 'imageCarousel' => {
+      title,
+      slides[]{
+        image {
+          asset->{
+            url
+          },
+          alt
+        },
+        caption
+      }
+    },
+    _type == 'imageCustom' => {
+      image {
+        asset->{
+          url
+        },
+        alt,
+        caption
+      },
+      width
+    },
+    _type == 'lineDivider' => {
+      background
+    },
+    _type == 'textImageBox' => {
+      image {
+        asset->{
+          url
+        },
+        alt,
+        caption
+      },
+      textContent[]{
+        ...,
+        _type == 'ctaButton' => {
+          buttonLabel,
+          buttonUrl,
+          openInNewWindow,
+          buttonColor,
+          buttonAlignment
+        }
+      },
+      alignment,
+      background
+    },
+    _type == 'video' => {
+      title,
+      url
+    }
+  }
+}
+    `, {slug})
+}
+
+export async function getSeasons() {
+  return createClient(clientConfig).fetch(
+    groq`
+      *[_type == "seasons"] {
+       title,
+      slug,
+      pageDesc,
+      seasonInformation {
+       poster {
+        asset->{
+          url
+        },
+        alt
+      }
+      
+      }
+
+           
+
+    }
+  `
+  )
+}
 
 
 // Mentor and Staff Query

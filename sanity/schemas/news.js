@@ -20,6 +20,13 @@ export default {
         validation: Rule => Rule.required()
       },
       {
+        name: 'pageDesc',
+        title: 'Page Short Description',
+        description: 'Shows up in the news and calls Listings so could be the first paragraph of the block copied again or a brief overview',
+        type: 'array',
+        of: [{type: 'block'}]
+      },
+      {
         name: 'pageBlocks',
         title: 'Page Blocks',
         type: 'array',

@@ -20,6 +20,46 @@ export default {
         },
         validation: Rule => Rule.required()
       },
+      {
+        name: 'seasonInformation',
+        title: 'Season Information',
+        type: 'object',
+        fields: [
+          {
+            name: 'pageSideText',
+            title: 'Information Side Text',
+            type: 'array',
+            
+            of: [{ type: 'block' }, {type: 'ctaButton'}],
+          },
+          {
+            name: 'googleMapsLink',
+            title: 'Google Maps Embed',
+            type: 'text',
+            rows: 4, 
+            
+            description: 'Enter the URL for embedding a Google Maps location.',
+          },
+          {
+            name: 'poster',
+            title: 'Poster Image',
+            type: 'image',
+          
+            fields: [
+              {
+                name: 'alt',
+                title: 'Alt Text',
+                type: 'string',
+              },
+            ],
+          }
+        ]
+      },
+      {
+        name: 'additionalSiteLocation',
+        title: 'Site Specific Information',
+        type: 'bodyText'
+      }
     ],
     preview: {
       select: {
