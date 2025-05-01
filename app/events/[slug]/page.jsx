@@ -1,4 +1,4 @@
-import { eventPageBySlugQuery, getsettings } from '@/sanity/sanity.utils';
+import { getSeasons, getsettings } from '@/sanity/sanity.utils';
 import { componentMap } from '@/app/components/ComponentMap';
 import Layout from '@/app/components/Layout';
 
@@ -37,31 +37,28 @@ export async function generateMetadata() {
 }
 
 export default async function EventsPage({ params }) {
-const { slug } =  await params;
-  const pageData = await eventPageBySlugQuery(slug);
+  const { slug } = await params;
+  const pageData = await getSeasons(slug);
 
   if (!pageData) {
-     return <div>Page not found</div>;
-   }
- 
-   const { title, pageBlocks } = pageData;
-   console.log("🚀 ~ EventsPage ~ pageBlocks:", pageBlocks)
- 
-   return (
-     <Layout>
-     <div className="page-container">
- 
-       {pageBlocks?.map((block) => {
-           const BlockComponent = componentMap[block._type];
-           if (!BlockComponent) {
-             console.warn(`No component for block type: ${block._type}`);
-             return null;
-           }
-           return <BlockComponent key={block._key} {...block} />;
-         })}
- 
- 
-     </div>
-   </Layout>
-   );
- }
+    return <div>Page not found</div>;
+  }
+
+  const { title, pageBlocks } = pageData;
+  console.log('🚀 ~ EventsPage ~ pageBlocks:', pageBlocks);
+
+  return (
+    <Layout>
+      <div className="page-container">
+        {pageBlocks?.map((block) => {
+          const BlockComponent = componentMap[block._type];
+          if (!BlockComponent) {
+            console.warn(`No component for block type: ${block._type}`);
+            return null;
+          }
+          return <BlockComponent key={block._key} {...block} />;
+        })}
+      </div>
+    </Layout>
+  );
+}
