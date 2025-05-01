@@ -209,9 +209,31 @@ export async function getsettings() {
       socialLink,
       icon
     },
-    footerMenu[] {
-      menuItemName,
-      menuItemUrl
+    footer {
+      column1 {
+        heading,
+        content[] {
+          ...
+        }
+      },
+      column2 {
+        heading,
+        content[] {
+          ...
+        }
+      },
+      row {
+        heading,
+        content[] {
+          ...
+        }
+      },
+      footerMenu[] {
+        menuItemName,
+        menuItemUrl,
+        linkType,
+        buttonStyle
+      }
     },
     email {
       emailLabel,

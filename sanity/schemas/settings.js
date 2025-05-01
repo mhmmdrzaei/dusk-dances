@@ -80,25 +80,110 @@ export default {
         ]
       },
       {
-        name: 'footerMenu',
-        title: 'Footer Menu',
-        type: 'array',
-        of: [
-          {
+        name: 'footer',
+        title: 'Footer',
+        type: 'object',
+        fields: [
+             {
+            name: 'column1',
+            title: 'Column 1',
             type: 'object',
             fields: [
               {
-                name: 'menuItemName',
-                title: 'Menu Item Name',
+                name: 'heading',
+                title: 'Column 1 Heading',
                 type: 'string'
               },
               {
-                name: 'menuItemUrl',
-                title: 'Menu Item URL',
-                type: 'string'
+                name: 'content',
+                title: 'Column 1 Content',
+                type: 'array',
+                of: [{ type: 'block' }]
               }
             ]
-          }
+          },
+          {
+            name: 'column2',
+            title: 'Column 2',
+            type: 'object',
+            fields: [
+              {
+                name: 'heading',
+                title: 'Column 2 Heading',
+                type: 'string'
+              },
+              {
+                name: 'content',
+                title: 'Column 2 Content',
+                type: 'array',
+                of: [{ type: 'block' }]
+              }
+            ]
+          },
+          {
+            name: 'row',
+            title: 'Row',
+            type: 'object',
+            fields: [
+              {
+                name: 'heading',
+                title: 'Row Heading',
+                type: 'string'
+              },
+              {
+                name: 'content',
+                title: 'Row Content',
+                type: 'array',
+                of: [{ type: 'block' }]
+              }
+            ]
+          },
+          {
+            name: 'footerMenu',
+            title: 'Footer Menu',
+            type: 'array',
+            of: [
+              {
+                type: 'object',
+                fields: [
+                  {
+                    name: 'menuItemName',
+                    title: 'Menu Item Name',
+                    type: 'string'
+                  },
+                  {
+                    name: 'menuItemUrl',
+                    title: 'Menu Item URL',
+                    type: 'string',
+                    hidden: ({ parent }) => parent?.linkType === 'dropdown'
+                  },
+                  {
+                    name: 'linkType',
+                    title: 'Link Type',
+                    type: 'string',
+                    options: {
+                      list: [
+                        { title: 'Link', value: 'link' },
+                        { title: 'Button', value: 'button' },
+                      ]
+                    }
+                  },
+                  {
+                    name: 'buttonStyle',
+                    title: 'Button Style',
+                    type: 'string',
+                    options: {
+                      list: [
+                        { title: 'Orange', value: 'orange' },
+                        { title: 'Yellow', value: 'yellow' }
+                      ]
+                    },
+                    hidden: ({ parent }) => parent?.linkType !== 'button'
+                  },
+                ]
+              }
+            ]
+          },
         ]
       },
       {

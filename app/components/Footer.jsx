@@ -1,17 +1,16 @@
 import Image from 'next/image';
 
-
-export default  function Footer({settings}) {
-
+export default function Footer(props) {
+  console.log('footer', props);
 
   return (
     <footer>
-      {settings?.footerLogo && (
-        <Image 
-          src={settings.footerLogo.asset.url} 
-          alt="Footer Logo" 
-          width={300} 
-          height={50} 
+      {/* {settings?.footerLogo && (
+        <Image
+          src={settings.footerLogo.asset.url}
+          alt="Footer Logo"
+          width={300}
+          height={50}
         />
       )}
       <nav>
@@ -25,16 +24,23 @@ export default  function Footer({settings}) {
       </nav>
       <div>
         {settings?.socialLinks?.map((social, index) => (
-          <a key={index} href={social.socialLink} target="_blank" rel="noopener noreferrer">
+          <a
+            key={index}
+            href={social.socialLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {social.icon}
           </a>
         ))}
       </div>
       {settings?.email && (
         <p>
-          <a href={`mailto:${settings.email.emailUrl}`}>{settings.email.emailLabel}</a>
+          <a href={`mailto:${settings.email.emailUrl}`}>
+            {settings.email.emailLabel}
+          </a>
         </p>
-      )}
+      )} */}
     </footer>
   );
 }
