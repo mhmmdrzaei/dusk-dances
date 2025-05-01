@@ -4,6 +4,7 @@ import { pageBySlugQuery } from '@/sanity/sanity.utils';
 import Layout from '../components/Layout';
 import { componentMap } from '../components/ComponentMap';
 
+
 export async function generateMetadata({ params }) {
   const { slug } =  await params;
   const settings = await getsettings();
@@ -66,7 +67,7 @@ export default async function Page({ params }) {
             console.warn(`No component for block type: ${block._type}`);
             return null;
           }
-          return <BlockComponent key={block._key} {...block} />;
+          return <BlockComponent key={block._key} value={block} />;
         })}
 
 

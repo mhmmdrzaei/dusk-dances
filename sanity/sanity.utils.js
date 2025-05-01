@@ -2,188 +2,172 @@ import { createClient, groq } from "next-sanity";
 import clientConfig from './config/client-config'
 
 const contentBlocks = `
- {
-    _type: 'accordionText' => {
-      heading,
-      subHeading,
-      text[]{
-        ...,
-        _type == 'block' => { ... },
-        _type == 'ctaButton' => { 
-          buttonLabel,
-          buttonUrl,
-          openInNewWindow,
-          buttonColor,
-          buttonAlignment
-        },
-        _type == 'video' => {
-          title,
-          url
-        }
+  _type,
+  _key,
+  _type == 'accordionText' => {
+    _type,
+    _key,
+    heading,
+    subHeading,
+    text[]{
+      ...,
+      _key,
+      _type,
+      _type == 'block' => { ... },
+      _type == 'ctaButton' => { 
+        buttonLabel,
+        buttonUrl,
+        openInNewWindow,
+        buttonColor,
+        buttonAlignment
       },
-      background
-    }
-  },
-  // Body Text Block
-  {
-    _type: 'bodyText' => {
-      width,
-      content[]{
-        ...,
-        _type == 'block' => { ... },
-        _type == 'ctaButton' => { 
-          buttonLabel,
-          buttonUrl,
-          openInNewWindow,
-          buttonColor,
-          buttonAlignment
-        },
-        _type == 'video' => {
-          title,
-          url
-        },
-        _type == 'imageCustom' => {
-          image {
-            asset->{
-              url
-            },
-            alt,
-            caption
-          },
-          width
-        }
-      },
-      background
-    }
-  },
-  // CTA Button Block
-  {
-    _type: 'ctaButton' => {
-      buttonLabel,
-      buttonUrl,
-      openInNewWindow,
-      buttonColor,
-      buttonAlignment
-    }
-  },
-  // Gallery Block
-  {
-    _type: 'gallery' => {
-      title,
-      images[]{
-        image {
-          asset->{
-            url
-          },
-          alt,
-          caption
-        }
-      }
-    }
-  },
-  // Hero Block
-  {
-    _type: 'hero' => {
-      image {
-        asset->{
-          url
-        },
-        alt,
-        imageCaption
-      },
-      text,
-      heroLinksTo
-    }
-  },
-  // Heading Text Block
-  {
-    _type: 'headingText' => {
-      headingLevel,
-      width,
-      textAlign,
-      text
-    }
-  },
-  // Logo Container Block
-  {
-    _type: 'logoContainer' => {
-      logos[]{
-        image {
-          asset->{
-            url
-          },
-          alt
-        },
+      _type == 'video' => {
+        title,
         url
       }
+    },
+    background
+  },
+  _type == 'bodyText' => {
+    _type,
+    _key,
+    width,
+    background,
+    content[]{
+      ...,
+      _type,
+      _key,
+      _type == 'block' => { ... },
+      _type == 'ctaButton' => { 
+        buttonLabel,
+        buttonUrl,
+        openInNewWindow,
+        buttonColor,
+        buttonAlignment
+      },
+      _type == 'video' => {
+        title,
+        url
+      },
+      _type == 'imageCustom' => {
+        image {
+          asset->{ url },
+          alt,
+          caption
+        },
+        width
+      }
     }
   },
-  // Image Carousel Block
-  {
-    _type: 'imageCarousel' => {
-      title,
-      slides[]{
-        image {
-          asset->{
-            url
-          },
-          alt
-        },
+  _type == 'ctaButton' => {
+    _type,
+    _key,
+    buttonLabel,
+    buttonUrl,
+    openInNewWindow,
+    buttonColor,
+    buttonAlignment
+  },
+  _type == 'gallery' => {
+    _type,
+    _key,
+    title,
+    images[]{
+      image {
+        asset->{ url },
+        alt,
         caption
       }
     }
   },
-  // Image Custom Block
-  {
-    _type: 'imageCustom' => {
+  _type == 'hero' => {
+    _type,
+    _key,
+    text,
+    heroLinksTo,
+    image {
+      asset->{ url },
+      alt,
+      imageCaption
+    }
+  },
+  _type == 'headingText' => {
+    _type,
+    _key,
+    headingLevel,
+    width,
+    textAlign,
+    text
+  },
+  _type == 'logoContainer' => {
+    _type,
+    _key,
+    logos[]{
       image {
-        asset->{
-          url
-        },
-        alt,
-        caption
+        asset->{ url },
+        alt
       },
-      width
-    }
-  },
-  // Line Divider Block
-  {
-    _type: 'lineDivider' => {
-      background
-    }
-  },
-  // Text Image Box Block
-  {
-    _type: 'textImageBox' => {
-      image {
-        asset->{
-          url
-        },
-        alt,
-        caption
-      },
-      textContent[]{
-        ...,
-        _type == 'ctaButton' => {
-          buttonLabel,
-          buttonUrl,
-          openInNewWindow,
-          buttonColor,
-          buttonAlignment
-        }
-      },
-      alignment,
-      background
-    }
-  },
-  // Video Block
-  {
-    _type: 'video' => {
-      title,
       url
     }
+  },
+  _type == 'imageCarousel' => {
+    _type,
+    _key,
+    title,
+    slides[]{
+      image {
+        asset->{ url },
+        alt
+      },
+      caption
+    }
+  },
+  _type == 'imageCustom' => {
+    _type,
+    _key,
+    image {
+      asset->{ url },
+      alt,
+      caption
+    },
+    width
+  },
+  _type == 'lineDivider' => {
+    _type,
+    _key,
+    background
+  },
+  _type == 'textImageBox' => {
+    _type,
+    _key,
+    alignment,
+    background,
+    image {
+      asset->{ url },
+      alt,
+      caption
+    },
+    textContent[]{
+      _type,
+      _key,
+      ...,
+      _type == 'ctaButton' => {
+        buttonLabel,
+        buttonUrl,
+        openInNewWindow,
+        buttonColor,
+        buttonAlignment
+      }
+    }
+  },
+  _type == 'video' => {
+    _type,
+    _key,
+    title,
+    url
   }
-`
+`;
+
 
 // Site Settings Query
 export async function getsettings() {
@@ -252,11 +236,11 @@ export async function pageBySlugQuery(slug) {
     *[_type == "page" && slug.current == $slug][0] {
       title,
       slug,
-      pageBlocks[] {
-      ...,
-          ${contentBlocks}
-      
-      },
+      _key,
+pageBlocks[] {
+  ${contentBlocks}
+}
+,
       seo {
         seoTitle,
         seoDescription,
