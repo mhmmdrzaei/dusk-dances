@@ -151,13 +151,14 @@ const contentBlocks = `
       _type,
       _key,
       ...,
-      _type == 'ctaButton' => {
+      _type == 'block' => { ... },
+      _type == 'ctaButton' => { 
         buttonLabel,
         buttonUrl,
         openInNewWindow,
         buttonColor,
         buttonAlignment
-      }
+      },
     }
   },
   _type == 'video' => {

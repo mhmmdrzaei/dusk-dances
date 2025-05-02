@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import CTAButton from './CTAButton'; // Assuming CTAButton is a separate component
+import CTAButton from './CTAButton'; 
 
 export default function Header({ settings }) {
   const [openMenus, setOpenMenus] = useState([]);
@@ -10,9 +10,9 @@ export default function Header({ settings }) {
   const toggleMenu = (index) => {
     setOpenMenus((prev) => {
       if (prev.includes(index)) {
-        return prev.filter((i) => i !== index); // Close menu if it was open
+        return prev.filter((i) => i !== index); 
       } else {
-        return [...prev, index]; // Open menu if it was closed
+        return [...prev, index]; 
       }
     });
   };
@@ -38,7 +38,6 @@ export default function Header({ settings }) {
         <ul className="menu-list">
           {settings?.headingMenu?.map((item, index) => (
             <li key={index} className="menu-item">
-              {/* Regular menu item or dropdown */}
               {item.menuType === 'direct' ? (
                 <a
                   href={item.menuItemUrl}
@@ -84,7 +83,6 @@ export default function Header({ settings }) {
         </ul>
       </nav>
 
-      {/* Heading Side Menu with Buttons */}
       <div className="heading-side-menu">
         {settings?.headingsidemenu?.map((item, index) => (
           <div key={index}>

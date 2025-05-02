@@ -1,51 +1,92 @@
-'use client';
-import React from 'react';
+"use client"
+import { useState } from 'react';
 import Image from 'next/image';
-import { Gallery, Item } from 'react-photoswipe-gallery';
-import 'photoswipe/dist/photoswipe.css';
-import { urlFor } from '@/sanity/config/client-config';
+import Slider from 'react-slick';
 
-export default function ImageGallery({ title, images }) {
-  console.log('🚀 ~ ImageGallery ~ item:', images);
+export default function Gallery({ value }) {
+  const { title, images } = value;
+  const [largeImage, setLargeImage] = useState(images[0]?.image?.asset?.url || '/placeholder.jpg'); 
+
+  const handleThumbnailClick = (url) => {
+    if (url) {
+      setLargeImage(url);
+    }
+  };
+
+  const mainSliderSettings = {
+    infinite: true,
+    centerMode: true,
+    centerPadding: '0',
+    slidesToShow: 1,
+    focusOnSelect: true,
+  };
+
+  const thumbnailSliderSettings = {
+    infinite: true,
+    slidesToShow: 5,
+    focusOnSelect: true,
+    centerMode: true,
+    centerPadding: '10px',
+    arrows: false, 
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3, 
+        },
+      },
+    ],
+  };
+
   return (
-    <section className="w-full max-w-6xl mx-auto px-4 my-8" data-type="gallery">
-      {title && <h2 className="text-2xl font-bold mb-6">{title}</h2>}
-      <Gallery>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {images?.map((item, index) => (
-            <Item
-              key={index}
-              src={urlFor(item.image.asset).url()}
-              thumbnail={urlFor(item.image?.asset).url()}
-              width={1024}
-              height={768}
-              alt={item.alt || 'Gallery image'}
-              caption={item.caption}
-            >
-              {({ ref, open }) => (
-                <div
-                  ref={ref}
-                  onClick={open}
-                  className="relative aspect-square cursor-pointer group"
-                >
-                  <Image
-                    src={urlFor(item.image.asset).url()}
-                    alt={item.alt || 'Gallery image'}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  {item.caption && (
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <p className="text-sm">{item.caption}</p>
-                    </div>
-                  )}
-                </div>
-              )}
-            </Item>
-          ))}
-        </div>
-      </Gallery>
-    </section>
+    <div className="gallery-container">
+      {/* Gallery Title */}
+      {title && <h2 className="gallery-title">{title}</h2>}
+
+      {/* Main Image Slider */}
+      <div className="main-image-slider">
+        <Slider {...mainSliderSettings}>
+          {images.map((image, index) => {
+            const imageUrl = image.image?.asset?.url || '/placeholder.jpg'; // Use placeholder if URL is missing
+            return (
+              <div key={index} className="main-image-slide">
+                <Image
+                  width={700}
+                  height={800}
+                  src={largeImage === imageUrl ? imageUrl : '/placeholder.jpg'} // add this 
+                  alt={image.image?.alt || 'Gallery Image'}
+                  className="main-gallery-image"
+                  loading="lazy" 
+                />
+              </div>
+            );
+          })}
+        </Slider>
+      </div>
+
+      <div className="thumbnail-slider">
+        <Slider {...thumbnailSliderSettings}>
+          {images.map((image, index) => {
+            const imageUrl = image.image?.asset?.url || '/placeholder.jpg'; // gotta add this
+            return (
+              <div
+                key={index}
+                className="thumbnail-slide"
+                onClick={() => handleThumbnailClick(imageUrl)} 
+              >
+                <Image
+                  width={100}
+                  height={100}
+                  src={imageUrl}
+                  alt={image.image?.alt || 'Thumbnail Image'} 
+                  className="thumbnail-image"
+                  loading="lazy" 
+                />
+              </div>
+            );
+          })}
+        </Slider>
+      </div>
+    </div>
   );
 }

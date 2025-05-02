@@ -1,45 +1,43 @@
 import { PortableText } from '@portabletext/react';
 import CTAButton from './CtaButton';
 import Image from 'next/image';
-import { urlFor } from '@/sanity/config/client-config';
 
-export default function TextImageBox({
-  image,
-  textContent = [],
-  alignment = 'textImage',
-}) {
+export default function TextImageBox({ value }) {
+  const { image, textContent = [], alignment = 'textImage', background } = value;
+  const imageUrl = image?.asset?.url;
+  const altText = image?.alt || 'Image';
+  const caption = image?.caption;
+
   return (
-    <section
-      data-type="textImageBox"
-      style={{
-        display: 'flex',
-        flexDirection: alignment === 'textImage' ? 'row' : 'row-reverse',
-        alignItems: 'center',
-      }}
-      className="my-8"
+    <div
+      className={`text-image-box ${background}`}
+      style={{ flexDirection: alignment === 'textImage' ? 'row' : 'row-reverse' }}
     >
-      {image.asset?._ref && (
-        <div style={{ flex: 1 }}>
-          <Image
-            src={urlFor(image.asset).url()}
-            alt={image?.alt || 'Image'}
-            style={{ width: '100%' }}
-            width="100"
-            height="100"
-          />
-          {image?.caption && <p>{image.caption}</p>}
-        </div>
-      )}
-      <div style={{ flex: 1, padding: '20px' }}>
-        <PortableText
-          value={textContent.filter((item) => item._type === 'block')}
-        />
-        {textContent
-          .filter((item) => item._type === 'ctaButton')
-          .map((cta, index) => (
-            <CTAButton key={index} {...cta} />
-          ))}
+      <div className="imgBox" style={{ flex: 1 }}>
+        {imageUrl && (
+          <Image src={imageUrl} alt={altText} width={800} height={600} layout="responsive" />
+        )}
+        {caption && <p className="image-caption">{caption}</p>}
       </div>
-    </section>
+
+      <div className="text-content" style={{ flex: 1, padding: '20px' }}>
+        <PortableText value={textContent.filter(item => item._type === 'block')} />
+                {textContent
+                  .filter((item) => item._type === "ctaButton")
+                  .map((cta, index) => (
+                    <CTAButton
+                      key={index}
+                      value={{
+                        buttonLabel: cta.buttonLabel,
+                        buttonUrl: cta.buttonUrl,
+                        openInNewWindow: cta.openInNewWindow,
+                        buttonColor: cta.buttonColor,
+                        buttonAlignment: cta.buttonAlignment
+                      }}
+                    />
+                  ))}
+        
+      </div>
+    </div>
   );
 }

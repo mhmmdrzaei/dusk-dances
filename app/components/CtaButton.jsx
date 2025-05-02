@@ -1,26 +1,27 @@
-export default function CTAButton({
-  buttonLabel,
-  buttonUrl,
-  openInNewWindow = false,
-  buttonColor = 'black',
-  buttonAlignment = 'left',
-}) {
+export default function CTAButton({ value }) {
+
+  const {
+    buttonLabel = 'Default Button',
+    buttonUrl,
+    openInNewWindow = false,
+    buttonColor = 'orange',
+    buttonAlignment = 'left',
+  } = value || {}; 
+
   if (!buttonLabel || !buttonUrl) return null;
 
   return (
-    <div
-      className="cta-button-container"
-      style={{ textAlign: buttonAlignment }}
-      data-type="ctaButton"
-    >
+    <div style={{ textAlign: buttonAlignment }} data-type="ctaButton">
       <a
         href={buttonUrl}
         target={openInNewWindow ? '_blank' : '_self'}
         rel={openInNewWindow ? 'noopener noreferrer' : ''}
-        className="cta-button-link"
         style={{
           backgroundColor: buttonColor,
           color: 'white',
+          padding: '10px 20px',
+          display: 'inline-block',
+          textDecoration: 'none',
         }}
       >
         {buttonLabel}

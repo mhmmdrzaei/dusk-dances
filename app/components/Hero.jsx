@@ -1,32 +1,49 @@
+import Link from 'next/link';
 import Image from 'next/image';
-import React from 'react';
-import { urlFor } from '@/sanity/config/client-config';
 
-export default function Hero({ image, imageCaption, text, title }) {
+export default function Hero({ value }) {
+  const { image, text, heroLinksTo } = value;
+  const imageUrl = image?.asset?.url;
+  const imageAlt = image?.alt || 'Hero Image';
+  const imageCaption = image?.imageCaption;
+
   return (
-    <section className="relative w-full h-[60vh] min-h-[400px]">
-      {image?.asset && (
-        <Image
-          src={urlFor(image.asset).url()}
-          alt={image.alt || 'Hero image'}
-          fill
-          className="object-cover"
-          priority
-        />
-      )}
-      <div className="absolute inset-0 bg-black/40">
-        <div className="container mx-auto px-4 h-full grid place-items-center">
-          {title && (
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              {title}
-            </h1>
+    <section className="hero-container">
+      {heroLinksTo ? (
+        <Link href={heroLinksTo}>
+          <div className="hero-box">
+            {imageUrl && (
+              <div className="hero-image">
+                <Image
+                  src={imageUrl}
+                  alt={imageAlt}
+                  width={1200}
+                  height={628}
+                  layout="responsive"
+                />
+                {imageCaption && <p className="hero-caption">{imageCaption}</p>}
+              </div>
+            )}
+            {text && <div className="hero-text">{text}</div>}
+          </div>
+        </Link>
+      ) : (
+        <div className="hero-box">
+          {imageUrl && (
+            <div className="hero-image">
+              <Image
+                src={imageUrl}
+                alt={imageAlt}
+                width={1200}
+                height={628}
+                layout="responsive"
+              />
+              {imageCaption && <p className="hero-caption">{imageCaption}</p>}
+            </div>
           )}
-          {text && <p className="text-xl text-white mb-6">{text}</p>}
-          {imageCaption && (
-            <p className="text-sm text-white/80 mt-auto">{imageCaption}</p>
-          )}
+          {text && <div className="hero-text">{text}</div>}
         </div>
-      </div>
+      )}
     </section>
   );
 }
