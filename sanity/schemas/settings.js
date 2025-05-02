@@ -25,32 +25,114 @@ export default {
               {
                 name: 'menuItemName',
                 title: 'Menu Item Name',
+                type: 'string',
+              },
+              {
+                name: 'menuItemUrl',
+                title: 'Menu Item URL',
+                type: 'string',
+                hidden: ({ parent }) => parent.menuType === 'submenu'
+
+              },
+              {
+                name: 'hexColor',
+                title: 'Menu Item Color',
+                type: 'string',
+                description: 'Enter a valid hex color code (e.g., #FF5733)',
+                validation: Rule => Rule.regex(/^#[0-9A-Fa-f]{6}$/).warning('Please enter a valid hex color code'),
+                hidden: ({ parent }) => parent.menuType === 'direct'
+              },
+              {
+                name: 'menuType',
+                title: 'Menu Type',
+                type: 'string',
+                options: {
+                  list: [
+                    { title: 'Direct Link', value: 'direct' },
+                    { title: 'Sub Menu', value: 'submenu' },
+                  ],
+                  layout: 'dropdown',
+                },
+                initialValue: 'direct',
+              },
+              {
+                name: 'subMenuItems',
+                title: 'Sub Menu Items',
+                type: 'array',
+                of: [
+                  {
+                    type: 'object',
+                    fields: [
+                      {
+                        name: 'subMenuItemName',
+                        title: 'Sub Menu Item Name',
+                        type: 'string',
+                      },
+                      {
+                        name: 'subMenuItemUrl',
+                        title: 'Sub Menu Item URL',
+                        type: 'string',
+                      },
+                    ],
+                  },
+                ],
+                hidden: ({ parent }) => parent.menuType === 'direct'
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: 'headingsidemenu',
+        title: 'Heading Side Menu',
+        type: 'array',
+        of: [
+          {
+            type: 'object',
+            fields: [
+              {
+                name: 'menuItemName',
+                title: 'Menu Item Name',
                 type: 'string'
               },
               {
                 name: 'menuItemUrl',
                 title: 'Menu Item URL',
-                type: 'string'
-              }
+                type: 'string',
+                hidden: ({ parent }) => parent?.linkType === 'dropdown'
+              },
+              {
+                name: 'linkType',
+                title: 'Link Type',
+                type: 'string',
+                options: {
+                  list: [
+                    { title: 'Link', value: 'link' },
+                    { title: 'Button', value: 'button' },
+                  ]
+                }
+              },
+              {
+                name: 'buttonStyle',
+                title: 'Button Style',
+                type: 'string',
+                options: {
+                  list: [
+                    { title: 'Orange', value: 'orange' },
+                    { title: 'Yellow', value: 'yellow' }
+                  ]
+                },
+                hidden: ({ parent }) => parent?.linkType !== 'button'
+              },
             ]
           }
         ]
-      },
+      },      
       {
         name: 'headingLogo',
         title: 'Heading Logo',
         type: 'image',
 
-      },
-      {
-        name: 'membersAreaPassword',
-        title: 'Members Area Password',
-        type: 'string'
-      },
-      {
-        name: 'footerLogo',
-        title: 'icon logo',
-        type:'image',
       },
       {
         name: 'socialLinks',

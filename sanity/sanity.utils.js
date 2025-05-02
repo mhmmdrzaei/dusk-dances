@@ -171,62 +171,79 @@ const contentBlocks = `
 
 // Site Settings Query
 export async function getsettings() {
-  return createClient(clientConfig).fetch( groq`
-  *[_type == "siteSettings"][0] {
-    siteTitle,
-    siteDescription,
-    headingMenu[] {
-      menuItemName,
-      menuItemUrl
-    },
-    membersAreaPassword,
-    headingLogo {
-      asset->{
-        url,
-        metadata {
-          dimensions
+  return createClient(clientConfig).fetch(groq`
+    *[_type == "siteSettings"][0] {
+      siteTitle,
+      siteDescription,
+      headingMenu[] {
+        menuItemName,
+        menuItemUrl,
+        hexColor,
+        menuType,
+        subMenuItems[]{
+          subMenuItemName,
+          subMenuItemUrl
         }
       },
-      alt
-    },
-    socialLinks[] {
-      socialLink,
-      icon
-    },
-    footer {
-      column1 {
-        heading,
-        content[] {
-          ...
+      headingLogo {
+        asset->{
+          url,
+          metadata {
+            dimensions
+          }
+        },
+        alt
+      },
+      socialLinks[] {
+        socialLink,
+        icon
+      },
+      footer {
+        column1 {
+          heading,
+          content[] {
+            ...
+          }
+        },
+        column2 {
+          heading,
+          content[] {
+            ...
+          }
+        },
+        row {
+          heading,
+          content[] {
+            ...
+          }
+        },
+        footerMenu[] {
+          menuItemName,
+          menuItemUrl,
+          linkType,
+          buttonStyle
         }
       },
-      column2 {
-        heading,
-        content[] {
-          ...
+      email {
+        emailLabel,
+        emailUrl
+      },
+      seoImg {
+        asset->{
+          url
         }
       },
-      row {
-        heading,
-        content[] {
-          ...
-        }
-      },
-      footerMenu[] {
+      headingsidemenu[] {
         menuItemName,
         menuItemUrl,
         linkType,
         buttonStyle
       }
-    },
-    email {
-      emailLabel,
-      emailUrl
     }
-  }
-`,
-  )
+  `);
 }
+
+
 
 
 // Page Query by Slug

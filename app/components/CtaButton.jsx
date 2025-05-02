@@ -8,17 +8,19 @@ export default function CTAButton({
   if (!buttonLabel || !buttonUrl) return null;
 
   return (
-    <div style={{ textAlign: buttonAlignment }} data-type="ctaButton">
+    <div
+      className="cta-button-container"
+      style={{ textAlign: buttonAlignment }}
+      data-type="ctaButton"
+    >
       <a
         href={buttonUrl}
         target={openInNewWindow ? '_blank' : '_self'}
         rel={openInNewWindow ? 'noopener noreferrer' : ''}
+        className="cta-button-link"
         style={{
           backgroundColor: buttonColor,
           color: 'white',
-          padding: '10px 20px',
-          display: 'inline-block',
-          textDecoration: 'none',
         }}
       >
         {buttonLabel}
