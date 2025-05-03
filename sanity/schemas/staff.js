@@ -1,4 +1,4 @@
-// schemas/mentorStaff.js
+// schemas/staff.js
 export default {
     name: 'staff',
     title: 'Staff & Board',
@@ -18,7 +18,7 @@ export default {
           source: 'name',
           maxLength: 96
         },
-        validation: Rule => Rule.required()
+        // validation: Rule => Rule.required() TODO are there spefic urls for each staff?
       },
       {
         name: 'image',
