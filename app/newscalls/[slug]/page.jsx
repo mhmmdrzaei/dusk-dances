@@ -1,11 +1,11 @@
-import { getSeason, getsettings } from '@/sanity/sanity.utils';
+import { newsBySlugQuery, getsettings } from '@/sanity/sanity.utils';
 import { componentMap } from '@/app/components/ComponentMap';
 import Layout from '@/app/components/Layout';
 
 export async function generateMetadata({ params }) {
   const { slug } =  await params;
   const settings = await getsettings();
-  const page = await getSeason(slug);
+  const page = await newsBySlugQuery(slug);
 
   const title = `${settings?.siteTitle || ''} | ${page?.title || ''}`;
   const description = page?.seo?.seoDescription || settings?.siteDescription || '';
@@ -40,9 +40,9 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function SeasonPage({ params }) {
+export default async function NewsPage({ params }) {
   const { slug } = await params;
-  const pageData = await getSeason(slug);
+  const pageData = await newsBySlugQuery(slug);
 
   if (!pageData) {
     return <div>Page not found</div>;

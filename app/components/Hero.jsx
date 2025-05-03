@@ -19,7 +19,7 @@ export default function Hero({ value }) {
                   alt={imageAlt}
                   width={1200}
                   height={628}
-                  layout="responsive"
+                  
                 />
                 {imageCaption && <p className="hero-caption">{imageCaption}</p>}
               </div>
@@ -36,7 +36,7 @@ export default function Hero({ value }) {
                 alt={imageAlt}
                 width={1200}
                 height={628}
-                layout="responsive"
+                
               />
               {imageCaption && <p className="hero-caption">{imageCaption}</p>}
             </div>

@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react';
-import CTAButton from './CtaButton';
+import CTAButton from './CTAButton';
 import Image from 'next/image';
 
 export default function TextImageBox({ value }) {
@@ -15,7 +15,7 @@ export default function TextImageBox({ value }) {
     >
       <div className="imgBox" style={{ flex: 1 }}>
         {imageUrl && (
-          <Image src={imageUrl} alt={altText} width={800} height={600} layout="responsive" />
+          <Image src={imageUrl} alt={altText} width={800} height={600} />
         )}
         {caption && <p className="image-caption">{caption}</p>}
       </div>

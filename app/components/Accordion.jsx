@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { PortableText } from "@portabletext/react";
-import CTAButton from "./CtaButton"; // Assuming CTAButton component is imported
+import CTAButton from "./CTAButton"; // Assuming CTAButton component is imported
 
 export default function AccordionText({ value }) {
   const { heading, subHeading, text, background } = value;

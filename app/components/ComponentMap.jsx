@@ -1,5 +1,5 @@
 import BodyText from '../components/BodyText';
-import CTAButton from '../components/CtaButton';
+import CTAButton from './CTAButton';
 import LogoContainer from '../components/LogoContainer';
 import TextImageBox from '../components/TextImageBox';
 import HeadingText from '../components/HeadingText';

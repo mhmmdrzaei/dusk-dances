@@ -16,7 +16,6 @@ export default function ImageCustom({ value }) {
           alt={alt || 'Image'}
           width={1200}
           height={800}
-          layout="responsive"
           className="custom-image"
           loading="lazy"
         />
