@@ -301,9 +301,10 @@ export async function getNews() {
   return createClient(clientConfig).fetch(
     groq`
       *[_type == "news"] {
-       title,
-      slug,
-      pageDesc,
+        title,
+        slug,
+        pageDesc,
+        isPostActive
     }
   `
   )
