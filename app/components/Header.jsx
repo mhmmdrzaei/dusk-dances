@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import CTAButton from './CTAButton'; 
+import CTAButton from "@/app/components/CTAButton";
 
 export default function Header({ settings }) {
   const [openMenus, setOpenMenus] = useState([]);
