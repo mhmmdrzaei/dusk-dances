@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { PortableText } from "@portabletext/react";
-import CTAButton from "@/app/components/CTAButton";
+import CTAButton from "@/app/components/CTAButtonBox";
 export default function AccordionText({ value }) {
   const { heading, subHeading, text, background } = value;
   const [isOpen, setIsOpen] = useState(false);

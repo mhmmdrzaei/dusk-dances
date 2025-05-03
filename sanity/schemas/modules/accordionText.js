@@ -41,10 +41,16 @@ export default {
       }
     ],
     preview: {
-      prepare() {
+      select: {
+        heading: 'heading',
+        subHeading: 'subHeading'
+      },
+      prepare(selection) {
+        const { heading, subHeading } = selection; // Extract heading from the selection
         return {
-          title: 'Accordion Text'
-        }
+          title:'Accordion Text',  // Show heading if available, otherwise fallback
+          subtitle: `${heading || 'No Heading'},  ${subHeading || ''}` // Provide a fallback subtitle
+        };
       }
     }
   }

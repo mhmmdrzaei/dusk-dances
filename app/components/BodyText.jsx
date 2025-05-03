@@ -1,6 +1,6 @@
 "use client";
 import { PortableText } from "@portabletext/react";
-import CTAButton from "@/app/components/CTAButton";
+import CTAButton from "@/app/components/CTAButtonBox";
 import ImageCustom from "./Image"; // Assuming ImageCustom component is imported
 import VideoPlayer from "./VideoPlayer"; // Assuming VideoPlayer component is imported
 

@@ -51,6 +51,11 @@ export default {
                 title: 'Alt Text',
                 type: 'string',
               },
+              {
+                name: 'caption',
+                title: 'caption',
+                type: 'string'
+              },
             ],
           }
         ]

@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react';
-import CTAButton from "@/app/components/CTAButton";
+import CTAButton from "@/app/components/CTAButtonBox";
 import Image from 'next/image';
 
 export default function TextImageBox({ value }) {
