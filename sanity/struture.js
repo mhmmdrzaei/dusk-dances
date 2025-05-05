@@ -24,16 +24,19 @@ export const myStructure = (S) => {
         .title('Seasons')
         .icon(BugIcon)
         .child(S.documentTypeList('seasons')),
-    // Locations
+
+      // Locations
+        S.listItem()
+          .title('Season Locations')
+          .icon(CubeIcon)
+          .child(S.documentTypeList('seasonLocations')),
+
+      // news
       S.listItem()
-        .title('Season Locations')
-        .icon(CubeIcon)
-        .child(S.documentTypeList('seasonLocations')),
-    // news
-    S.listItem()
-    .title('Calls & News')
-    .icon(BillIcon)
-    .child(S.documentTypeList('news')),
+      .title('Calls & News')
+      .icon(BillIcon)
+      .child(S.documentTypeList('news')),
+
      // Staff
       S.listItem()
         .title('Staff & Board')
@@ -49,5 +52,11 @@ export const myStructure = (S) => {
             .schemaType('siteSettings')
             .documentId('siteSettings')
         ),
+      
+      // Mentors & Staff
+      S.listItem()
+      .title('Mentors & Staff')
+      .icon(CaseIcon)
+      .child(S.documentTypeList('staff')),
     ]);
 };
