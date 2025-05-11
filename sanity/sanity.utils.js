@@ -1,5 +1,5 @@
 import { createClient, groq } from "next-sanity";
-import clientConfig from './config/client-config'
+import clientConfig from "./config/client-config";
 
 const contentBlocks = `
   _type,
@@ -169,7 +169,6 @@ const contentBlocks = `
   }
 `;
 
-
 // Site Settings Query
 export async function getsettings() {
   return createClient(clientConfig).fetch(groq`
@@ -244,9 +243,6 @@ export async function getsettings() {
   `);
 }
 
-
-
-
 // Page Query by Slug
 export async function pageBySlugQuery(slug) {
   return createClient(clientConfig).fetch(
@@ -269,7 +265,9 @@ pageBlocks[] {
         }
       }
     }
-  `, { slug });
+  `,
+    { slug }
+  );
 }
 
 // news Query by Slug
@@ -294,7 +292,9 @@ export async function newsBySlugQuery(slug) {
         }
       }
     }
-  `, { slug });
+  `,
+    { slug }
+  );
 }
 
 export async function getNews() {
@@ -307,10 +307,11 @@ export async function getNews() {
         isPostActive
     }
   `
-  )
+  );
 }
 export async function getSeason(slug) {
-  return createClient(clientConfig).fetch(`
+  return createClient(clientConfig).fetch(
+    `
     
     *[_type == "seasons" && slug.current == $slug][0] {
   _id,
@@ -395,6 +396,8 @@ export async function getSeason(slug) {
   },
   pageBlocksTop[]{
     _type == 'hero' => {
+      _type,
+_key,
       image {
         asset->{
           url
@@ -406,12 +409,16 @@ export async function getSeason(slug) {
       heroLinksTo
     },
     _type == 'headingText' => {
+      _type,
+_key,
       headingLevel,
       width,
       textAlign,
       text
     },
     _type == 'imageCustom' => {
+      _type,
+_key,
       image {
         asset->{
           url
@@ -422,21 +429,30 @@ export async function getSeason(slug) {
       width
     },
     _type == 'lineDivider' => {
+      _type,
+_key,
       background
     },
     _type == 'video' => {
+      _type,
+_key,
       title,
       url
     }
   },
   pageDetailsBlocks[]{
     _type == 'accordionText' => {
+      _type,
+_key,
       heading,
       subHeading,
       text[]{
         ...,
         _type == 'block' => { ... },
         _type == 'ctaButton' => { 
+          _type,
+_key,
+        
           buttonLabel,
           buttonUrl,
           openInNewWindow,
@@ -451,11 +467,18 @@ export async function getSeason(slug) {
       background
     },
     _type == 'bodyText' => {
+      _type,
+_key,
       width,
       content[]{
         ...,
-        _type == 'block' => { ... },
+        _type == 'block' => {
+           ...,
+           _type,
+_key, },
         _type == 'ctaButton' => { 
+          _type,
+_key,
           buttonLabel,
           buttonUrl,
           openInNewWindow,
@@ -467,7 +490,10 @@ export async function getSeason(slug) {
           url
         },
         _type == 'imageCustom' => {
+          _type,
+_key,
           image {
+
             asset->{
               url
             },
@@ -480,6 +506,8 @@ export async function getSeason(slug) {
       background
     },
     _type == 'ctaButton' => {
+      _type,
+_key,
       buttonLabel,
       buttonUrl,
       openInNewWindow,
@@ -487,6 +515,8 @@ export async function getSeason(slug) {
       buttonAlignment
     },
     _type == 'gallery' => {
+      _type,
+_key,
       title,
       images[]{
         image {
@@ -499,6 +529,8 @@ export async function getSeason(slug) {
       }
     },
     _type == 'hero' => {
+      _type,
+_key,
       image {
         asset->{
           url
@@ -510,12 +542,16 @@ export async function getSeason(slug) {
       heroLinksTo
     },
     _type == 'headingText' => {
+      _type,
+_key,
       headingLevel,
       width,
       textAlign,
       text
     },
     _type == 'logoContainer' => {
+      _type,
+_key,
       logos[]{
         image {
           asset->{
@@ -527,6 +563,8 @@ export async function getSeason(slug) {
       }
     },
     _type == 'imageCarousel' => {
+      _type,
+_key,
       title,
       slides[]{
         image {
@@ -539,6 +577,8 @@ export async function getSeason(slug) {
       }
     },
     _type == 'imageCustom' => {
+      _type,
+_key,
       image {
         asset->{
           url
@@ -549,9 +589,13 @@ export async function getSeason(slug) {
       width
     },
     _type == 'lineDivider' => {
+      _type,
+_key,
       background
     },
     _type == 'textImageBox' => {
+      _type,
+_key,
       image {
         asset->{
           url
@@ -562,6 +606,8 @@ export async function getSeason(slug) {
       textContent[]{
         ...,
         _type == 'ctaButton' => {
+          _type,
+_key,
           buttonLabel,
           buttonUrl,
           openInNewWindow,
@@ -573,37 +619,46 @@ export async function getSeason(slug) {
       background
     },
     _type == 'video' => {
+      _type,
+_key,
       title,
       url
     }
   }
 }
-    `, {slug})
+    `,
+    { slug }
+  );
 }
 
 export async function getSeasons() {
   return createClient(clientConfig).fetch(
     groq`
-      *[_type == "seasons"] {
-       title,
-      slug,
-      pageDesc,
-      seasonInformation {
-       poster {
-        asset->{
-          url
+      *[_type == "seasons"] | order(_createdAt desc) {
+        title,
+        slug,
+        pageDesc,
+        seasonInformation {
+          poster {
+            asset->{ url },
+            alt
+          }
         },
-        alt
+        seasonsLocations[]->{
+          title,
+          slug,
+          seasonInformation {
+            poster {
+              asset->{ url },
+              alt
+            }
+          }
+        }
       }
-      
-      }
-
-           
-
-    }
-  `
-  )
+    `
+  );
 }
+
 
 // TODO likely dont need individual staff role queries
 // export async function getStaff() {
@@ -632,7 +687,7 @@ export async function getSeasons() {
 //     // Get last names (split name and get last word)
 //     const lastNameA = a.name.split(' ').pop().toLowerCase();
 //     const lastNameB = b.name.split(' ').pop().toLowerCase();
-    
+
 //     // Compare last names alphabetically
 //     if (lastNameA < lastNameB) return -1;
 //     if (lastNameA > lastNameB) return 1;
@@ -643,7 +698,7 @@ export async function getSeasons() {
 // }
 
 export async function getAllStaff() {
-  const staff =  await createClient(clientConfig).fetch(
+  const staff = await createClient(clientConfig).fetch(
     groq`
      *[_type == "staff"] {
       name,
@@ -664,12 +719,12 @@ export async function getAllStaff() {
       role[0]
     }
   `
-  )
+  );
   staff.sort((a, b) => {
     // Get last names (split name and get last word)
-    const lastNameA = a.name.split(' ').pop().toLowerCase();
-    const lastNameB = b.name.split(' ').pop().toLowerCase();
-    
+    const lastNameA = a.name.split(" ").pop().toLowerCase();
+    const lastNameB = b.name.split(" ").pop().toLowerCase();
+
     // Compare last names alphabetically
     if (lastNameA < lastNameB) return -1;
     if (lastNameA > lastNameB) return 1;
@@ -699,5 +754,19 @@ export async function getFounder() {
       bio
     }
   `
-  )
+  );
+}
+
+export async function getAllSlugs() {
+  return createClient(clientConfig).fetch(
+    groq`
+      *[_type == "page" || _type == "seasons" || _type == "staff"] {
+        _type,
+        slug {
+          current
+        },
+        _updatedAt
+      }
+    `
+  );
 }

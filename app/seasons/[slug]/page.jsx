@@ -1,17 +1,17 @@
 import { getSeason, getsettings } from '@/sanity/sanity.utils';
 import { componentMap } from '@/app/components/ComponentMap';
 import Layout from '@/app/components/Layout';
+import SeasonClient from './SeasonClient';
 
 export async function generateMetadata({ params }) {
-  const { slug } =  await params;
+  const { slug } = params;
   const settings = await getsettings();
-  const page = await getSeason(slug);
+  const season = await getSeason(slug);
 
-  const title = `${settings?.siteTitle || ''} | ${page?.title || ''}`;
-  const description = page?.seo?.seoDescription || settings?.siteDescription || '';
-
+  const title = `${settings?.siteTitle || ''} | ${season?.title || ''}`;
+  const description = season?.seo?.seoDescription || settings?.siteDescription || '';
   const fallbackImage = settings?.seoImg?.asset?.url || '';
-  const seoImage = page?.seo?.seoImage?.asset?.url || fallbackImage;
+  const seoImage = season?.seo?.seoImage?.asset?.url || fallbackImage;
 
   return {
     title,
@@ -20,47 +20,18 @@ export async function generateMetadata({ params }) {
       title,
       description,
       url: seoImage,
-      siteName: settings?.siteTitle || '',
-      images: [
-        {
-          url: seoImage,
-          width: 1200,
-          height: 628,
-        },
-      ],
-      locale: 'en_CA',
-      type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [seoImage],
+      images: [{ url: seoImage, width: 1200, height: 628 }],
     },
   };
 }
 
 export default async function SeasonPage({ params }) {
-  const { slug } = await params;
-  const pageData = await getSeason(slug);
+  const { slug } = params;
+  const season = await getSeason(slug);
 
-  if (!pageData) {
-    return <div>Page not found</div>;
-  }
-
-  const { title, pageBlocks } = pageData;
   return (
     <Layout>
-      <div className="page-container">
-        {pageBlocks?.map((block) => {
-          const BlockComponent = componentMap[block._type];
-          if (!BlockComponent) {
-            console.warn(`No component for block type: ${block._type}`);
-            return null;
-          }
-          return <BlockComponent key={block._key} {...block} />;
-        })}
-      </div>
+      <SeasonClient season={season} />
     </Layout>
   );
 }

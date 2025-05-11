@@ -1,22 +1,38 @@
-// import { getAllSlugs } from '../sanity/sanity.utils.js';
+import { getAllSlugs } from '../sanity/sanity.utils.js';
 
 
-// const defualtSiteMapFields = {
-//   lastModified: new Date(),
-//   changeFrequency: 'monthly',
-//   priority: 0.5,
-// }
+const defualtSiteMapFields = {
+  changeFrequency: 'monthly',
+  priority: 0.5,
+};
 
-// const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://duskdances.com';
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://duskdances.com';
 
-// export default async function sitemap() {
-//   const allPages = await getAllSlugs();
+export default async function sitemap() {
+  const allPages = await getAllSlugs();
 
-//   return allPages.map((page) => (
-//     {
-//       ...defualtSiteMapFields,
-//       url: `${baseUrl}/${page.url}`,
-//       lastModified: page.lastModified,
-//     }
-//   ));
-// }
+  return allPages.map((page) => {
+    let path = '';
+
+    switch (page._type) {
+      case 'page':
+        path = `/${page.slug.current}`;
+        break;
+      case 'seasons':
+        path = `/seasons/${page.slug.current}`;
+        break;
+      case 'staff':
+        path = `/staff/${page.slug.current}`;
+        break;
+      default:
+        path = `/${page.slug.current}`;
+        break;
+    }
+
+    return {
+      ...defualtSiteMapFields,
+      url: `${baseUrl}${path}`,
+      lastModified: page._updatedAt || new Date(),
+    };
+  });
+}

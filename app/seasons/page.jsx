@@ -8,7 +8,7 @@ import Layout from '../components/Layout';
 export async function generateMetadata() {
   const settings = await getsettings();
   const title = `${settings?.siteTitle || ''} |'Seasons Archives'`;
-  const description = page?.seo?.seoDescription || settings?.siteDescription || '';
+  const description = settings?.siteDescription || '';
 
   const fallbackImage = settings?.seoImg?.asset?.url || '';
   const seoImage = fallbackImage;
@@ -41,22 +41,64 @@ export async function generateMetadata() {
 }
 
   
-
 export default async function Seasons() {
-  const homeSlug = 'home'; // Or whatever your homepage slug is
   const seasons = await getSeasons();
 
-  if (!pageData) {
-    return <div>Home page not found</div>;
-  }
+  if (!seasons) return <div>No seasons found</div>;
 
   return (
-        <Layout>
-        <div className="page-container">
-    
-            
-    
-        </div>
-        </Layout>
+    <Layout>
+      <div className="seasons-archive-page">
+        {seasons.map((season) => {
+          const {
+            title,
+            slug,
+            pageDesc,
+            seasonInformation,
+            seasonsLocations = [],
+          } = season;
+
+          const primaryPoster = seasonInformation?.poster;
+          const fallbackPoster =
+            seasonsLocations?.find((loc) => loc.seasonInformation?.poster?.asset)?.seasonInformation?.poster;
+
+          const poster = primaryPoster?.asset?.url ? primaryPoster : fallbackPoster;
+
+          return (
+            <div key={slug.current} className="season-entry">
+              <div className="season-entry-left">
+                <h2>{title}</h2>
+                {pageDesc && <PortableText value={pageDesc} />}
+              </div>
+
+              {seasonsLocations?.length > 0 && (
+                <div className="season-entry-locations">
+                  {seasonsLocations.map((loc) => (
+                    <a
+                      key={loc.slug?.current}
+                      href={`/seasons/${slug.current}#${loc.slug.current}`}
+                      className="season-location-button"
+                    >
+                      {loc.title}
+                    </a>
+                  ))}
+                </div>
+              )}
+
+              <div className="season-entry-right">
+                {poster?.asset?.url && (
+                  <Image
+                    src={poster.asset.url}
+                    alt={poster.alt || 'Season Poster'}
+                    width={500}
+                    height={700}
+                  />
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </Layout>
   );
 }
