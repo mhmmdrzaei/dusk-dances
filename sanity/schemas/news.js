@@ -36,7 +36,7 @@ export default {
           { type: 'ctaButton'},
           { type: 'gallery' },
           { type: 'hero' },
-          {type: 'headingText'},
+          { type: 'headingText'},
           {type: 'logoContainer'},
           { type: 'imageCarousel' },
           { type: 'imageCustom' },
@@ -49,6 +49,19 @@ export default {
         name: 'seo',
         title: 'SEO',
         type: 'seo'
+      },
+      {
+        name: 'isPostActive',
+        title: 'Active Post',
+        type: 'array',
+        of: [{ type: 'string' }],
+        options: {
+          list: [
+            { title: 'Current', value: 'current' },
+            { title: 'Past', value: 'past' },
+          ]
+        },
+        validation: Rule => Rule.required().min(1)
       }
     ],
     preview: {
