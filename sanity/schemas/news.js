@@ -50,19 +50,13 @@ export default {
         title: 'SEO',
         type: 'seo'
       },
-      {
-        name: 'isPostActive',
-        title: 'Active Post',
-        type: 'array',
-        of: [{ type: 'string' }],
-        options: {
-          list: [
-            { title: 'Current', value: 'current' },
-            { title: 'Past', value: 'past' },
-          ]
-        },
-        validation: Rule => Rule.required().min(1)
-      }
+{
+  name: 'postUntil',
+  title: 'Post Until Date',
+  description: 'The post will be considered current until this date (inclusive)',
+  type: 'date',
+  validation: Rule => Rule.required()
+}
     ],
     preview: {
       select: {

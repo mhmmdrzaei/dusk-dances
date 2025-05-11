@@ -300,11 +300,12 @@ export async function newsBySlugQuery(slug) {
 export async function getNews() {
   return createClient(clientConfig).fetch(
     groq`
-      *[_type == "news"] {
+      *[_type == "news"] | order(postUntil desc) {
         title,
         slug,
         pageDesc,
-        isPostActive
+          postUntil,
+
     }
   `
   );
