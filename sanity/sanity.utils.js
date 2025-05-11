@@ -604,13 +604,49 @@ export async function getSeasons() {
   )
 }
 
+// TODO likely dont need individual staff role queries
+// export async function getStaff() {
+//   const staff =  await createClient(clientConfig).fetch(
+//     groq`
+//      *[_type == "staff" && "staff" in role] {
+//       name,
+//       _id,
+//       slug {
+//         current
+//       },
+//       image {
+//         asset -> {
+//           url
+//         },
+//         alt
+//       },
+//       position,
+//       email,
+//       website,
+//       bio
+//     }
+//   `
+//   )
+//   staff.sort((a, b) => {
+//     // Get last names (split name and get last word)
+//     const lastNameA = a.name.split(' ').pop().toLowerCase();
+//     const lastNameB = b.name.split(' ').pop().toLowerCase();
+    
+//     // Compare last names alphabetically
+//     if (lastNameA < lastNameB) return -1;
+//     if (lastNameA > lastNameB) return 1;
+//     return 0;
+//   });
 
-// Mentor and Staff Query
-export async function getStaff() {
-  return createClient(clientConfig).fetch(
+//   return staff;
+// }
+
+export async function getAllStaff() {
+  const staff =  await createClient(clientConfig).fetch(
     groq`
-      *[_type == "staff" && "staff" in role] {
+     *[_type == "staff"] {
       name,
+      _id,
       slug {
         current
       },
@@ -623,32 +659,23 @@ export async function getStaff() {
       position,
       email,
       website,
-      bio
+      bio,
+      role[0]
     }
   `
   )
-}
-export async function getBoard() {
-  return createClient(clientConfig).fetch(
-    groq`
-     *[_type == "staff" && "board" in role] {
-      name,
-      slug {
-        current
-      },
-      image {
-        asset -> {
-          url
-        },
-        alt
-      },
-      position,
-      email,
-      website,
-      bio
-    }
-  `
-  )
+  staff.sort((a, b) => {
+    // Get last names (split name and get last word)
+    const lastNameA = a.name.split(' ').pop().toLowerCase();
+    const lastNameB = b.name.split(' ').pop().toLowerCase();
+    
+    // Compare last names alphabetically
+    if (lastNameA < lastNameB) return -1;
+    if (lastNameA > lastNameB) return 1;
+    return 0;
+  });
+
+  return staff;
 }
 
 export async function getFounder() {
