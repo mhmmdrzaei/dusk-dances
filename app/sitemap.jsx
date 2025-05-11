@@ -16,16 +16,16 @@ export default async function sitemap() {
 
     switch (page._type) {
       case 'page':
-        path = `/${page.slug.current}`;
+        path = `/${page.slug}`;
         break;
       case 'seasons':
-        path = `/seasons/${page.slug.current}`;
+        path = `/seasons/${page.slug}`;
         break;
       case 'staff':
-        path = `/staff/${page.slug.current}`;
+        path = `/staff/${page.slug}`;
         break;
       default:
-        path = `/${page.slug.current}`;
+        path = `/${page.slug}`;
         break;
     }
 
