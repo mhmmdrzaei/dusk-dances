@@ -53,10 +53,6 @@ export const myStructure = (S) => {
             .documentId('siteSettings')
         ),
       
-      // Mentors & Staff
-      S.listItem()
-      .title('Mentors & Staff')
-      .icon(CaseIcon)
-      .child(S.documentTypeList('staff')),
+  
     ]);
 };

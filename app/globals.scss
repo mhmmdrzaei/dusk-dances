@@ -1,5 +1,5 @@
 :root {
-  --background: #ffffff;
+  --background: #F0F4ED;
   --foreground: #171717;
 }
 
@@ -9,23 +9,29 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
-$red: #831308;
-$grey: #C2C2C2;
-$greyGradient:linear-gradient(270deg, #424242 0%, #F1F1F1 100%);
+$blue: #35BFF6;
+
+$pink: #FF4F5A;
+$lightPink: #FBE4E2;
+$green: #B5E100;
+$lightGreen: #E9EFD3;
+$yellow: #FFCA51;
 
 
-/* TODO do we need dark/light modes
- @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding:0 20px;
+@font-face {
+    font-family: 'interstatebold';
+    src: url('../public/fonts/interstate-boldcompressed-webfont.woff2') format('woff2'),
+         url('../public/fonts/interstate-boldcompressed-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.page-container {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
 }
 @mixin fontSize($sizeValue){
   font-size: $sizeValue * 1px;
@@ -35,28 +41,74 @@ $greyGradient:linear-gradient(270deg, #424242 0%, #F1F1F1 100%);
 display: flex;
 flex-flow: row wrap;
 }
-
+img {
+  max-width: 100%;
+  height: auto;
+}
 
 
 
 h1, h2, h3, h4 {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'interstatebold', sans-serif;
   font-weight: 900;
 }
 
 h1 { 
 
-  @include fontSize(40);
+  @include fontSize(33);
 }
 h2 {
-  @include fontSize(20);color: #000;
+  @include fontSize(24);
 }
 h3 {
-
+ @include fontSize(18);
+}
+h4 {
+ @include fontSize(14);
 }
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Figtree', sans-serif;
+  font-family: 'Inter', sans-serif;
+   @include fontSize(9);
   font-weight: 300;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+// CTA Button
+
+.ctaButton {
+      font-family: 'interstatebold', sans-serif;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      @include fontSize(14);
+      width: fit-content;
+      height: fit-content;
+      a {
+        text-decoration: none;
+      }
+
+}
+.btn-blue{
+  background: $blue;
+  a {
+  color: black;
+  }
+
+}
+.btn-pink {
+  background: $pink;
+  a {
+ color: white;
+  }
+ 
+}
+.image-caption {
+    margin: 0;
+    padding-left:10px;
+    @include fontSize(8);
+
 }

@@ -6,7 +6,7 @@ import LocationDisplay from '@/app/components/LocationDisplay';
 
 export default function SeasonClient({ season }) {
   const locations = Array.isArray(season.seasonsLocations) ? season.seasonsLocations : [];
-  const [activeLocation, setActiveLocation] = useState(locations[0] || null);
+const [activeLocation, setActiveLocation] = useState(locations[0] || null);
 
   useEffect(() => {
     const hash = window.location.hash?.replace('#', '');
@@ -33,28 +33,13 @@ export default function SeasonClient({ season }) {
         ) : null;
       })}
 
-      {/* Location Switcher */}
-      {locations.length > 1 && (
-        <div className="location-switcher">
-          {locations.map((loc) => (
-            <button
-              key={loc._id}
-              className={`location-btn ${
-                activeLocation?._id === loc._id ? 'active' : ''
-              }`}
-              onClick={() => handleLocationClick(loc)}
-            >
-              {loc.title}
-            </button>
-          ))}
-        </div>
-      )}
-
-      <LocationDisplay
-        season={season}
-        location={activeLocation}
-        componentMap={componentMap}
-      />
+<LocationDisplay
+  season={season}
+  location={activeLocation}
+  locations={locations}
+  setActiveLocation={handleLocationClick}
+  componentMap={componentMap}
+/>
     </div>
   );
 }

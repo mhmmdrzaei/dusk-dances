@@ -27,17 +27,17 @@ export default {
       },
       {
         name: 'background',
-        title: 'Background',
+        title: 'Heading',
         type: 'string',
         options: {
           list: [
             { title: 'Blue', value: 'blue' },
-            { title: 'Gray', value: 'gray' },
+            { title: 'Pink', value: 'pink' },
 
           ],
           layout: 'dropdown'
         },
-        initialValue: 'gray'
+        initialValue: 'blue'
       }
     ],
     preview: {

@@ -10,7 +10,7 @@ export default function ImageCustom({ value }) {
 
   return (
     <div className={`image-custom-container ${imageWidthClass}`}>
-      <div className="image-wrapper">
+
         <Image
           src={image?.asset?.url || '/placeholder.jpg'}
           alt={alt || 'Image'}
@@ -19,7 +19,6 @@ export default function ImageCustom({ value }) {
           className="custom-image"
           loading="lazy"
         />
-      </div>
       {caption && <p className="image-caption">{caption}</p>}
     </div>
   );

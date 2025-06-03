@@ -1,0 +1,60 @@
+@use '../../globals.scss';
+.season-main-grid {
+    display: flex;
+    flex-flow: wrap;
+    width: 100%;
+    justify-content: space-between;
+    .season-sidebar {
+        width: calc(25% - 40px);
+        .pageSideMain {
+        padding: 5px 20px 20px;
+        background: #FFCA51;
+        margin-bottom: 25px;
+
+        }
+
+        .sidebar-map{
+            display: flex;
+    justify-content: center;
+    iframe {
+        width: 100% !important;
+        height: auto;
+    }
+        }
+    }
+    .season-main-left {
+        width: 75%;
+    }
+    .location-switcher {
+        button {
+            background: black;
+            color: white;
+            @extend h2;
+            text-transform: uppercase;
+            width: 100%;
+            text-align: left;
+            border: none;
+            margin-bottom: 10px;
+            padding: 4px 10px;
+            display: flex;
+            justify-content: space-between;
+                    &::after {
+            content: "→";
+            color: #35BFF6;
+           
+        }
+
+        }
+            .active-btn {
+            background:#35BFF6;
+            color: black;
+                                &::after {
+            content: "→";
+            color: #FFCA51;
+           
+        }
+        }
+
+    }
+
+}

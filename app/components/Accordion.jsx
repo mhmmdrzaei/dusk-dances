@@ -11,22 +11,23 @@ export default function AccordionText({ value }) {
   };
 
   return (
-    <div className={`accordion-text-container ${background}`}>
-      <div className="accordion-header" onClick={handleToggle}>
-        <button className="accordion-toggle-button">
-          {isOpen ? "−" : "+"}
-        </button>
+    <div className={`accordion-text-container ${background ==="pink"? 'pink-acc': 'blue-acc'} `}>
+      <div className={`accordion-header ${isOpen ? "openHeader": ''} `} onClick={handleToggle}>
         <div className="accordion-heading">
+        <button className="accordion-toggle-button">
+          {isOpen ? "-" : "+"}
+        </button>
           <h3 className="heading">{heading}</h3>
-          {subHeading && <h4 className="subheading">{subHeading}</h4>}
+          
         </div>
+        {subHeading && <h4 className="subheading">{subHeading}</h4>}
       </div>
 
       {isOpen && (
         <div className="accordion-body">
           {/* Render text content using PortableText */}
           {text && (
-            <div className="text-content" style={{ flex: 1, padding: "20px" }}>
+            <>
               {/* Filter and render block content */}
               <PortableText
                 value={text.filter((item) => item._type === "block")}
@@ -68,7 +69,7 @@ export default function AccordionText({ value }) {
                     />
                   </div>
                 ))}
-            </div>
+            </>
           )}
         </div>
       )}

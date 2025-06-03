@@ -9,7 +9,7 @@ export default {
         type: 'string',
         options: {
           list: [
-            { title: '50%', value: '50' },
+            { title: '50%', value: '49' },
             { title: '100%', value: '100' }
           ],
           layout: 'dropdown'
@@ -34,14 +34,14 @@ export default {
         type: 'string',
         options: {
           list: [
-            { title: 'Green', value: 'Green' },
-            { title: 'Blue', value: 'blue' },
-            { title: 'Gray', value: 'gray' },
+            { title: 'White', value: 'white' },
+            { title: 'Green', value: 'green' },
+            { title: 'Pink', value: 'pink' },
 
           ],
           layout: 'dropdown'
         },
-        initialValue: 'gray'
+        initialValue: 'green'
       }
     ],
     preview: {

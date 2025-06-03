@@ -1,24 +1,19 @@
 import './globals.scss'
 
-import { DM_Sans, Figtree } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
 
-const dmSans = DM_Sans({
-  weight:["300", "900"],
-  subsets: ['latin']
-})
-const figTree = Figtree({
-  style: ['normal', 'italic'],
-  weight: ["300"],
+const inter = Inter({
+  weight:["300", "600"],
   subsets: ['latin']
 })
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${figTree.variable}`}>
+    <html lang="en" className={`${inter.variable}`}>
       <body>{children}</body>
     </html>
   )

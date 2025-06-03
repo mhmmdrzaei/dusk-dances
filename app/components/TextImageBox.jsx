@@ -10,10 +10,11 @@ export default function TextImageBox({ value }) {
 
   return (
     <div
-      className={`text-image-box ${background}`}
+      className={`text-image-box ${background}-box ${alignment === "textImage"? '': 'revesed'}`}
       style={{ flexDirection: alignment === 'textImage' ? 'row' : 'row-reverse' }}
     >
       <div className="imgBox" style={{ flex: 1 }}>
+        <div className="imgFrame"></div>
         {imageUrl && (
           <Image src={imageUrl} alt={altText} width={800} height={600} />
         )}

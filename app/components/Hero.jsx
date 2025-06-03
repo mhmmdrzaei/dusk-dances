@@ -11,9 +11,11 @@ export default function Hero({ value }) {
     <section className="hero-container">
       {heroLinksTo ? (
         <Link href={heroLinksTo}>
-          <div className="hero-box">
+
             {imageUrl && (
               <div className="hero-image">
+                <div className="background"></div>
+
                 <Image
                   src={imageUrl}
                   alt={imageAlt}
@@ -21,16 +23,18 @@ export default function Hero({ value }) {
                   height={628}
                   
                 />
-                {imageCaption && <p className="hero-caption">{imageCaption}</p>}
+             
               </div>
             )}
-            {text && <div className="hero-text">{text}</div>}
-          </div>
+             {text && <div className="hero-text"><h2>{text}</h2></div>}
+               
+            
         </Link>
       ) : (
-        <div className="hero-box">
+          <>
           {imageUrl && (
             <div className="hero-image">
+              <div className="background"></div>
               <Image
                 src={imageUrl}
                 alt={imageAlt}
@@ -38,12 +42,13 @@ export default function Hero({ value }) {
                 height={628}
                 
               />
-              {imageCaption && <p className="hero-caption">{imageCaption}</p>}
+            
             </div>
           )}
-          {text && <div className="hero-text">{text}</div>}
-        </div>
+          {text && <div className="hero-text"><h2>{text}</h2></div>}
+        </>
       )}
+      {imageCaption && <p className="image-caption">{imageCaption}</p>}
     </section>
   );
 }

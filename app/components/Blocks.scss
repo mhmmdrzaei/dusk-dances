@@ -1,0 +1,458 @@
+@use '../globals.scss';
+$blue: #35BFF6;
+
+$pink: #FF4F5A;
+$lightPink: #FBE4E2;
+$green: #B5E100;
+$lightGreen: #E9EFD3;
+$yellow: #FFCA51;
+@mixin fontSize($sizeValue){
+  font-size: $sizeValue * 1px;
+  font-size: calc($sizeValue/10) * 1rem;
+}
+
+
+.body-text-container {
+    margin: 25px 0;
+
+}
+.pink-bg-text {
+    background: $lightPink;
+}
+.white-bg-text {
+    background: white;
+}
+.green-bg-text {
+    background: $lightGreen;
+}
+.black-back {
+    padding: 25px 25px;
+    border-radius: 7px;
+    background: black;
+    color: white;
+}
+.heading-level-text {
+
+    margin: 25px auto;
+
+}
+.button-container {
+
+    margin: 25px auto;
+    a {
+        display: flex;
+        padding: 10px 20px;
+        border-radius: 7px;
+        text-decoration: none;
+        width: fit-content;
+        align-items: center;
+        span {
+            padding: 0 10px;
+        }
+    }
+}
+.text-image-box {
+    padding: 0 20px;
+    margin: 25px auto;
+    @extend .flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .imgBox {
+        position: relative;
+        width: 49%;
+        .imgFrame {
+        position: absolute;
+        position: absolute;
+    width: 51%;
+    height: 50%;
+    left: -10px;
+    top: -10px;
+    }
+        img {
+            position: relative;
+            max-height: 500px;
+            padding: 10px;
+            width: auto;
+            margin: 0 auto;
+        }
+        .caption {
+            text-align: center;
+            margin-top: 5px;
+        }
+    }
+    .text-content{
+        width: 49%;
+        position: relative;
+    }
+}
+.revesed {
+    .imgBox {
+        .imgFrame {
+            left: auto;
+            right: -25px;
+            
+        }
+    }
+}
+.blue-box {
+    .imgBox .imgFrame {
+        background: $blue;
+    }
+    .text-content {
+        background: $lightPink;
+    }
+}
+.pink-box {
+    .imgBox .imgFrame {
+        background: $pink;
+    }
+    .text-content {
+        background: white;
+    }
+}
+.green-box {
+    .imgBox .imgFrame {
+        background: $green;
+    }
+    .text-content {
+        background: $lightGreen;
+    }
+}
+.carousel-container {
+    margin: 25px auto;
+    width: 100%;
+    h2 {
+        width: 100%;
+        margin: 0 0 10px;
+    }
+    @extend .flex;
+    justify-content: space-between;
+    .slick-slider {
+        max-width: 100%;
+    }
+    .carousel-image {
+        max-height: 600px;
+        width: auto;
+    }
+
+}
+  .slick-next, .slick-prev {
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    
+  }
+  
+  .slick-next:before, .slick-prev:before {
+    font-size: 35px;
+    opacity: 1;
+    @extend h3;
+    background: $pink;
+    border-radius: 50%;
+
+  }
+  .slick-next {
+    right: 1%;
+  }
+  .slick-prev {
+    left: .5%;
+  }
+.post-each {
+    background: #E7E7E7;
+    border: 1px solid #E7E7E7;
+    h3{
+        padding: 10px 15px; 
+    }
+    margin-bottom: 30px;
+    border-radius: 7px;
+}
+.content-main {
+    background: white;
+    padding: 10px 15px;
+    .videoContainer {
+        margin: 10px auto;
+        div {
+            margin: 0 auto;
+        }
+    }
+    img {
+        max-height: 700px;
+        margin: 0 auto;
+        width: auto;
+    }
+}
+.heading-Image {
+    position: relative;
+    padding-bottom: 90dvh;
+    .headingImgBG {
+        position: absolute;
+        left: -20px;
+        top: -20px;
+        width: 50%;
+        height: 50px;
+        background: #E7E7E7;
+        z-index: -1;
+
+    }
+    p {
+        width: fit-content;
+        margin-top: 5px;
+        max-width: 400px;
+        margin-right: 10px;
+        position: absolute;
+        bottom: -10px;
+    }
+    .headingText {
+        background: #E7E7E7;
+        width: fit-content;
+        min-width: 300px;
+        padding: 20px;
+        right: -20px;
+        position: absolute;
+        bottom: 0px;
+    }
+    img {
+        width: 100%;
+        position: absolute;
+        height: 87dvh;
+        left: 0;
+        object-fit: cover;
+       
+    }
+}
+.logo-container {
+    margin: 30px auto;
+    max-width: 950px;
+    @extend .flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    a {
+        margin: 20px 15px;
+        
+    }
+
+}
+.videoPlayer {
+    max-width: 750px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+//images 
+.image-custom-container {
+    margin: 25px 0;
+
+}
+.half-width {
+    width: 49%;
+}
+.full-width {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    img {
+        margin: 0 auto;
+        max-width: 750px;
+        height: auto;
+
+    }
+    
+}
+
+//Hero 
+.hero-container {
+    position: relative;
+    margin: 25px auto;
+    width: 100%;
+    a {
+        text-decoration: none;
+        position: relative;
+    }
+    .hero-image {
+       max-width: 90%;
+        position: relative;
+        max-height: 80dvh;
+        overflow: hidden;
+        .background {
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            top: 0;
+            left: 0;
+            background: $green;
+        }
+
+        img {
+            margin-top: 2em;
+            margin-left: 2em;
+            object-fit: cover;
+            position: relative;
+            object-position: bottom;
+            max-height: calc(80dvh - 10px);
+
+            width: 100%;
+        }
+
+    }
+    .hero-text {
+        position: absolute;
+        bottom: -1em;
+        right:0;
+        width: fit-content;
+        padding: 0px 20px;
+        background-color: $pink;
+        color: white;
+        min-width: 250px;
+        text-align: center;
+    }
+            .image-caption {
+            padding-left: 2em;
+            position: relative;
+            // bottom: -2em;
+            width: fit-content;
+        }
+}
+.line-divider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 61px;
+  
+}
+
+.line-divider {
+  position: absolute;
+  left: -30px;
+  width: 100vw;
+  padding: 25px 0;
+}
+
+.line-divider hr {
+  height: 11px;
+  border: none;
+  background-color: currentColor;
+  margin: 0;
+}
+.pink-line hr {
+    background: $pink;
+}
+.orange-line hr {
+    background: $yellow;
+}
+//gallery 
+.gallery-container {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    background: black;
+    color: white;
+    padding: 20px;
+    h2 {
+    margin: 0 0 10px;
+    }
+    .thumbnail-slider {
+        max-width: 300px;
+    }
+    .slick-slide img {
+        margin: 0 auto;
+    }
+}
+
+
+.gallery-large-image {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  margin-bottom: 1rem;
+
+  overflow: hidden;
+}
+
+.gallery-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.gallery-thumbnails {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+
+.thumbnail-button {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.thumbnail-button.active {
+  border-color: #000;
+}
+
+.thumbnail-image {
+  object-fit: cover;
+  object-position: center;
+}
+// accordion
+.accordion-text-container {
+
+    .accordion-body {
+        background: $lightGreen;
+        padding: 20px;
+        border-radius: 0 0 8px 8px;
+    }
+    width: 100%;
+    margin: 25px 0;
+    .accordion-header {
+        display: flex;
+        flex-flow: wrap;
+        border-radius: 8px;
+
+        justify-content: space-between;
+        padding: 10px;
+        align-items: center;
+        .accordion-heading {
+            display: flex;
+            button {
+                background: transparent;
+                border: none;
+                @extend h3;
+            }
+        }
+        h2,h3,h4 {
+            margin: 0;
+        }
+    }
+    .openHeader {
+        border-radius: 8px 8px 0 0;
+    }
+}
+.blue-acc {
+    .accordion-header{
+        background: $blue;
+        .accordion-heading {
+            button {
+                color: $pink;
+            }
+        }
+    }
+}
+.pink-acc {
+    .accordion-header{
+        background: $pink;
+        color: white;
+        .accordion-heading {
+            button {
+                color: $blue;
+            }
+        }
+    }
+}

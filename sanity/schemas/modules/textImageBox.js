@@ -51,9 +51,9 @@ export default {
         type: 'string',
         options: {
           list: [
-            { title: 'Green', value: 'Green' },
+            { title: 'Green', value: 'green' },
             { title: 'Blue', value: 'blue' },
-            { title: 'Gray', value: 'gray' },
+            { title: 'Pink', value: 'pink' },
 
           ],
           layout: 'dropdown'

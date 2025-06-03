@@ -37,9 +37,7 @@ export default function ImageCarousel({ value }) {
 
   return (
     <div className="carousel-container">
-      <div className="carousel-title">
         {title && <h2>{title}</h2>} 
-      </div>
 
       <Slider {...settings}>
         {slides?.map((slide, index) => (
@@ -48,11 +46,11 @@ export default function ImageCarousel({ value }) {
               src={slide.image?.asset?.url || '/placeholder.jpg'}
               alt={slide.image?.alt || 'Gallery image'}
               width={1200}
-              height={800}
+              height={600}
               className="carousel-image"
               loading="lazy"
             />
-            {slide.caption && <p className="carousel-caption">{slide.caption}</p>}
+            {slide.caption && <p className="image-caption">{slide.caption}</p>}
           </div>
         ))}
       </Slider>

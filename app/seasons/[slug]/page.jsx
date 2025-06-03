@@ -2,6 +2,7 @@ import { getSeason, getsettings } from '@/sanity/sanity.utils';
 import { componentMap } from '@/app/components/ComponentMap';
 import Layout from '@/app/components/Layout';
 import SeasonClient from './SeasonClient';
+import './seasons.scss'
 
 export async function generateMetadata({ params }) {
   const { slug } = params;

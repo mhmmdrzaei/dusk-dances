@@ -9,8 +9,7 @@ export default {
         type: 'string',
         options: {
           list: [
-            { title: 'Green', value: 'Green' },
-            { title: 'Blue', value: 'blue' },
+            { title: 'Pink', value: 'pink' },
             { title: 'Orange', value: 'orange' },
 
           ],
