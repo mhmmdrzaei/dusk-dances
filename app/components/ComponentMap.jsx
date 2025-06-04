@@ -10,6 +10,7 @@ import VideoPlayer from '../components/VideoPlayer';
 import ImageCarousel from '../components/ImageCarousel';
 import Gallery from '../components/Gallery';
 import Image from '../components/Image';
+import CanadaHelpsEmbed from '../components/CanadaHelpsEmbed';
 
 export const componentMap = {
 
@@ -24,5 +25,6 @@ export const componentMap = {
   lineDivider: LineDivider,
   logoContainer: LogoContainer,
   textImageBox: TextImageBox,
-  video: VideoPlayer
+  video: VideoPlayer,
+  canadaHelpsEmbed: CanadaHelpsEmbed
 };

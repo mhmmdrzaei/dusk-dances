@@ -1,42 +1,43 @@
-'use client';
-import { useState } from 'react';
+"use client";
 
-export default function Input({ title, label, ctaText, onSubmit }) {
-  const [inputValue, setInputValue] = useState('');
+export default function Input({ title}) {
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (onSubmit) {
-      onSubmit(inputValue);
-    }
-    setInputValue('');
-  };
 
   return (
-    <div className="w-full max-w-md text-white">
-      {title && <h3 className="font-semibold text-lg mb-2">{title}</h3>}
-      <form onSubmit={handleSubmit} className="flex items-end gap-1">
-        <div className="flex-1">
-          <label className="sr-only text-xs">{label}</label>
+    <div className="mailing-list">
+      {title && <h3>{title}</h3>}
+      <form
+        action="https://duskdances.us3.list-manage2.com/subscribe/post?u=48a3f28fb14c8f2617d6b2cdb&amp;id=bdefd00696"
+        method="post"
+        target="_blank"
+        noValidate
+        className="mailchimp-form"
+      >
+        <div className="mc-field-group">
           <input
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            placeholder={label}
-            className="w-full px-0 py-2 bg-transparent border-b-2 border-white 
-              text-white text-xs placeholder-white focus:outline-none focus:border-b-white 
-              transition-colors"
-            aria-label={label}
+            placeholder="Email (required)"
+            type="email"
+            name="EMAIL"
+            id="mce-EMAIL"
+            required
           />
         </div>
 
-        <button
-          type="submit"
-          className="px-4 py-1.5 bg-yellow-400 text-black rounded-md hover:bg-yellow-600 
-            transition-colors font-medium whitespace-nowrap"
+        {/* Hidden anti-bot field */}
+        <div
+          style={{ position: "absolute", left: "-5000px" }}
+          aria-hidden="true"
         >
-          {ctaText}
-        </button>
+          <input
+            type="text"
+            name="b_48a3f28fb14c8f2617d6b2cdb_bdefd00696"
+            tabIndex={-1}
+          />
+        </div>
+
+        <div className="form-actions">
+          <button type="submit">Go</button>
+        </div>
       </form>
     </div>
   );

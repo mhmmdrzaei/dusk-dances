@@ -1,5 +1,5 @@
 :root {
-  --background: #F0F4ED;
+  --background: #f0f4ed;
   --foreground: #171717;
 }
 
@@ -9,107 +9,259 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
-$blue: #35BFF6;
+$blue: #35bff6;
 
-$pink: #FF4F5A;
-$lightPink: #FBE4E2;
-$green: #B5E100;
-$lightGreen: #E9EFD3;
-$yellow: #FFCA51;
-
-
+$pink: #ff4f5a;
+$lightPink: #fbe4e2;
+$green: #b5e100;
+$lightGreen: #e9efd3;
+$yellow: #ffca51;
 
 @font-face {
-    font-family: 'interstatebold';
-    src: url('../public/fonts/interstate-boldcompressed-webfont.woff2') format('woff2'),
-         url('../public/fonts/interstate-boldcompressed-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: "interstatebold";
+  src:
+    url("../public/fonts/interstate-boldcompressed-webfont.woff2")
+      format("woff2"),
+    url("../public/fonts/interstate-boldcompressed-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 .page-container {
   display: flex;
   flex-flow: wrap;
   justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
-@mixin fontSize($sizeValue){
+@mixin fontSize($sizeValue) {
   font-size: $sizeValue * 1px;
   font-size: calc($sizeValue/10) * 1rem;
 }
 .flex {
-display: flex;
-flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 }
 img {
   max-width: 100%;
   height: auto;
 }
 
-
-
-h1, h2, h3, h4 {
-  font-family: 'interstatebold', sans-serif;
+h1,
+h2,
+h3,
+h4 {
+  font-family: "interstatebold", sans-serif;
   font-weight: 900;
   margin: 0;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    text-decoration: underline;
+  }
+}
 
-h1 { 
-
+h1 {
   @include fontSize(33);
 }
 h2 {
   @include fontSize(24);
 }
 h3 {
- @include fontSize(18);
+  @include fontSize(18);
 }
 h4 {
- @include fontSize(14);
+  @include fontSize(14);
 }
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', sans-serif;
-   @include fontSize(9);
+  font-family: "Inter", sans-serif;
+  @include fontSize(9);
   font-weight: 300;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 15px;
+  margin: 0;
 }
 // CTA Button
 
 .ctaButton {
-      font-family: 'interstatebold', sans-serif;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      @include fontSize(14);
-      width: fit-content;
-      height: fit-content;
-      a {
-        text-decoration: none;
-      }
+  font-family: "interstatebold", sans-serif;
+  text-transform: uppercase;
 
-}
-.btn-blue{
-  background: $blue;
+  @include fontSize(14);
+  display: flex;
+  width: 100%;
   a {
-  color: black;
+    text-decoration: none;
+    text-align: center;
+    min-width: 54px;
+    display: block;
+    width: fit-content;
+     height: fit-content;
+      padding: 4px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
   }
-
+}
+.btn-blue {
+  
+  a {
+    background: $blue;
+    color: black;
+  }
 }
 .btn-pink {
-  background: $pink;
+  
   a {
- color: white;
+    background: $pink;
+    color: white;
   }
- 
 }
 .image-caption {
-    margin: 0;
-    padding-left:10px;
-    @include fontSize(8);
-
+  margin: 0;
+  padding-left: 10px;
+  @include fontSize(8);
 }
+
+//header container
+.header-container {
+  @extend .page-container;
+  margin: 20px auto;
+  .logo-header {
+    max-width: 230px;
+  }
+  .menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 70%;
+    
+
+
+    .menu-item {
+      position: relative;
+      @extend h2;
+       text-transform: uppercase;
+      margin-bottom: 5px;
+      a:hover {
+        text-decoration: none;
+        
+      }
+      .dropdown-button {
+        @extend h2;
+         text-transform: uppercase;
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 0;
+      }
+      .submenu-list {
+        position: absolute;
+        margin: 0;
+        z-index: 2;
+        display: flex;
+        flex-flow: wrap;
+        list-style: none;
+        width: 100%;
+        max-width: 640px;
+        padding: 20px;
+        a {
+          display: block;
+        }
+        .submenu-column-left {
+          width: 50%;
+        }
+        .submenu-column-right {
+          text-align: right;
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+//footer 
+footer {
+  background: black;
+  color: white;
+  @extend .flex;
+  justify-content: space-between;
+  padding: 20px;
+  .footerLeft {
+    width: 75%;
+    @extend .flex;
+    justify-content: space-between;
+    .footer-col {
+      margin-bottom: 20px;
+        p {
+          margin: 5px 0 0;
+        }
+        h3 {
+          text-transform: uppercase;
+        }
+    }
+    .footer-col-1,.footer-col-2{
+      width: 29%;
+      div {
+        max-width: 250px;
+        
+
+      }
+    }
+    .footer-col-3 {
+      width: 35%;
+    }
+    
+  }
+  .footerRight {
+    width: 25%;
+    text-align: right;
+    .socials-container {
+      @include fontSize(20);
+    }
+    .footerMenu {
+      text-transform: uppercase;
+    .footer-link {
+      @extend h3;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    }
+
+  }
+  
+}
+.mailchimp-form {
+  display: flex;
+  margin-top: 10px;
+  .mc-field-group {
+    width: calc(100% - 52px);
+    input {
+      width: calc(100% - 10px);
+      height: 25px;
+    }
+  }
+  .form-actions {
+  margin-left: 10px;
+  button {
+     font-family: "interstatebold", sans-serif;
+  text-transform: uppercase;
+
+  @include fontSize(14);
+    background: $blue;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    width: fit-content;
+     height: fit-content;
+      padding: 4px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  }
+}
+}
+

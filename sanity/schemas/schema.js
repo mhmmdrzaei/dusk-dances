@@ -21,6 +21,7 @@ import logoContainer from './modules/logoContainer'
 import textImageBox from './modules/textImageBox'
 import video from './modules/video'
 import seo from './seo'
+import canadaHelpsEmbed from './modules/canadaHelpsEmbed'
 export const schemaTypes = [
 
       // Document types
@@ -44,6 +45,7 @@ export const schemaTypes = [
       logoContainer,
       textImageBox,
       video,
+      canadaHelpsEmbed,
 
       seo
 

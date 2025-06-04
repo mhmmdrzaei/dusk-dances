@@ -118,8 +118,8 @@ export default {
                 type: 'string',
                 options: {
                   list: [
-                    { title: 'Orange', value: 'orange' },
-                    { title: 'Yellow', value: 'yellow' }
+                    { title: 'Blue', value: 'blue' },
+                    { title: 'Pink', value: 'pink' }
                   ]
                 },
                 hidden: ({ parent }) => parent?.linkType !== 'button'
@@ -256,8 +256,8 @@ export default {
                     type: 'string',
                     options: {
                       list: [
-                        { title: 'Orange', value: 'orange' },
-                        { title: 'Yellow', value: 'yellow' }
+                        { title: 'Blue', value: 'blue' },
+                    { title: 'Pink', value: 'pink' }
                       ]
                     },
                     hidden: ({ parent }) => parent?.linkType !== 'button'

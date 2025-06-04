@@ -11,7 +11,7 @@ export default function CTAButton({ value }) {
   if (!buttonLabel || !buttonUrl) return null;
 
   return (
-    <div className={`ctaButton ${buttonColor == "blue"? "btn-blue": "btn-pink"}`} style={{ textAlign: buttonAlignment }} data-type="ctaButton">
+    <div className={`ctaButton ${buttonColor == "blue"? "btn-blue": "btn-pink"}`} style={{ justifyContent:`${buttonAlignment == "left"? "flex-start": buttonAlignment =="center" ? "center": "flex-end"}` }} data-type="ctaButton">
       <a
         href={buttonUrl}
         target={openInNewWindow ? '_blank' : '_self'}

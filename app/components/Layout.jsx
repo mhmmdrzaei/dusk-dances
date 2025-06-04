@@ -7,7 +7,7 @@ export default async function Layout({ children }) {
   return (
     <>
       <Header settings={settings} />
-      <main>{children}</main>
+      <main className='page-container'>{children}</main>
       <Footer settings={settings} />
     </>
   );

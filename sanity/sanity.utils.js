@@ -52,9 +52,10 @@ const contentBlocks = `
       _type == 'imageCustom' => {
         image {
           asset->{ url },
-          alt,
-          caption
+  
         },
+          alt,
+          caption,
         width
       }
     }
@@ -127,10 +128,20 @@ const contentBlocks = `
     _key,
     image {
       asset->{ url },
-      alt,
-      caption
+
     },
+    alt,
+    caption,
     width
+  },
+  _type == 'canadaHelpsEmbed' => {
+    _type,
+    _key,
+    scriptSrc,
+    pageId,
+    language,
+    rootUrl,
+    formType,
   },
   _type == 'lineDivider' => {
     _type,
@@ -365,9 +376,10 @@ export async function getSeason(slug) {
               asset->{
                 url
               },
-              alt,
-              caption
+
             },
+            alt,
+              caption,
             width
           }
         },
@@ -424,9 +436,10 @@ _key,
         asset->{
           url
         },
-        alt,
-        caption
+
       },
+     alt,
+        caption,
       width
     },
     _type == 'lineDivider' => {
@@ -498,9 +511,10 @@ _key,
             asset->{
               url
             },
-            alt,
-            caption
+
           },
+          alt,
+          caption,
           width
         }
       },
@@ -584,9 +598,9 @@ _key,
         asset->{
           url
         },
-        alt,
-        caption
       },
+      alt,
+      caption,
       width
     },
     _type == 'lineDivider' => {

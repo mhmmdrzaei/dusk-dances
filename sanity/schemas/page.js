@@ -36,6 +36,9 @@ export default {
           { type: 'lineDivider'},
           { type: 'textImageBox'},
           { type: 'video' },
+          {
+            type: 'canadaHelpsEmbed'
+          }
         ]
       },
       {
