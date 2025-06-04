@@ -26,10 +26,10 @@ const { pageDetailsBlocks = [] } = season;
         )}
         
 
-        {pageDetailsBlocks.map((block) => {
+        {pageDetailsBlocks.map((block,i) => {
           const BlockComponent = componentMap[block._type];
           return BlockComponent ? (
-            <BlockComponent key={block._key} value={block} />
+            <BlockComponent key={block._key} value={block}  initialOpen={i === 0 && block._type === 'accordionText'} />
           ) : null;
         })}
       </div>

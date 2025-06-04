@@ -635,7 +635,7 @@ _key,
 export async function getSeasons() {
   return createClient(clientConfig).fetch(
     groq`
-      *[_type == "seasons"] | order(_createdAt desc) {
+      *[_type == "seasons"] | order(_createdAt asc) {
         title,
         slug,
         pageDesc,

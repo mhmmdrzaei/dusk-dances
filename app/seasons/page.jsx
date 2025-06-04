@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { PortableText } from 'next-sanity';
 import { getSeasons, getsettings } from '@/sanity/sanity.utils';
 import Layout from '../components/Layout';
-
+import Link from 'next/link';
 
 
 export async function generateMetadata() {
@@ -66,6 +66,7 @@ export default async function Seasons() {
 
           return (
             <div key={slug.current} className="season-entry">
+              <Link href={`/seasons/${slug.current}`}>
               <div className="season-entry-left">
                 <h2>{title}</h2>
                 {pageDesc && <PortableText value={pageDesc} />}
@@ -95,6 +96,7 @@ export default async function Seasons() {
                   />
                 )}
               </div>
+              </Link>
             </div>
           );
         })}

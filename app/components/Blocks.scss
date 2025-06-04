@@ -13,7 +13,7 @@ $yellow: #FFCA51;
 
 
 .body-text-container {
-    margin: 25px 0;
+    margin: 20px 0;
 
 }
 .pink-bg-text {
@@ -25,20 +25,15 @@ $yellow: #FFCA51;
 .green-bg-text {
     background: $lightGreen;
 }
-.black-back {
-    padding: 25px 25px;
-    border-radius: 7px;
-    background: black;
-    color: white;
-}
+
 .heading-level-text {
 
-    margin: 25px auto;
+    margin: 20px auto;
 
 }
 .button-container {
 
-    margin: 25px auto;
+    margin: 20px auto;
     a {
         display: flex;
         padding: 10px 20px;
@@ -53,7 +48,7 @@ $yellow: #FFCA51;
 }
 .text-image-box {
     padding: 0 20px;
-    margin: 25px auto;
+    margin: 20px auto;
     @extend .flex;
     justify-content: space-between;
     align-items: center;
@@ -120,7 +115,7 @@ $yellow: #FFCA51;
     }
 }
 .carousel-container {
-    margin: 25px auto;
+    margin: 20px auto;
     width: 100%;
     h2 {
         width: 100%;
@@ -243,21 +238,25 @@ $yellow: #FFCA51;
 
 //images 
 .image-custom-container {
-    margin: 25px 0;
+    margin: 20px 0;
 
 }
 .half-width {
     width: 49%;
 }
 .full-width {
-    display: flex;
-    align-items: center;
+
     width: 100%;
     img {
         margin: 0 auto;
         max-width: 750px;
         height: auto;
+        display: block;
+        margin: 0 auto;
 
+    }
+    .image-caption {
+        text-align: center;
     }
     
 }
@@ -265,7 +264,7 @@ $yellow: #FFCA51;
 //Hero 
 .hero-container {
     position: relative;
-    margin: 25px auto;
+    margin: 20px auto;
     width: 100%;
     a {
         text-decoration: none;
@@ -324,9 +323,9 @@ $yellow: #FFCA51;
 
 .line-divider {
   position: absolute;
-  left: -30px;
-  width: 100vw;
-  padding: 25px 0;
+  right: 0;
+  width: calc(100vw + 50px);
+  padding: 20px 0;
 }
 
 .line-divider hr {
@@ -410,7 +409,7 @@ $yellow: #FFCA51;
         border-radius: 0 0 8px 8px;
     }
     width: 100%;
-    margin: 25px 0;
+    margin: 20px 0;
     .accordion-header {
         display: flex;
         flex-flow: wrap;

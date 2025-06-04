@@ -2,9 +2,9 @@
 import { useState } from "react";
 import { PortableText } from "@portabletext/react";
 import CTAButton from "@/app/components/CTAButtonBox";
-export default function AccordionText({ value }) {
+export default function AccordionText({ value, initialOpen }) {
   const { heading, subHeading, text, background } = value;
-  const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(initialOpen);
 
   const handleToggle = () => {
     setIsOpen((prev) => !prev); // Toggle the accordion open/close state

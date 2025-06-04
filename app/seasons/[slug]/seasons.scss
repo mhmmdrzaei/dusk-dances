@@ -24,6 +24,9 @@
     }
     .season-main-left {
         width: 75%;
+        div:nth-child(1){
+            margin-top: 0;
+        }
     }
     .location-switcher {
         button {
