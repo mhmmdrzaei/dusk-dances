@@ -1,11 +1,18 @@
-export default function HeadingText({ headingLevel = 'h1', width = '100', textAlign = 'left', text }) {
+export default function HeadingText({ value }) {
+  const {
+    headingLevel = 'h1',
+    width = '100',
+    textAlign = 'left',
+    text,
+  } = value || {};
+
   if (!text) return null;
 
   const validHeadingLevels = ['h1', 'h2', 'h3', 'h4'];
   const HeadingTag = validHeadingLevels.includes(headingLevel) ? headingLevel : 'h1';
 
   return (
-    <div className={`heading-text-container ${textAlign}`} style={{ width: `${width}%` }}>
+    <div className={`heading-text-container ${textAlign}`} style={{ width: `${width}%`, textAlign: `${textAlign}` }}>
       <HeadingTag className="heading-text">{text}</HeadingTag>
     </div>
   );

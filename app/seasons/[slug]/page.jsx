@@ -5,14 +5,15 @@ import SeasonClient from './SeasonClient';
 import './seasons.scss'
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } =  await params;
   const settings = await getsettings();
-  const season = await getSeason(slug);
+  const page = await getSeason(slug);
 
-  const title = `${settings?.siteTitle || ''} | ${season?.title || ''}`;
-  const description = season?.seo?.seoDescription || settings?.siteDescription || '';
+  const title = `${settings?.siteTitle || ''} | ${page?.title || ''}`;
+  const description = page?.seo?.seoDescription || settings?.siteDescription || '';
+
   const fallbackImage = settings?.seoImg?.asset?.url || '';
-  const seoImage = season?.seo?.seoImage?.asset?.url || fallbackImage;
+  const seoImage = page?.seo?.seoImage?.asset?.url || fallbackImage;
 
   return {
     title,
@@ -21,13 +22,28 @@ export async function generateMetadata({ params }) {
       title,
       description,
       url: seoImage,
-      images: [{ url: seoImage, width: 1200, height: 628 }],
+      siteName: settings?.siteTitle || '',
+      images: [
+        {
+          url: seoImage,
+          width: 1200,
+          height: 628,
+        },
+      ],
+      locale: 'en_CA',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [seoImage],
     },
   };
 }
 
 export default async function SeasonPage({ params }) {
-  const { slug } = params;
+    const { slug } = await params;
   const season = await getSeason(slug);
 
   return (

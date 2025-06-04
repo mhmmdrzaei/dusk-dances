@@ -269,23 +269,6 @@ export default {
         ]
       },
       {
-        name: 'email',
-        title: 'Email',
-        type: 'object',
-        fields: [
-          {
-            name: 'emailLabel',
-            title: 'Email Label',
-            type: 'string'
-          },
-          {
-            name: 'emailUrl',
-            title: 'Email URL',
-            type: 'string'
-          }
-        ]
-      },
-      {
         name:'seoImg',
         title: 'Seo Image',
         type: 'image',

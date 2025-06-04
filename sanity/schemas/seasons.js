@@ -112,7 +112,12 @@ export default {
           { type: 'textImageBox' },
           { type: 'video' },
         ]
-        }
+        },
+        {
+        name: 'seo',
+        title: 'SEO',
+        type: 'seo'
+      },
     ],
     preview: {
       select: {
