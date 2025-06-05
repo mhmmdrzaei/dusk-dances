@@ -1,7 +1,8 @@
 import { getNews, getsettings } from "@/sanity/sanity.utils";
 import Layout from "@/app/components/Layout";
 import NewsCard from "@/app/components/NewsCard";
-
+import './newscard.scss'
+import LineDivider from "../components/LineDivider";
 export async function generateMetadata() {
   const settings = await getsettings();
 
@@ -50,10 +51,9 @@ export default async function Page() {
 
   return (
     <Layout>
-      <div className="news-page-container">
         {currentPosts.length > 0 && (
           <>
-            <h2>Current Posts</h2>
+            <h1 className="uppercase">Current Posts</h1>
             {currentPosts.map((post, index) => (
               <NewsCard
                 key={post._id ?? index}
@@ -64,9 +64,10 @@ export default async function Page() {
             ))}
           </>
         )}
+        <LineDivider value={{background: "orange"}} />
         {pastPosts.length > 0 && (
           <>
-            <h2>Past Posts</h2>
+            <h1 className="uppercase">Past Posts</h1>
             {pastPosts.map((post, index) => (
               <NewsCard
                 key={post._id ?? index}
@@ -77,7 +78,7 @@ export default async function Page() {
             ))}
           </>
         )}
-      </div>
+ 
     </Layout>
   );
 }

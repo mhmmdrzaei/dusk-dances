@@ -20,6 +20,10 @@ export default {
         },
         // validation: Rule => Rule.required() TODO are there spefic urls for each staff?
       },
+      {name: 'order',
+      type: 'number',
+      },
+
       {
         name: 'image',
         title: 'Person Image',

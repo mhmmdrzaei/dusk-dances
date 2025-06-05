@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
+import CTAButton from './CTAButtonBox';
 
 const linkResolver = (link) => {
   if (!link) {
@@ -19,7 +20,7 @@ const linkResolver = (link) => {
 export default function NewsCard({ title, slug, description }) {
   const link = linkResolver(slug);
   return (
-    <section className="hero-container">
+    <section className="news-container">
       <h2 className="news-title">{title}</h2>
       {description && (
         <div className="news-description">
@@ -27,9 +28,16 @@ export default function NewsCard({ title, slug, description }) {
         </div>
       )}
       {link && (
-        <Link href={link} className="news-link">
-          Learn More
-        </Link>
+                    <CTAButton
+                  
+                      value={{
+                        buttonLabel: "Read More",
+                        buttonUrl: link,
+                        openInNewWindow: false,
+                        buttonColor: "pink",
+                        buttonAlignment: "right"
+                      }}
+                    />
       )}
     </section>
   );

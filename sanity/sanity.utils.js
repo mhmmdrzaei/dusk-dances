@@ -718,6 +718,7 @@ export async function getAllStaff() {
      *[_type == "staff"] {
       name,
       _id,
+      order,
       slug {
         current
       },

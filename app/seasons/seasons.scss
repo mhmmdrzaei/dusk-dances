@@ -1,0 +1,105 @@
+@use "../components/Blocks.scss";
+$blue: #35bff6;
+
+$pink: #ff4f5a;
+$lightPink: #fbe4e2;
+$green: #b5e100;
+$lightGreen: #e9efd3;
+$yellow: #ffca51;
+.season-entry {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  margin: 20px 0;
+  .season-poster {
+    position: relative;
+    width: 25%;
+    height: fit-content;
+    .background {
+      position: absolute;
+      background: $green;
+      width: 80%;
+      height: 80%;
+    }
+    img {
+      position: relative;
+      padding: 20px;
+      max-width: calc(100% - 40px);
+    }
+  }
+  .season-desc {
+    width: calc(74% - 40px);
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    background-color: $lightGreen;
+    padding: 20px;
+    height: fit-content;
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    .season-title {
+        width: 100%;
+    }
+    h2 {
+      color: $pink;
+      width: 100%;
+      text-transform: uppercase;
+    }
+    .locations-title {
+        width: fit-content;
+        text-align: right;
+    }
+    .ctaButton {
+      margin-top: 10px;
+    }
+    .eighty-width {
+        width: 70%;
+    }
+    .season-entry-locations {
+        width: 29%;
+        margin-top: 20px;
+        a {
+            display: flex;
+            justify-content: space-between;
+            @extend h4;
+            text-transform: uppercase;
+            color: white;
+            background: black;
+            margin-bottom: 10px;
+            padding: 10px 10px;
+            
+             &::after {
+            content: "→";
+            color: #35BFF6;
+           
+        }
+        }
+    }
+  }
+}
+.season-entry:nth-child(even) {
+  flex-direction: row-reverse;
+  .season-poster {
+    .background {
+      background: $blue;
+      right: 0;
+    }
+  }
+  .season-desc {
+    background-color: white;
+    h2 {
+      color: black;
+    }
+    .ctaButton {
+      a {
+        background: $blue;
+        color: black;
+      }
+      justify-content: flex-start !important;
+    }
+  }
+}

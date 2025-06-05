@@ -75,7 +75,7 @@ const toggleMenu = (index) => {
                               key={i}
                               href={subItem.subMenuItemUrl}
                               className="submenu-link"
-                              style={{ color: "white" }}
+                              
                             >
                               {subItem.subMenuItemName}
                             </a>
@@ -87,7 +87,7 @@ const toggleMenu = (index) => {
                               key={i}
                               href={subItem.subMenuItemUrl}
                               className="submenu-link"
-                              style={{ color: "white" }}
+                            
                             >
                               {subItem.subMenuItemName}
                             </a>

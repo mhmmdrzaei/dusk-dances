@@ -43,7 +43,6 @@ export default async function Page({ params }) {
   return (
     <Layout>
       <div className="page-container">
-        <h1>{call.title}</h1>
         {call.pageBlocks?.map((block) => {
           const BlockComponent = componentMap[block._type];
           if (!BlockComponent) {

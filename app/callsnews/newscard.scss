@@ -1,0 +1,30 @@
+@use '../components/Blocks.scss';
+$pink: #FF4F5A;
+$lightPink: #FBE4E2;
+$green: #B5E100;
+$lightGreen: #E9EFD3;
+$yellow: #FFCA51;
+$blue: #35bff6;
+
+.news-container{
+    background: $lightGreen;
+    padding: 20px;
+    margin: 20px 0;
+    width: 100%;
+    h2 {
+        text-transform: uppercase;
+        color: $pink;
+    }
+}
+.news-container:nth-child(odd) {
+    background: white;
+    h2 {
+        color: black;
+    }
+    .ctaButton {
+        a {
+            background: $blue;
+            color: black;
+        }
+    }
+}

@@ -4,7 +4,7 @@ export default function LineDivider({ value }) {
 
   return (
     <div className="line-divider-wrapper">
-      <div className={`line-divider ${lineColorClass}-line`}>
+      <div className={`line-divider ${lineColorClass == "pink"? "pink-line": "orange-line"}`}>
         <hr />
       </div>
     </div>

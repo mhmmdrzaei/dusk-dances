@@ -76,6 +76,12 @@ h3 {
 h4 {
   @include fontSize(14);
 }
+p {
+  line-height: 1.5;
+}
+.uppercase {
+  text-transform: uppercase;
+}
 body {
   background: var(--background);
   color: var(--foreground);
@@ -90,13 +96,13 @@ body {
   font-family: "interstatebold", sans-serif;
   text-transform: uppercase;
 
-  @include fontSize(14);
+  @include fontSize(16);
   display: flex;
   width: 100%;
   a {
     text-decoration: none;
     text-align: center;
-    min-width: 54px;
+    min-width: 65px;
     display: block;
     width: fit-content;
      height: fit-content;
@@ -180,14 +186,18 @@ body {
         }
       }
     }
+    .menu-item:nth-child(1) {
+      .submenu-list {
+        color: white;
+      }
+    }
   }
 }
 //footer 
 footer {
   background: black;
   color: white;
-  @extend .flex;
-  justify-content: space-between;
+  margin-top: 30px;
   padding: 20px;
   .footerLeft {
     width: 75%;
@@ -219,7 +229,7 @@ footer {
     width: 25%;
     text-align: right;
     .socials-container {
-      @include fontSize(20);
+      @include fontSize(18);
     }
     .footerMenu {
       text-transform: uppercase;

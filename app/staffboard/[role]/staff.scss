@@ -1,0 +1,80 @@
+@use '../../globals.scss';
+$blue: #35bff6;
+
+$pink: #ff4f5a;
+$lightPink: #fbe4e2;
+$green: #b5e100;
+$lightGreen: #e9efd3;
+$yellow: #ffca51;
+
+.staff-title {
+    text-transform: uppercase;
+}
+
+.staff-card {
+margin-bottom: 40px;
+@extend .flex;
+justify-content: space-between;
+.staff-image {
+    width: 20%;
+    position: relative;
+    height: fit-content;
+    .background {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        background: $green;
+    }
+    img {
+        padding: 20px;
+        position: relative;
+        width: calc(100% - 40px);
+    }
+}
+.staffContact {
+    margin-top: 10px;
+
+    a {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+}
+.staff-details {
+    background-color: $lightGreen;
+    padding: 20px;
+    width: 100%;
+    @extend .flex;
+    height: fit-content;
+    justify-content: space-between;
+    h2 {
+        width: 50%;
+        text-transform: uppercase;
+    }
+    .staff-name {
+        color: $pink;
+    }
+    .staff-position {
+        text-align: right;
+    }
+}
+.staff-30 {
+    width: calc(80% - 40px);
+}
+
+}
+.staff-card:nth-child(odd){
+    flex-direction: row-reverse;
+    .staff-image {
+        .background {
+            background: $blue;
+            right: 0;
+        }
+    }
+    .staff-details {
+        background-color: $lightPink;
+         .staff-name {
+        color: black;
+        }
+    }
+}

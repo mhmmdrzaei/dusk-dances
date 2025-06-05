@@ -1,10 +1,16 @@
 import StaffCard from './StaffCard';
 
-export default function StaffPage({ staff: staffMembers }) {
+export default function StaffPage({ staff: staffMembers, role }) {
+  const sortedStaff = [...staffMembers].sort((a, b) => {
+    const orderA = a.order ?? Infinity;
+    const orderB = b.order ?? Infinity;
+    return orderA - orderB;
+  });
+
   return (
-    <section className="contianer">
-      <h1 className="staff-title">Team</h1>
-      {staffMembers.map((staff) => (
+    <section className="container">
+      <h1 className="staff-title">{role}</h1>
+      {sortedStaff.map((staff) => (
         <StaffCard key={staff._id} staff={staff} />
       ))}
     </section>

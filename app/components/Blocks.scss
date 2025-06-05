@@ -56,11 +56,12 @@ $yellow: #FFCA51;
     .imgBox {
         position: relative;
         width: 49%;
+        height: fit-content;
         .imgFrame {
         position: absolute;
         position: absolute;
-    width: 51%;
-    height: 50%;
+    width: 80%;
+    height: 80%;
     left: -10px;
     top: -10px;
     }
@@ -305,7 +306,7 @@ $yellow: #FFCA51;
         bottom: -1em;
         right:0;
         width: fit-content;
-        padding: 0px 20px;
+        padding: 15px 20px;
         background-color: $pink;
         color: white;
         min-width: 250px;

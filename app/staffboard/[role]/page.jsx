@@ -1,6 +1,7 @@
 import { getAllStaff, getsettings } from '@/sanity/sanity.utils';
 import Layout from '@/app/components/Layout';
 import Staff from '@/app/components/StaffPage';
+import './staff.scss'
 
 export async function generateMetadata() {
   const settings = await getsettings();
@@ -44,7 +45,7 @@ export default async function MembersPage({ params }) {
 
   return (
     <Layout>
-      <Staff staff={filteredStaff} />
+      <Staff staff={filteredStaff} role={role} />
     </Layout>
   );
 }

@@ -29,7 +29,7 @@ const { pageDetailsBlocks = [] } = season;
         {pageDetailsBlocks.map((block,i) => {
           const BlockComponent = componentMap[block._type];
           return BlockComponent ? (
-            <BlockComponent key={block._key} value={block}  initialOpen={i === 0 && block._type === 'accordionText'} />
+            <BlockComponent key={block._key} value={block}  initialOpen={i === 1 || i=== 0 && block._type === 'accordionText'} />
           ) : null;
         })}
       </div>
@@ -39,6 +39,7 @@ const { pageDetailsBlocks = [] } = season;
                   {/* Location Switcher (moved from parent) */}
           {Array.isArray(locations) && locations.length > 1 && (
             <div className="location-switcher">
+              <h2 className="uppercase">Season Locations</h2>
               {locations.map((loc) => (
                 <button
                   key={loc._id}
