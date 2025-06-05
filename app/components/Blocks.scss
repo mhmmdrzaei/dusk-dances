@@ -419,10 +419,11 @@ $yellow: #FFCA51;
         padding: 20px;
         border-radius: 0 0 8px 8px;
     }
-    width: calc(100% - 20px);
+   
     margin: 20px 0;
     .accordion-header {
-        width: 100%;
+        width: calc(100% - 20px);
+        cursor: pointer;
         display: flex;
         flex-flow: wrap;
         border-radius: 8px;
