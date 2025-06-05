@@ -414,12 +414,12 @@ $yellow: #FFCA51;
 .accordion-text-container {
 
     .accordion-body {
-        width: 100%;
+        max-width: 100%;
         background: $lightGreen;
         padding: 20px;
         border-radius: 0 0 8px 8px;
     }
-    width: 100%;
+    width: calc(100% - 20px);
     margin: 20px 0;
     .accordion-header {
         width: 100%;
