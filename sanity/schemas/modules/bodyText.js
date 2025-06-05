@@ -42,7 +42,14 @@ export default {
           layout: 'dropdown'
         },
         initialValue: 'green'
+      },
+      {
+        name: 'scrollingTag',
+        title: 'Scrolling Tag',
+        description: 'add this here and hyperlink to the id -- in lowecase',
+        type: 'string'
       }
+
     ],
     preview: {
       select: {

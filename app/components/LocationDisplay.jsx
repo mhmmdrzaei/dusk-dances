@@ -90,7 +90,7 @@ const { pageDetailsBlocks = [] } = season;
         {poster?.asset?.url && (
           <div className="sidebar-poster">
             <img src={poster.asset.url} alt={poster.alt || ""} />
-            {poster.alt && <p className="poster-caption">{poster.alt}</p>}
+            {poster.caption && <p className="image-caption">{poster.caption}</p>}
           </div>
         )}
       </div>

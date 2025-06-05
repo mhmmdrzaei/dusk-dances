@@ -32,6 +32,7 @@ const contentBlocks = `
     _type,
     _key,
     width,
+    scrollingTag,
     background,
     content[]{
       ...,
@@ -350,13 +351,15 @@ export async function getSeason(slug) {
         asset->{
           url
         },
-        alt
+        alt,
+        caption,
       }
     },
     additionalSiteLocation {
       ...,
       _type == 'bodyText' => {
         width,
+        scrollingTag,
         content[]{
           ...,
           _type == 'block' => { ... },
@@ -404,7 +407,8 @@ export async function getSeason(slug) {
       asset->{
         url
       },
-      alt
+      alt,
+      caption,
     }
   },
   pageBlocksTop[]{
@@ -484,6 +488,7 @@ _key,
       _type,
 _key,
       width,
+      scrollingTag,
       content[]{
         ...,
         _type == 'block' => {
