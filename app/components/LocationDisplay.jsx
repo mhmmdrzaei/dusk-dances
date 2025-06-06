@@ -56,7 +56,7 @@ const { pageDetailsBlocks = [] } = season;
             </div>
           )}
         <div className="pageSideMain">
-          {pageSideText.length > 0 && (
+          {pageSideText && (
             <div className="side-text">
               <PortableText
                 value={pageSideText}

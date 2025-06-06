@@ -55,7 +55,7 @@ $yellow: #FFCA51;
 
     .imgBox {
         position: relative;
-        width: 49%;
+        width: 50%;
         height: fit-content;
         .imgFrame {
         position: absolute;
@@ -67,9 +67,9 @@ $yellow: #FFCA51;
     }
         img {
             position: relative;
-            max-height: 500px;
+            max-height: 650px;
             padding: 10px;
-            width: auto;
+            width: 100%;
             margin: 0 auto;
         }
         .caption {
@@ -78,7 +78,7 @@ $yellow: #FFCA51;
         }
     }
     .text-content{
-        width: 49%;
+        width: 50%;
         position: relative;
     }
 }
@@ -269,7 +269,7 @@ $yellow: #FFCA51;
 //Hero 
 .hero-container {
     position: relative;
-    margin: 20px auto;
+    margin: 20px auto 40px;
     width: 100%;
     a {
         text-decoration: none;

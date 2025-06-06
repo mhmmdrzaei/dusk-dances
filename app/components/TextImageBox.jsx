@@ -16,7 +16,7 @@ export default function TextImageBox({ value }) {
       <div className="imgBox" style={{ flex: 1 }}>
         <div className="imgFrame"></div>
         {imageUrl && (
-          <Image src={imageUrl} alt={altText} width={800} height={600} />
+          <Image src={imageUrl} alt={altText} width={1000} height={800} />
         )}
         {caption && <p className="image-caption">{caption}</p>}
       </div>

@@ -12,8 +12,8 @@ export default function HeadingText({ value }) {
   const HeadingTag = validHeadingLevels.includes(headingLevel) ? headingLevel : 'h1';
 
   return (
-    <div className={`heading-text-container ${textAlign}`} style={{ width: `${width}%`, textAlign: `${textAlign}` }}>
-      <HeadingTag className="heading-text">{text}</HeadingTag>
+    <div className={`heading-text-container ${textAlign}`} style={{ textAlign: `${textAlign}`, justifyContent:`${textAlign == 'center'? 'center' : textAlign== 'right'? 'flex-end': 'flex-start'}` }}>
+      <HeadingTag style={{ width: `${width}%`}} className="heading-text">{text}</HeadingTag>
     </div>
   );
 }

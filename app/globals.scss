@@ -55,6 +55,7 @@ h4 {
   font-family: "interstatebold", sans-serif;
   font-weight: 900;
   margin: 0;
+  text-transform: uppercase;
 }
 a {
   text-decoration: none;
@@ -99,13 +100,14 @@ body {
   font-family: "interstatebold", sans-serif;
   text-transform: uppercase;
 
-  @include fontSize(16);
+  @include fontSize(18);
   display: flex;
   width: 100%;
+  margin: 20px auto;
   a {
     text-decoration: none;
     text-align: center;
-    min-width: 65px;
+    min-width: 75px;
     display: block;
     width: fit-content;
      height: fit-content;
@@ -113,6 +115,9 @@ body {
   border-radius: 8px;
   margin-bottom: 10px;
   }
+}
+.heading-side-menu .ctaButton, .text-content .ctaButton {
+  margin: 0;
 }
 .btn-blue {
   
@@ -132,6 +137,10 @@ body {
   margin: 0;
   padding-left: 10px;
   @include fontSize(8);
+}
+.heading-text-container {
+  width: 100%;
+  display: flex;
 }
 
 //header container
