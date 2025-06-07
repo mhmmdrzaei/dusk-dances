@@ -14,6 +14,7 @@ $yellow: #FFCA51;
 
 .body-text-container {
     margin: 20px 0;
+    height: fit-content;
 
 }
 .pink-bg-text {
@@ -113,6 +114,11 @@ $yellow: #FFCA51;
     }
     .text-content {
         background: $lightGreen;
+    }
+}
+.text-content {
+    ul {
+      line-height: 1.8;
     }
 }
 .carousel-container {
@@ -321,7 +327,7 @@ $yellow: #FFCA51;
 }
 .line-divider-wrapper {
   position: relative;
-  width: 100%;
+  width: calc(100vw - 8px);
   height: 61px;
   
 }
@@ -473,4 +479,26 @@ $yellow: #FFCA51;
 // canada helps
 .canadahelps-embed-wrapper {
     width: 100%;
+}
+
+//page Nav 
+.page-inner-nav {
+    width: 100%;
+    margin: 25px 0;
+    .page-list {
+        list-style: non;
+        margin: 0;
+        padding: 0;
+        @extend .flex;
+        li {
+            @extend .ctaButton;
+            margin: 0 20px 0 0;
+            width: fit-content;
+            @include fontSize(14);
+            a {
+                background: $blue;
+            }
+
+        }
+    }
 }

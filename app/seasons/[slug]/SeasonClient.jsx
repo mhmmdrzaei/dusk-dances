@@ -23,8 +23,8 @@ const [activeLocation, setActiveLocation] = useState(locations[0] || null);
     window.location.hash = loc.slug?.current;
   };
 
-  return (
-    <div className="season-page-container">
+    return (
+      <>
       {/* Top blocks */}
       {season.pageBlocksTop?.map((block) => {
         const BlockComponent = componentMap[block._type];
@@ -40,6 +40,6 @@ const [activeLocation, setActiveLocation] = useState(locations[0] || null);
   setActiveLocation={handleLocationClick}
   componentMap={componentMap}
 />
-    </div>
+  </>
   );
 }

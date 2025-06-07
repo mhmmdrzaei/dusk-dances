@@ -116,7 +116,7 @@ body {
   margin-bottom: 10px;
   }
 }
-.heading-side-menu .ctaButton, .text-content .ctaButton {
+.heading-side-menu .ctaButton, .text-content .ctaButton,.season-desc .ctaButton {
   margin: 0;
 }
 .btn-blue {
@@ -135,7 +135,6 @@ body {
 }
 .image-caption {
   margin: 0;
-  padding-left: 10px;
   @include fontSize(8);
 }
 .heading-text-container {

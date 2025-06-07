@@ -22,6 +22,7 @@ import textImageBox from './modules/textImageBox'
 import video from './modules/video'
 import seo from './seo'
 import canadaHelpsEmbed from './modules/canadaHelpsEmbed'
+import pageNav from './modules/pageNav'
 export const schemaTypes = [
 
       // Document types
@@ -46,6 +47,7 @@ export const schemaTypes = [
       textImageBox,
       video,
       canadaHelpsEmbed,
+      pageNav,
 
       seo
 

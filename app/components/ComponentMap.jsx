@@ -11,6 +11,7 @@ import ImageCarousel from '../components/ImageCarousel';
 import Gallery from '../components/Gallery';
 import Image from '../components/Image';
 import CanadaHelpsEmbed from '../components/CanadaHelpsEmbed';
+import PageNav from '../components/PageNav';
 
 export const componentMap = {
 
@@ -26,5 +27,6 @@ export const componentMap = {
   logoContainer: LogoContainer,
   textImageBox: TextImageBox,
   video: VideoPlayer,
-  canadaHelpsEmbed: CanadaHelpsEmbed
+  canadaHelpsEmbed: CanadaHelpsEmbed,
+  pageNav: PageNav
 };

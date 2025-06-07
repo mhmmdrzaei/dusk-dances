@@ -28,6 +28,15 @@ const contentBlocks = `
     },
     background
   },
+      _type == 'pageNav' => {
+      _type,
+_key,
+      menuItemsPageNav[] {
+      _key,
+      menuItemName,
+      menuItemUrl,
+      },
+    },
   _type == 'bodyText' => {
     _type,
     _key,
