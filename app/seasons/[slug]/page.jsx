@@ -9,11 +9,12 @@ export async function generateMetadata({ params }) {
   const settings = await getsettings();
   const page = await getSeason(slug);
 
-  const title = `${settings?.siteTitle || ''} | ${page?.title || ''}`;
-  const description = page?.seo?.seoDescription || settings?.siteDescription || '';
+  const title = `${settings?.siteTitle || ""} | ${page.seo.seoTitle? page.seo.title :page?.title }`;
+  const description =
+    page?.seo?.seoDescription || settings?.siteDescription || "";
 
-  const fallbackImage = settings?.seoImg?.asset?.url || '';
-  const seoImage = page?.seo?.seoImage?.asset?.url || fallbackImage;
+  const fallbackImage = settings?.seoImg?.asset?.url || "";
+  const seoImage = fallbackImage || page?.seo?.seoImage?.asset?.url;
 
   return {
     title,
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }) {
       title,
       description,
       url: seoImage,
-      siteName: settings?.siteTitle || '',
+      siteName: settings?.siteTitle || "",
       images: [
         {
           url: seoImage,
@@ -30,11 +31,11 @@ export async function generateMetadata({ params }) {
           height: 628,
         },
       ],
-      locale: 'en_CA',
-      type: 'website',
+      locale: "en_CA",
+      type: "website",
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
       images: [seoImage],

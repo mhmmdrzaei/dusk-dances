@@ -6,7 +6,7 @@ import './staff.scss'
 export async function generateMetadata() {
   const settings = await getsettings();
 
-  const title = `${settings?.siteTitle || ''} | Members Directory`;
+  const title = `${settings?.siteTitle || ''} | Team`;
   const description = settings?.siteDescription || '';
   const seoImage = settings?.seoImg?.asset?.url || '';
 

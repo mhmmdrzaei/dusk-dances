@@ -9,7 +9,7 @@ import "./seasons.scss"
 export async function generateMetadata() {
   const settings = await getsettings();
   const title = `${settings?.siteTitle || ""} |'Seasons Archives'`;
-  const description = settings?.siteDescription || "";
+  const description = settings?.siteDescription || "Archive of Current & Past Seasons from Dusk Dances";
 
   const fallbackImage = settings?.seoImg?.asset?.url || "";
   const seoImage = fallbackImage;

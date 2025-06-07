@@ -10,12 +10,12 @@ export async function generateMetadata({ params }) {
   const settings = await getsettings();
   const page = await pageBySlugQuery(slug);
 
-  const title = `${settings?.siteTitle || ""} | ${page?.title || ""}`;
+  const title = `${settings?.siteTitle || ""} | ${page.seo.seoTitle? page.seo.title :page?.title }`;
   const description =
     page?.seo?.seoDescription || settings?.siteDescription || "";
 
   const fallbackImage = settings?.seoImg?.asset?.url || "";
-  const seoImage = page?.seo?.seoImage?.asset?.url || fallbackImage;
+  const seoImage = fallbackImage || page?.seo?.seoImage?.asset?.url;
 
   return {
     title,

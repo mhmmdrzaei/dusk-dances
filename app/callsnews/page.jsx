@@ -7,7 +7,7 @@ export async function generateMetadata() {
   const settings = await getsettings();
 
   const title = `${settings?.siteTitle || ""} | Calls & News`;
-  const description = settings?.siteDescription || "";
+  const description = settings?.siteDescription || "Upcoming and past news & calls from Dusk Dances";
   const seoImage = settings?.seoImg?.asset?.url || "";
 
   return {
