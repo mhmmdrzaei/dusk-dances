@@ -8,7 +8,7 @@ import Link from "next/link";
 export async function generateMetadata() {
   const settings = await getsettings();
   const page = await pageBySlugQuery("home");
-  const title = `${settings?.siteTitle || ""} | ${page.seo?.seoTitle ? page.seo.title : page?.title }`;
+  const title = `${settings?.siteTitle || ""} | ${page.seo?.seoTitle ? `${page.seo.title}` : `${page?.title}`}`;
   const description =
     page?.seo?.seoDescription || settings?.siteDescription || "";
 

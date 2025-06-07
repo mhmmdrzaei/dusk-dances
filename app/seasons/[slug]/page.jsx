@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
   const settings = await getsettings();
   const page = await getSeason(slug);
 
-  const title = `${settings?.siteTitle || ""} | ${page.seo?.seoTitle ? page.seo.seoTitle :page?.title }`;
+ const title = `${settings?.siteTitle || ""} | ${page.seo?.seoTitle ? `${page.seo.title}` : `${page?.title}`}`;
   const description =
     page?.seo?.seoDescription || settings?.siteDescription || "";
 
