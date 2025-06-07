@@ -42,7 +42,6 @@ export default async function Page({ params }) {
 
   return (
     <Layout>
-      <div className="page-container">
         {call.pageBlocks?.map((block) => {
           const BlockComponent = componentMap[block._type];
           if (!BlockComponent) {
@@ -51,7 +50,6 @@ export default async function Page({ params }) {
           }
           return <BlockComponent key={block._key} value={block} />;
         })}
-      </div>
     </Layout>
   );
 }

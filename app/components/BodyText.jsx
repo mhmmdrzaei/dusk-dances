@@ -8,7 +8,7 @@ export default function BodyText({ value }) {
   const { width = "100", content, background, scrollingTag } = value;
 
   return (
-    <div id={scrollingTag? scrollingTag : ''} className={`body-text-container ${background == "white"? "white-bg-text" : background == "green"? "green-bg-text": "pink-bg-text"}`} style={{ width: `${width}%` }}>
+    <div id={scrollingTag? scrollingTag : ''} className={`body-text-container ${background == "white"? "white-bg-text" : background == "green"? "green-bg-text": "pink-bg-text"} ${width === '49'? 'half-width': ''}`} >
       {/* Render text content using PortableText */}
       {content && (
         <div className="text-content" style={{ padding: "20px" }}>

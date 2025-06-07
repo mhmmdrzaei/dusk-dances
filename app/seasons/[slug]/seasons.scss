@@ -60,5 +60,48 @@
         }
 
     }
+ @media (max-width: 880px) {
+    .season-sidebar {
+        width: 100%;
+        order: 1;
+        display: flex;
+        justify-content: space-between;
+        flex-flow: wrap;
+        .location-switcher {
+            width: 100%;
+            order: 3;
+        }
+        .sidebar-poster {
+            width: 26%;
+        }
+        .pageSideMain {
+           
+            width: 65%;
+        
+        }
+    }
+    .season-main-left {
+        width: 100%;
+        order: 2;
+
+    }
+  }
+   @media (max-width: 600px) {
+        .season-sidebar {
+
+        .sidebar-poster {
+            width: 100%;
+            order: 1;
+            margin-bottom: 20px;
+        }
+
+        .pageSideMain {
+           
+            width: 100%;
+            order: 2;
+        
+        }
+    }
+   }
 
 }

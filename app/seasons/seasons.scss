@@ -80,6 +80,43 @@ $yellow: #ffca51;
         }
     }
   }
+  @media (max-width: 880px) {
+    .season-poster {
+      width: 35%;
+    }
+    .season-desc {
+      width: calc(65% - 40px);
+       .eighty-width {
+        width: 55%;
+       }
+       .season-entry-locations {
+        width: 39%;
+       }
+    }
+  }
+    @media (max-width: 680px) {
+    .season-poster {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .season-desc {
+      width: calc(100%);
+       .eighty-width {
+        width: 100%
+       }
+       .season-entry-locations {
+        width: 100%;
+        order: 1;
+       }
+       .description {
+        order: 2;
+       }
+       .ctaButton {
+        order: 3;
+       }
+    }
+  }
 }
 .season-entry:nth-child(even) {
   flex-direction: row-reverse;

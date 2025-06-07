@@ -61,6 +61,22 @@ justify-content: space-between;
 .staff-30 {
     width: calc(80% - 40px);
 }
+@media (max-width: 850px) {
+    .staff-30 {
+    width: calc(60% - 40px);
+}
+.staff-image {
+    width: 40%;
+}
+}
+@media (max-width: 550px) {
+    .staff-30 {
+    width: calc(100% - 40px);
+}
+.staff-image {
+    width: 100%;
+}
+}
 
 }
 .staff-card:nth-child(odd){

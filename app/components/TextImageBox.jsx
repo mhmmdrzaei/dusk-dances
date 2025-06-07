@@ -13,7 +13,7 @@ export default function TextImageBox({ value }) {
       className={`text-image-box ${background}-box ${alignment === "textImage"? '': 'revesed'}`}
       style={{ flexDirection: alignment === 'textImage' ? 'row' : 'row-reverse' }}
     >
-      <div className="imgBox" style={{ flex: 1 }}>
+      <div className="imgBox">
         <div className="imgFrame"></div>
         {imageUrl && (
           <Image src={imageUrl} alt={altText} width={1000} height={800} />
@@ -21,7 +21,7 @@ export default function TextImageBox({ value }) {
         {caption && <p className="image-caption">{caption}</p>}
       </div>
 
-      <div className="text-content" style={{ flex: 1, padding: '20px' }}>
+      <div className="text-content" style={{ padding: '20px' }}>
         <PortableText value={textContent.filter(item => item._type === 'block')} />
                 {textContent
                   .filter((item) => item._type === "ctaButton")

@@ -146,8 +146,27 @@ body {
 .header-container {
   @extend .page-container;
   margin: 20px auto;
+  
   .logo-header {
-    max-width: 230px;
+    width: 221px;
+  }
+  .mobile-menu  {
+    width: calc(98% - 221px);
+    @extend .flex;
+    .heading-side-menu {
+      margin-left: auto;
+    }
+  }
+  .hamburger-button {
+    display: none;
+    @include fontSize(30);
+    width: fit-content;
+    height: fit-content;
+    color: $pink;
+    background: none;
+    border: none;
+    z-index: 4;
+    
   }
   .menu-list {
     list-style: none;
@@ -203,6 +222,52 @@ body {
       }
     }
   }
+  @media (max-width: 790px) {
+      .hamburger-button {
+    display: block;
+    position: fixed;
+    right: 0;
+    }
+    .mobile-menu  {
+      display: none;
+    }
+    .open {
+      display: block;
+    position: fixed;
+    z-index: 3;
+    background: $lightGreen;
+    width: calc(100% - 40px);
+    height: 100dvh;
+    top: 0;
+    left: 0;
+    padding: 80px 20px 0;
+    text-align: center;
+    .menu-list {
+      width: calc(100%);
+      height: fit-content;
+      margin-bottom: 30px;
+      .menu-item .submenu-list {
+        width: calc(100% - 40px);
+        position: initial;
+        text-align: left;
+        .submenu-column-left, .submenu-column-right {
+          width: 100%;
+          text-align: left;
+        }
+      }
+    }
+    .heading-side-menu {
+      display: flex;
+      justify-content: space-around;
+      div {
+        width: fit-content;
+      }
+      order: 1;
+      width: calc(100%);
+      height: fit-content;
+    }
+    }
+  }
 }
 //footer 
 footer {
@@ -253,6 +318,25 @@ footer {
     }
 
   }
+    @media (max-width: 790px) {
+    .footerLeft, .footerRight {
+      width: 100%;
+    }
+  }
+    @media (max-width: 660px) {
+      padding: 20px 0;
+    .footerLeft {
+      .footer-col-1, .footer-col-2, .footer-col-3  {
+        width: 100%;
+      }
+    }
+    .footerRight {
+      text-align: left;
+      .ctaButton {
+        justify-content: flex-start !important;
+      }
+    }
+  }
   
 }
 .mailchimp-form {
@@ -284,5 +368,14 @@ footer {
   margin-bottom: 10px;
   }
 }
+
+}
+.not-found {
+  @extend .page-container;
+  min-height: 30dvh;
+  h1, p , a{
+    width: 100%;
+    text-align: center;
+  }
 }
 
