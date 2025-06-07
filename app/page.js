@@ -3,6 +3,7 @@ import { PortableText } from "next-sanity";
 import { pageBySlugQuery, getsettings } from "@/sanity/sanity.utils";
 import Page from "./[slug]/page";
 import Layout from "./components/Layout";
+import Link from "next/link";
 
 export async function generateMetadata() {
   const settings = await getsettings();
