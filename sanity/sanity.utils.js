@@ -339,6 +339,15 @@ export async function getSeason(slug) {
   _id,
   title,
   slug,
+        seo {
+        seoTitle,
+        seoDescription,
+        seoImage {
+          asset-> {
+            url
+          }
+        }
+      },
   seasonsLocations[]->{
     _id,
     title,

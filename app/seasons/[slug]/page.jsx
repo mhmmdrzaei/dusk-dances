@@ -5,16 +5,15 @@ import SeasonClient from './SeasonClient';
 import './seasons.scss'
 
 export async function generateMetadata({ params }) {
-  const { slug } =  await params;
+  const { slug } = params;
   const settings = await getsettings();
   const page = await getSeason(slug);
 
- const title = `${settings?.siteTitle || ""} | ${page.seo?.seoTitle ? `${page.seo.title}` : `${page?.title}`}`;
-  const description =
-    page?.seo?.seoDescription || settings?.siteDescription || "";
+  const title = `${settings?.siteTitle || ""} | ${page?.seo?.seoTitle || page?.title || ""}`;
+  const description = page?.seo?.seoDescription || settings?.siteDescription || "";
 
   const fallbackImage = settings?.seoImg?.asset?.url || "";
-  const seoImage = fallbackImage || page?.seo?.seoImage?.asset?.url;
+  const seoImage = page?.seo?.seoImage?.asset?.url || fallbackImage;
 
   return {
     title,
@@ -22,8 +21,6 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title,
       description,
-      url: seoImage,
-      siteName: settings?.siteTitle || "",
       images: [
         {
           url: seoImage,
@@ -31,6 +28,7 @@ export async function generateMetadata({ params }) {
           height: 628,
         },
       ],
+      siteName: settings?.siteTitle || "",
       locale: "en_CA",
       type: "website",
     },
