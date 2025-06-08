@@ -14,8 +14,26 @@ export default function BodyText({ value }) {
         <div className="text-content" style={{ padding: "20px" }}>
           {/* Filter and render block content */}
           <PortableText
-                value={content.filter((item) => item._type === "block")}
-              />
+  value={content.filter((item) => item._type === "block")}
+  components={{
+    marks: {
+      link: ({ value, children }) => {
+        const href = value?.href || "#";
+        const isExternal = href.startsWith("http");
+        return (
+          <a
+            href={href}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
+            className="link"
+          >
+            {children}
+          </a>
+        );
+      },
+    },
+  }}
+/>
 
 
         {content

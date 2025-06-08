@@ -224,6 +224,9 @@ body {
     }
   }
   @media (max-width: 790px) {
+    .logo-header {
+      margin: 0 auto;
+    }
       .hamburger-button {
     display: block;
     position: fixed;

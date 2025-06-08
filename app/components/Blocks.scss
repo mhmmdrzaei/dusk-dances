@@ -139,6 +139,9 @@ $yellow: #FFCA51;
     ul {
       line-height: 1.8;
     }
+    a {
+        text-decoration: underline;
+    }
 }
 .carousel-container {
     margin: 20px auto;
@@ -259,10 +262,23 @@ $yellow: #FFCA51;
 
 }
 .videoPlayer {
-    max-width: 750px;
+    // max-width: 800px;
     display: flex;
     justify-content: center;
     margin: 0 auto;
+    padding-top: 56.25%; // 16:9 aspect ratio (360/640)
+  height: 0;
+  overflow: hidden;
+    position: relative;
+
+    
+}
+.videoPlayer > div {
+    position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 //images 

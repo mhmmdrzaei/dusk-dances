@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
         {
           url: seoImage,
           width: 1200,
-          height: 628,
+          height: 628, 
         },
       ],
       siteName: settings?.siteTitle || "",

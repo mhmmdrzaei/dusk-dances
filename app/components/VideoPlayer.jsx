@@ -8,7 +8,8 @@ export default function VideoPlayer({ value }) {
   console.log(value);
   return (
     <div className="videoPlayer">
-          <ReactPlayer url={value.url} />
+          <ReactPlayer url={value.url} width="100%"
+        height="100%"/>
 
     </div>
 
