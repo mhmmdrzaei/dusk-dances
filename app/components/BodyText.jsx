@@ -17,7 +17,7 @@ export default function BodyText({ value }) {
                 value={content.filter((item) => item._type === "block")}
               />
 
-        {/* Render CTA buttons */}
+
         {content
           .filter((item) => item._type === "ctaButton")
           .map((cta, index) => (
@@ -32,9 +32,6 @@ export default function BodyText({ value }) {
               }}
             />
           ))}
-
-
-          {/* Render Images */}
           {content
             .filter((item) => item._type === "imageCustom")
             .map((image, index) => {
