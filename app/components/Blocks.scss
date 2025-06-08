@@ -86,8 +86,13 @@ $yellow: #FFCA51;
     }
     @media (max-width: 940px) {
         flex-flow: wrap;
-        .imgBox, .text-content {
+        padding: 0;
+         .text-content {
             width: 100%;
+            margin-bottom: 20px;
+        }
+        .imgBox {
+            width: calc(100% - 20px);
             margin-bottom: 20px;
         }
     }
@@ -293,7 +298,7 @@ $yellow: #FFCA51;
         position: relative;
     }
     .hero-image {
-       max-width: 90%;
+       max-width: 97%;
         position: relative;
         max-height: 80dvh;
         overflow: hidden;

@@ -19,8 +19,8 @@ export default function Hero({ value }) {
                 <Image
                   src={imageUrl}
                   alt={imageAlt}
-                  width={1200}
-                  height={628}
+                  width={1600}
+                  height={900}
                   
                 />
              
@@ -38,8 +38,8 @@ export default function Hero({ value }) {
               <Image
                 src={imageUrl}
                 alt={imageAlt}
-                width={1200}
-                height={628}
+                width={1600}
+                height={900}
                 
               />
             

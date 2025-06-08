@@ -47,7 +47,7 @@ justify-content: space-between;
     @extend .flex;
     height: fit-content;
     justify-content: space-between;
-    h2 {
+    h2, h3 {
         width: 50%;
         text-transform: uppercase;
     }
@@ -70,6 +70,15 @@ justify-content: space-between;
 }
 }
 @media (max-width: 550px) {
+.staff-details {
+    h2, h3 {
+        width: 100%;
+        
+    }
+    .staff-position {
+        text-align: left;
+    }
+ }
     .staff-30 {
     width: calc(100% - 40px);
 }

@@ -187,6 +187,7 @@ body {
       }
       .dropdown-button {
         @extend h2;
+        color: black;
          text-transform: uppercase;
         background: none;
         border: none;
@@ -227,6 +228,7 @@ body {
     display: block;
     position: fixed;
     right: 0;
+    top: 0;
     }
     .mobile-menu  {
       display: none;

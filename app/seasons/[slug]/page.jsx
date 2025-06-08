@@ -5,7 +5,7 @@ import SeasonClient from './SeasonClient';
 import './seasons.scss'
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } =  await params;
   const settings = await getsettings();
   const page = await getSeason(slug);
 

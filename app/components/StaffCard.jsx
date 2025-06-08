@@ -17,7 +17,7 @@ export default function StaffCard({ staff }) {
         )}
         <div className={`staff-details ${staff.image ? "staff-30" : ""}`}>
           <h2 className="staff-name">{staff.name}</h2>
-          <h2 className="staff-position">{staff.position}</h2>
+          <h3 className="staff-position">{staff.position}</h3>
           <div className="staffContact">
             {staff.email && <a href={`mailto:${staff.email}`}>Contact</a>}
             {staff.website && (
