@@ -9,7 +9,7 @@ export default function Footer({ settings }) {
 
   return (
     <footer>
-      <div className="page-container">
+      <div className="page-container" id="contact">
               <section className="footerLeft">
         <div className=" footer-col footer-col-1">
           <h3>{footer?.column1?.heading}</h3>

@@ -15,6 +15,7 @@ $yellow: #FFCA51;
 .body-text-container {
     margin: 20px 0;
     height: fit-content;
+    width: 100%;
 
 }
 .pink-bg-text {
@@ -87,13 +88,16 @@ $yellow: #FFCA51;
     @media (max-width: 940px) {
         flex-flow: wrap;
         padding: 0;
-         .text-content {
+         .body-text-container {
             width: 100%;
             margin-bottom: 20px;
         }
         .imgBox {
             width: calc(100% - 20px);
             margin-bottom: 20px;
+        }
+        .text-content {
+            width: 100%;
         }
     }
 
