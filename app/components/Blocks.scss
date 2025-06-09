@@ -261,8 +261,13 @@ $yellow: #FFCA51;
     }
 
 }
+.videoPlayerContainer {
+    max-width: 850px;
+    margin: 20px auto;
+
+}
 .videoPlayer {
-    // max-width: 800px;
+    
     display: flex;
     justify-content: center;
     margin: 0 auto;
@@ -315,7 +320,10 @@ $yellow: #FFCA51;
     width: 100%;
     a {
         text-decoration: none;
-        position: relative;
+        position: relative; 
+        &:hover {
+            text-decoration: none;
+        }
     }
     .hero-image {
        max-width: 97%;

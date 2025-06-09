@@ -105,7 +105,7 @@ body {
   width: 100%;
   margin: 20px auto;
   a {
-    text-decoration: none;
+    text-decoration: none !important;
     text-align: center;
     min-width: 75px;
     display: block;
@@ -114,6 +114,9 @@ body {
       padding: 4px 12px;
   border-radius: 8px;
   margin-bottom: 10px;
+  &:hover {
+    text-decoration: none !important;
+  }
   }
 }
 .heading-side-menu .ctaButton, .text-content .ctaButton,.season-desc .ctaButton {
