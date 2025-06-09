@@ -366,7 +366,8 @@ $yellow: #FFCA51;
         }
         .hero-text {
             position: initial;
-            width: calc(100% - 40px);
+            width: calc(100% - 40px - 2em );
+             margin-left: auto;
         }
         .image-caption {
             max-width: 100%;
