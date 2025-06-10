@@ -63,7 +63,8 @@ export default function LocationDisplay({
             ))}
           </div>
         )}
-        <div className="pageSideMain">
+
+        <div className={`pageSideMain ${pageSideText ? '': 'no-side'}`}>
           {pageSideText && (
             <div className="side-text">
               <PortableText
@@ -94,6 +95,8 @@ export default function LocationDisplay({
             />
           )}
         </div>
+
+
       </div>
     </div>
   );
