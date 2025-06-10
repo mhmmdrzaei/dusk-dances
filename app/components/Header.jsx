@@ -64,34 +64,19 @@ export default function Header({ settings }) {
                   {openMenus.includes(index) &&
                     (() => {
                       const items = item.subMenuItems || [];
-                      const firstCol = items.slice(0, 3);
-                      const secondCol = items.slice(3);
-                      const hasSecondCol = secondCol.length > 0;
+                     
+                      
 
                       return (
                         <section
-                          className="submenu-list two-column-submenu"
+                          className="submenu-list"
                           style={{ backgroundColor: item.hexColor }}
                         >
                           <div
-                            className={`${
-                              !hasSecondCol
-                                ? "full-width-column"
-                                : "submenu-column-left"
-                            }`}
+                            className="full-width-column"
+                                
                           >
-                            {firstCol.map((subItem, i) => (
-                              <a
-                                key={i}
-                                href={subItem.subMenuItemUrl}
-                                className="submenu-link"
-                              >
-                                {subItem.subMenuItemName}
-                              </a>
-                            ))}
-                          </div>
-                          <div className="submenu-column-right">
-                            {secondCol.map((subItem, i) => (
+                            {items.map((subItem, i) => (
                               <a
                                 key={i}
                                 href={subItem.subMenuItemUrl}

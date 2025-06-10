@@ -26,7 +26,7 @@ export default function Hero({ value }) {
              
               </div>
             )}
-             {text && <div className="hero-text"><h2>{text}</h2></div>}
+             {text && <div className="hero-text"><h1>{text}</h1></div>}
                
             
         </Link>
@@ -45,7 +45,7 @@ export default function Hero({ value }) {
             
             </div>
           )}
-          {text && <div className="hero-text"><h2>{text}</h2></div>}
+          {text && <div className="hero-text"><h1>{text}</h1></div>}
         </>
       )}
       {imageCaption && <p className="image-caption">{imageCaption}</p>}

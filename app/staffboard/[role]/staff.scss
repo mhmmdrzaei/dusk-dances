@@ -33,6 +33,7 @@ justify-content: space-between;
 }
 .staffContact {
     margin-top: 10px;
+    width: 100%;
 
     a {
         display: block;
@@ -46,13 +47,14 @@ justify-content: space-between;
     width: 100%;
     @extend .flex;
     height: fit-content;
-    justify-content: space-between;
+    align-items: center;
     h2, h3 {
-        width: 50%;
+        width: fit-content;
         text-transform: uppercase;
     }
     .staff-name {
         color: $pink;
+        margin-right: 10px;
     }
     .staff-position {
         text-align: right;

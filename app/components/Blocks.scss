@@ -344,7 +344,7 @@ $yellow: #FFCA51;
             margin-left: 2em;
             object-fit: cover;
             position: relative;
-            object-position: bottom;
+            object-position: center;
             max-height: calc(80dvh - 10px);
 
             width: 100%;
@@ -366,7 +366,7 @@ $yellow: #FFCA51;
             padding-left: 2em;
             position: relative;
             // bottom: -2em;
-            max-width: calc(100% - 320px);
+            max-width: calc(100% - 420px);
         }
     @media (max-width: 750px) {
         .hero-image {

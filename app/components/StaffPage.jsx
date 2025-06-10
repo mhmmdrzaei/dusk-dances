@@ -9,7 +9,7 @@ export default function StaffPage({ staff: staffMembers, role }) {
 
   return (
     <section className="container">
-      <h1 className="staff-title">{role}</h1>
+      <h1 className="staff-title">{role == "staff" ? "Our Team": role}</h1>
       {sortedStaff.map((staff) => (
         <StaffCard key={staff._id} staff={staff} />
       ))}
