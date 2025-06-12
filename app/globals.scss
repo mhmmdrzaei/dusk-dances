@@ -67,6 +67,9 @@ a {
 
 h1 {
   @include fontSize(33);
+  @media (max-width: 790px) {
+    @include fontSize(27);
+  }
 }
 h2 {
   @include fontSize(24);
@@ -233,8 +236,8 @@ body {
       .hamburger-button {
     display: block;
     position: fixed;
-    right: 0;
-    top: 0;
+    right: 5px;
+    top: 5px;
     }
     .mobile-menu  {
       display: none;
@@ -256,6 +259,10 @@ body {
       margin-bottom: 30px;
       .menu-item .submenu-list {
         width: calc(100% - 40px);
+        justify-content: center;
+        a {
+          text-align: center;
+        }
         position: initial;
         text-align: left;
         .submenu-column-left, .submenu-column-right {
